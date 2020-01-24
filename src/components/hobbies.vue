@@ -1,12 +1,12 @@
 <template>
-  <div class="container">
-    <h3>Error</h3>
+  <div id="hobbies">
+    
   </div>
 </template>
 
 <script>
 export default {
-  name: "error",
+  name: "hobbies",
   data() {return { msg: "Welcome to Your Vue.js App" };},
   created: function() {}
 };

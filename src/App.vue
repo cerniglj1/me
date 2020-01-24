@@ -2,17 +2,21 @@
   <div id="app">
     <Nav />
     <img alt="Vue logo" src="./assets/logo.png" />
-    <router-view/>
+    <router-view />
+    <footer2 />
   </div>
 </template>
 
 <script>
 // import home from "./components/home.vue";
 import Nav from "./components/Nav.vue";
+import footer2 from "./components/footer.vue";
+
 export default {
   name: "app",
   components: {
-    Nav
+    Nav,
+    footer2
   }
 };
 </script>
@@ -24,6 +28,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: white;
-  background-color:rgb(61, 61, 61);
+  background-color: rgb(61, 61, 61);
 }
 </style>

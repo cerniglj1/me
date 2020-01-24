@@ -5,6 +5,8 @@ import home from '@/components/home'
 import users from '@/components/users'
 import error from '@/components/error'
 import projects from '@/components/projects'
+import hobbies from '@/components/hobbies'
+import contact from '@/components/contact'
 Vue.use(VueRouter)
 Vue.config.productionTip = false
 
@@ -18,7 +20,9 @@ const routes = [
     { path: '/', name: "", component: home },
     { path: '/home', name: "home", component: home },
     { path: '/users', name: "users", component: users },
-    { path: '/Projects', name: "projects", component: projects },
+    { path: '/projects', name: "projects", component: projects },
+    { path: '/hobbies', name: "hobbies", component: hobbies },
+    { path: '/contact', name: "contact", component: contact },
     { path: '/*', name: "error", component: error }
 ]
 
@@ -27,6 +31,9 @@ const routes = [
 // keep it simple for now.
 const router = new VueRouter({
     routes // short for `routes: routes`
+    ,
+    mode: 'history',
+    linkExactActiveClass: 'is-active',
 })
 
 // 4. Create and mount the root instance.

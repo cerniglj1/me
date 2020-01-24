@@ -42,10 +42,9 @@ export default {
 };
 </script>
 <style>
-#users {
+#users,.table {
   color: white;
 }
-.table{
-  color: white;
-}
+
+ 
 </style>
