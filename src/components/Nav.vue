@@ -15,7 +15,7 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav navbar-center">
-          <router-link tag="li" class-active="active" class="nav-item" to="home" exact>
+          <router-link tag="li" class-active="active" class="nav-link"  to="home" exact>
             <a class="nav-link">Home</a>
           </router-link>
 
@@ -88,7 +88,7 @@ export default {
 .nav-link:hover {
   color: white;
 }
-.nav-item {
+.nav-item, .nav-link {
   transition: all 0.2s ease-in-out;
   padding: 5px 30px;
   margin: 5px 10px;
