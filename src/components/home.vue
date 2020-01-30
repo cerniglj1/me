@@ -9,12 +9,12 @@
 </template>
 
 <script>
-import Users from "./users.vue";
+import users from "./users.vue";
 
 export default {
   name: "home",
   components: {
-    Users
+    users
   },
   data() {
     return { msg: "Welcome to Your Vue.js App" };
