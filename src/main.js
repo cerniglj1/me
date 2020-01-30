@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
-import home from './components/home'
-import users from './components/users'
-import error from './components/error'
-import projects from './components/projects'
-import hobbies from './components/hobbies'
-import contact from './components/contact'
+import home from '@/components/home'
+import users from '@/components/users'
+import error from '@/components/error'
+import projects from '@/components/projects'
+import hobbies from '@/components/hobbies'
+import contact from '@/components/contact'
 Vue.use(VueRouter)
 Vue.config.productionTip = false
 

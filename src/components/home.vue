@@ -4,7 +4,7 @@
       <h1>Home</h1>
     </div>
 
-    <Users />
+    <users />
   </div>
 </template>
 
