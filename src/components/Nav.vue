@@ -19,9 +19,7 @@
             <a class="nav-link">Home</a>
           </router-link>
 
-          <router-link tag="li" class-active="active" class="nav-item" to="users" exact>
-            <a class="nav-link">Users</a>
-          </router-link>
+     
 
           <router-link tag="li" class-active="active" class="nav-item" to="projects" exact>
             <a class="nav-link">Projects</a>

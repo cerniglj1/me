@@ -2,7 +2,6 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import home from './components/home.vue'
-import users from './components/users.vue'
 import error from './components/error.vue'
 import projects from './components/projects.vue'
 import hobbies from './components/hobbies.vue'
@@ -19,7 +18,6 @@ Vue.config.productionTip = false
 const routes = [
     { path: '/', name: "", component: home },
     { path: '/home', name: "home", component: home },
-    { path: '/users', name: "users", component: users },
     { path: '/projects', name: "projects", component: projects },
     { path: '/hobbies', name: "hobbies", component: hobbies },
     { path: '/contact', name: "contact", component: contact },
