@@ -8,7 +8,6 @@
 </template>
 
 <script>
-// import home from "./components/home.vue";
 import Nav from "./components/Nav.vue";
 import FooterVue from "./components/FooterVue.vue";
 

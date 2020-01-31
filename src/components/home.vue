@@ -3,17 +3,13 @@
     <div class="Home">
       <h1>Home</h1>
     </div>
-
   </div>
 </template>
 
 <script>
-
 export default {
   name: "Home",
-  components: {
-
-  },
+  components: {},
   data() {
     return { msg: "Welcome to Your Vue.js App" };
   }
@@ -21,7 +17,7 @@ export default {
 </script>
 
 <style>
-.Home{
+.Home {
   color: white;
 }
 </style>

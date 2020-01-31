@@ -7,7 +7,9 @@
 <script>
 export default {
   name: "Error404",
-  data() {return { msg: "Welcome to Your Vue.js App" };},
+  data() {
+    return { msg: "Welcome to Your Vue.js App" };
+  },
   created: function() {}
 };
 </script>

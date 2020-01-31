@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
-import Home from './components/Home.vue'
-import Error404 from './components/Error404.vue'
-import Projects from './components/Projects.vue'
-import Hobbies from './components/Hobbies.vue'
-import Contact from './components/Contact.vue'
+import Home from '@/components/Home.vue'
+import Error404 from '@/components/Error404.vue'
+import Projects from '@/components/Projects.vue'
+import Hobbies from '@/components/Hobbies.vue'
+import Contact from '@/components/Contact.vue'
 Vue.use(VueRouter)
 Vue.config.productionTip = false
 
