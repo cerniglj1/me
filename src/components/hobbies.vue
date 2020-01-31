@@ -1,5 +1,7 @@
 <template>
-  <div id="Hobbies"></div>
+  <div class="container">
+    <h3>Hobbies</h3>
+  </div>
 </template>
 
 <script>
