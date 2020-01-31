@@ -1,5 +1,5 @@
 <template>
-  <div id="Nav">
+  <div id="NavMenu">
     <nav class="navbar navbar-expand-lg navbar-center">
       <button
         class="navbar-toggler"
@@ -15,17 +15,17 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav navbar-center">
-          <router-link tag="li" class-active="active" class="nav-link" to="home" exact>
+          <router-link tag="li" class-active="active" class="nav-link" to="Home" exact>
             <a class="nav-link">Home</a>
           </router-link>
 
-          <router-link tag="li" class-active="active" class="nav-item" to="projects" exact>
+          <router-link tag="li" class-active="active" class="nav-item" to="Projects" exact>
             <a class="nav-link">Projects</a>
           </router-link>
-          <router-link tag="li" class-active="active" class="nav-item" to="hobbies" exact>
+          <router-link tag="li" class-active="active" class="nav-item" to="Hobbies" exact>
             <a class="nav-link">Hobbies</a>
           </router-link>
-          <router-link tag="li" class-active="active" class="nav-item" to="contact" exact>
+          <router-link tag="li" class-active="active" class="nav-item" to="Contact" exact>
             <a class="nav-link">Contact Me</a>
           </router-link>
           <li class="nav-item dropdown">
@@ -56,7 +56,7 @@
 
 <script>
 export default {
-  name: "Nav",
+  name: "NavMenu",
   fun_facts: [
     "Deadlifted 405 lbs May 2019",
     "Bench Pressed 225 for 2 lbs January 2020",

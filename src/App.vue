@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Nav />
+    <NavMenu />
     <img alt="Vue logo" src="./assets/logo.png" />
     <router-view />
     <FooterVue />
@@ -8,13 +8,13 @@
 </template>
 
 <script>
-import Nav from "./components/Nav.vue";
+import NavMenu from "./components/NavMenu.vue";
 import FooterVue from "./components/FooterVue.vue";
 
 export default {
   name: "app",
   components: {
-    Nav,
+    NavMenu,
     FooterVue
   }
 };
