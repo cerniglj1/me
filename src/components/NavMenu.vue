@@ -91,12 +91,17 @@ export default {
   margin: 5px 10px;
   border-radius: 8px;
 }
+.nav-link:hover{
+   color:  rgba(121, 253, 202, 0.7);
+}
+
 .nav-item:hover {
-  color: white;
-  box-shadow: 0 5px 15px rgba(92, 182, 148, 0.7);
+
+  box-shadow: 0 5px 15px   rgba(121, 253, 202, 0.7);
+;
 }
 .router-link-active {
-  background: rgba(92, 182, 148, 0.7);
+  background: rgba(121, 253, 202, 0.7);
 }
 .active {
   color: blue;

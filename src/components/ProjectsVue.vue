@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: "Projects",
+  name: "ProjectsVue",
   components: {},
   data() {
     return { msg: "Welcome to Your Vue.js App" };

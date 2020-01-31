@@ -4,9 +4,9 @@ import App from './App.vue'
 import Error404 from './components/Error404.vue'
 import HomeVue from './components/HomeVue.vue'
 import HobbiesVue from './components/HobbiesVue.vue'
-// import Projects from './components/Projects.vue'
+import ProjectsVue from './components/ProjectsVue.vue'
 
-// import Contact from './components/Contact.vue'
+import ContactVue from './components/ContactVue.vue'
 Vue.use(VueRouter)
 Vue.config.productionTip = false
 
@@ -21,9 +21,9 @@ Vue.config.productionTip = false
 const routes = [
     { path: '/', name: "", component: HomeVue },
     { path: '/Home', name: "Home", component: HomeVue },
-    // { path: '/Projects', name: "Projects", component: Projects },
+    { path: '/Projects', name: "Projects", component: ProjectsVue },
     { path: '/Hobbies', name: "Hobbies", component: HobbiesVue },
-    // { path: '/Contact', name: "Contact", component: Contact },
+    { path: '/Contact', name: "Contact", component: ContactVue },
     { path: '/*', name: "Error404", component: Error404 }
 ]
 
