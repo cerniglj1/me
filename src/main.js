@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
-import home from './components/home.vue'
-import error from './components/error.vue'
-import projects from './components/projects.vue'
-import hobbies from './components/hobbies.vue'
-import contact from './components/contact.vue'
+import Home from './components/Home.vue'
+import Error404 from './components/Error404.vue'
+import Projects from './components/Projects.vue'
+import Hobbies from './components/Hobbies.vue'
+import Contact from './components/Contact.vue'
 Vue.use(VueRouter)
 Vue.config.productionTip = false
 
@@ -16,12 +16,12 @@ Vue.config.productionTip = false
 // `Vue.extend()`, or just a component options object.
 // We'll talk about nested routes later.
 const routes = [
-    { path: '/', name: "", component: home },
-    { path: '/home', name: "home", component: home },
-    { path: '/projects', name: "projects", component: projects },
-    { path: '/hobbies', name: "hobbies", component: hobbies },
-    { path: '/contact', name: "contact", component: contact },
-    { path: '/*', name: "error", component: error }
+    { path: '/', name: "", component: Home },
+    { path: '/Home', name: "Home", component: Home },
+    { path: '/Projects', name: "Projects", component: Projects },
+    { path: '/Hobbies', name: "Hobbies", component: Hobbies },
+    { path: '/Contact', name: "Contact", component: Contact },
+    { path: '/*', name: "Error404", component: Error404 }
 ]
 
 // 3. Create the router instance and pass the `routes` option

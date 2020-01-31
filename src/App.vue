@@ -3,20 +3,20 @@
     <Nav />
     <img alt="Vue logo" src="./assets/logo.png" />
     <router-view />
-    <footer2 />
+    <FooterVue />
   </div>
 </template>
 
 <script>
 // import home from "./components/home.vue";
 import Nav from "./components/Nav.vue";
-import footer2 from "./components/footer.vue";
+import FooterVue from "./components/FooterVue.vue";
 
 export default {
   name: "app",
   components: {
     Nav,
-    footer2
+    FooterVue
   }
 };
 </script>

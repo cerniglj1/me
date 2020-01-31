@@ -1,12 +1,12 @@
 <template>
-  <div id="contact">
+  <div id="Contact">
     <h3>Contact Me</h3>
   </div>
 </template>
 
 <script>
 export default {
-  name: "contact",
+  name: "Contact",
   data() {return { msg: "Welcome to Your Vue.js App" };},
   created: function() {}
 };

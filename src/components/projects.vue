@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div id="projects">
+    <div id="Projects">
       <h1>Projects</h1>
       <div class="container">
         <ul class="list-group list-group-flush">
@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: "projects",
+  name: "Projects",
   components: {},
   data() {
     return { msg: "Welcome to Your Vue.js App" };
@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style>
-#projects {
+#Projects {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

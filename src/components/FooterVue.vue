@@ -1,5 +1,5 @@
 <template>
-  <div id="footer2">
+  <div id="FooterVue">
     <footer class="footer">
       <div ass="container">
         <div id="icons">
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: "footer2",
+  name: "FooterVue",
   data() {
     return { msg: "Welcome to Your Vue.js App" };
   },

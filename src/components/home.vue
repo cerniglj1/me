@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="home">
+    <div class="Home">
       <h1>Home</h1>
     </div>
 
@@ -10,7 +10,7 @@
 <script>
 
 export default {
-  name: "home",
+  name: "Home",
   components: {
 
   },
@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style>
-.home{
+.Home{
   color: white;
 }
 </style>
