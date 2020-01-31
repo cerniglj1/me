@@ -3,12 +3,14 @@ import VueRouter from 'vue-router'
 import App from './App.vue'
 import Error404 from './components/Error404.vue'
 import HomeVue from './components/HomeVue.vue'
-
+import HobbiesVue from './components/HobbiesVue.vue'
 // import Projects from './components/Projects.vue'
-// import Hobbies from './components/Hobbies.vue'
+
 // import Contact from './components/Contact.vue'
 Vue.use(VueRouter)
 Vue.config.productionTip = false
+
+
 
 
 // 2. Define some routes
@@ -20,7 +22,7 @@ const routes = [
     { path: '/', name: "", component: HomeVue },
     { path: '/Home', name: "Home", component: HomeVue },
     // { path: '/Projects', name: "Projects", component: Projects },
-    // { path: '/Hobbies', name: "Hobbies", component: Hobbies },
+    { path: '/Hobbies', name: "Hobbies", component: HobbiesVue },
     // { path: '/Contact', name: "Contact", component: Contact },
     { path: '/*', name: "Error404", component: Error404 }
 ]
