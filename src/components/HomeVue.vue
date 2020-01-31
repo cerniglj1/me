@@ -1,15 +1,13 @@
 <template>
-  <div id="app">
-    <div class="Home">
-      <h1>Home</h1>
-    </div>
+  <div id="HomeVue">
+    <h1>Home</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Home",
-  
+  name: "HomeVue",
+
   data() {
     return { msg: "Welcome to Your Vue.js App" };
   }
@@ -17,7 +15,7 @@ export default {
 </script>
 
 <style>
-.Home {
+#HomeVue {
   color: white;
 }
 </style>

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import Error404 from './components/Error404.vue'
-// import Home from './components/Home.vue'
+import HomeVue from './components/HomeVue.vue'
 
 // import Projects from './components/Projects.vue'
 // import Hobbies from './components/Hobbies.vue'
@@ -17,8 +17,8 @@ Vue.config.productionTip = false
 // `Vue.extend()`, or just a component options object.
 // We'll talk about nested routes later.
 const routes = [
-    // { path: '/', name: "", component: Home },
-    // { path: '/Home', name: "Home", component: Home },
+    { path: '/', name: "", component: HomeVue },
+    { path: '/Home', name: "Home", component: HomeVue },
     // { path: '/Projects', name: "Projects", component: Projects },
     // { path: '/Hobbies', name: "Hobbies", component: Hobbies },
     // { path: '/Contact', name: "Contact", component: Contact },
