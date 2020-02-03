@@ -5,11 +5,23 @@ import Error404 from './components/Error404.vue'
 import HomeVue from './components/HomeVue.vue'
 import HobbiesVue from './components/HobbiesVue.vue'
 import ProjectsVue from './components/ProjectsVue.vue'
-
+import firebase from 'firebase'
 import ContactVue from './components/ContactVue.vue'
+
+// Vue.use(BootstrapVue)
+const firebaseConfig = {
+    apiKey: "AIzaSyBcDI1XiAFNdYdHMbVQoRZM_mzXRIX8cE0",
+    authDomain: "website-da112.firebaseapp.com",
+    databaseURL: "https://website-da112.firebaseio.com",
+    projectId: "website-da112",
+    storageBucket: "website-da112.appspot.com",
+    messagingSenderId: "786469523609",
+    appId: "1:786469523609:web:a6938677c24d6a46566808",
+    measurementId: "G-TH50KE7LRV"
+};
+firebase.initializeApp(firebaseConfig);
 Vue.use(VueRouter)
 Vue.config.productionTip = false
-
 
 
 

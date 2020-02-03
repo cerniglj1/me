@@ -11,4 +11,3 @@ url2 = "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + \
 with urllib.request.urlopen(url2) as url:
     data = json.loads(url.read().decode())
     print(data)
-
