@@ -79,4 +79,7 @@ export default {
 };
 </script>
 <style>
+#Contact{
+   background-image: linear-gradient(rgba(65, 65, 65, 1) 40%, rgb(61, 77, 73));
+}
 </style>

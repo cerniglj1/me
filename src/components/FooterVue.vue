@@ -1,22 +1,22 @@
 <template>
   <div id="FooterVue">
-    <footer class="footer">
+    <footer class="footer text-center">
       <div ass="container">
         <div id="icons">
           <a href="https://twitter.com/zessedlol">
-            <i class="fab fa-facebook-square fa-2x"></i>
+            <i class="fab fa-facebook-square fa-2x rounded"></i>
           </a>
           <a href="https://www.instagram.com/big.squeezer/">
-            <i class="fab fa-instagram fa-2x"></i>
+            <i class="fab fa-instagram fa-2x rounded"></i>
           </a>
           <a href="https://twitch.tv/zessed">
-            <i class="fab fa-twitch fa-2x"></i>
+            <i class="fab fa-twitch fa-2x rounded"></i>
           </a>
           <a href="https://www.linkedin.com/in/jamescerniglia/">
-            <i class="fab fa-linkedin fa-2x"></i>
+            <i class="fab fa-linkedin fa-2x rounded"></i>
           </a>
           <a href="https://twitter.com/zessedlol">
-            <i class="fab fa-twitter-square fa-2x"></i>
+            <i class="fab fa-twitter-square fa-2x rounded"></i>
           </a>
         </div>
       </div>
@@ -38,6 +38,9 @@ export default {
   margin-left: auto;
   margin-right: auto;
 }
+#FooterVue {
+  background-color:rgba(65, 65, 65, 1);
+}
 .fa-twitter-square {
   /* background-color: red; */
   color: #08a0e9;
@@ -49,7 +52,6 @@ export default {
 }
 #icons i:hover {
   color: rgba(121, 253, 202, 0.7);
-  box-shadow: 0 5px 15px  rgba(121, 253, 202, 0.7);
-;
+  box-shadow: 0 5px 15px rgba(121, 253, 202, 0.7);
 }
 </style>

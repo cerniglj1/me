@@ -5,9 +5,9 @@ import Error404 from './components/Error404.vue'
 import HomeVue from './components/HomeVue.vue'
 import HobbiesVue from './components/HobbiesVue.vue'
 import ProjectsVue from './components/ProjectsVue.vue'
-import firebase from 'firebase'
+import firebase from 'firebase/app';
 import ContactVue from './components/ContactVue.vue'
-
+import Snake from './components/Snake.vue'
 // Vue.use(BootstrapVue)
 const firebaseConfig = {
     apiKey: "AIzaSyBcDI1XiAFNdYdHMbVQoRZM_mzXRIX8cE0",
@@ -36,6 +36,7 @@ const routes = [
     { path: '/Projects', name: "Projects", component: ProjectsVue },
     { path: '/Hobbies', name: "Hobbies", component: HobbiesVue },
     { path: '/Contact', name: "Contact", component: ContactVue },
+    { path: '/Snake', name: "Snake", component: Snake },
     { path: '/*', name: "Error404", component: Error404 }
 ]
 

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <NavMenu />
-    <img alt="Vue logo" src="./assets/logo.png" />
+    <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
     <router-view />
     <FooterVue />
   </div>
@@ -26,7 +26,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  background-color: rgba(65, 65, 65, 1);
   color: white;
-  background-color: rgb(61, 61, 61);
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div id="NavMenu">
     <nav class="navbar navbar-expand-lg navbar-center">
+      <img alt="Vue logo" src="../assets/logo.png" class="navbar-brand" />
       <button
         class="navbar-toggler"
         type="button"
@@ -15,22 +16,30 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav navbar-center">
-          <router-link tag="li" class-active="active" class="nav-link" to="Home" exact>
-            <a class="nav-link">Home</a>
+          <router-link id="RL" class-active="active" class="nav-link" to="Home" exact>
+            <li>
+              <a class="nav-link">Home</a>
+            </li>
+          </router-link>
+          <router-link id="RL" class-active="active" class="nav-link" to="Projects" exact>
+            <li>
+              <a class="nav-link">Projects</a>
+            </li>
+          </router-link>
+          <router-link id="RL" class-active="active" class="nav-link" to="Hobbies" exact>
+            <li>
+              <a class="nav-link">Hobbies</a>
+            </li>
+          </router-link>
+          <router-link id="RL" class-active="active" class="nav-link" to="Contact" exact>
+            <li>
+              <a class="nav-link">Contact Me</a>
+            </li>
           </router-link>
 
-          <router-link tag="li" class-active="active" class="nav-item" to="Projects" exact>
-            <a class="nav-link">Projects</a>
-          </router-link>
-          <router-link tag="li" class-active="active" class="nav-item" to="Hobbies" exact>
-            <a class="nav-link">Hobbies</a>
-          </router-link>
-          <router-link tag="li" class-active="active" class="nav-item" to="Contact" exact>
-            <a class="nav-link">Contact Me</a>
-          </router-link>
           <li class="nav-item dropdown">
             <a
-              class="nav-link dropdown-toggle"
+              class="nav-link dropdown-toggle disabled"
               href="#"
               id="navbarDropdown"
               role="button"
@@ -70,12 +79,7 @@ export default {
 }
 
 .navbar {
-  background-color: #414141;
-  background-image: linear-gradient(
-    rgba(90, 90, 90, 0.479),
-    55%,
-    rgb(61, 61, 61)
-  );
+  background-image: linear-gradient(rgb(94, 93, 93), 55%, rgba(65, 65, 65, 1));
 }
 
 .nav-link {
@@ -84,6 +88,7 @@ export default {
 .nav-link:hover {
   color: white;
 }
+
 .nav-item,
 .nav-link {
   transition: all 0.2s ease-in-out;
@@ -91,23 +96,20 @@ export default {
   margin: 5px 10px;
   border-radius: 8px;
 }
-.nav-link:hover{
-   color:  rgba(121, 253, 202, 0.7);
+.navbar-brand {
+  max-width: 50px;
+  max-height: 50px;
+}
+#RL:hover {
+  box-shadow: 0 5px 15px rgba(121, 253, 202, 0.7);
 }
 
-.nav-item:hover {
-
-  box-shadow: 0 5px 15px   rgba(121, 253, 202, 0.7);
-}
 .router-link-active {
   background: rgba(121, 253, 202, 0.7);
 }
-.active {
-  color: blue;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+.router-link .nav-link:hover {
+  box-shadow: 0 5px 15px rgba(121, 253, 202, 0.7);
 }
-
 .dropdown-menu {
   background-color: #414141;
 }
@@ -117,17 +119,15 @@ export default {
 }
 
 .dropdown-item:hover {
-  background-color: #414141;
+  background-color: rgba(65, 65, 65, 1);
   background-image: linear-gradient(
-    rgba(253, 80, 0, 0.479),
-    rgba(253, 80, 0, 0.479)
+    rgba(121, 253, 202, 0.7),
+    rgba(121, 253, 202, 0.7)
   );
 }
-
-.active a {
-  color: white;
+#NavMenu {
+  text-align: center;
 }
-
 .navbar-center {
   margin-left: auto;
   margin-right: auto;
