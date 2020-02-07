@@ -270,8 +270,8 @@ export default {
       //   this.snake.push(this.Grid[this.start_y][this.start_x]);
       //   this.Grid[this.start_y][this.start_x].block = true;
       this.DrawBoard();
-      setInterval(this.tick, 50);
-      setInterval(this.DrawBoard, 50);
+      setInterval(this.tick, 4);
+      setInterval(this.DrawBoard, 4);
     },
 
     Play: function Play() {

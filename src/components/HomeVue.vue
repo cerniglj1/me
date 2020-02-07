@@ -17,6 +17,8 @@ export default {
 <style>
 #HomeVue {
   color: white;
-  background-image: linear-gradient(rgba(65, 65, 65, 1) 40%, rgb(61, 77, 73));
+  height: 100%;
+  padding-bottom: 1000px;
+  background-image: linear-gradient(rgba(65, 65, 65, 1), rgb(61, 77, 73));
 }
 </style>
