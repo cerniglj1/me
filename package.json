@@ -2,11 +2,11 @@
     "name": "vueapp",
     "version": "0.1.0",
     "private": true,
+    "main": "index.js",
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
-        "lint": "vue-cli-service lint",
-        "api": "node api/server.js"
+        "lint": "vue-cli-service lint"
     },
     "dependencies": {
         "axios": "^0.19.2",
@@ -17,8 +17,12 @@
         "cors": "^2.8.5",
         "express": "^4.17.1",
         "firebase": "^7.8.0",
+        "joi": "^14.3.1",
         "moment": "^2.24.0",
         "mongoose": "^5.8.11",
+        "monk": "^7.1.2",
+        "osrs-json-hiscores": "^2.0.2",
+        "urllib": "^2.34.2",
         "vue": "^2.6.11",
         "vue-router": "^3.1.5",
         "vuetify": "^2.2.8"
