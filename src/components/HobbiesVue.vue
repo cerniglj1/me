@@ -21,7 +21,7 @@
           </tr>
         </tbody>
       </table>
-      <table class="table ">
+      <table class="table">
         <thead>
           <tr>
             <th scope="row">OSRS Accounts</th>
@@ -30,7 +30,7 @@
           </tr>
           <tr v-for="(skill,index) in notpoop.main.skills" v-bind:key="skill">
             <td></td>
-            <td v-if="notpoop != null" >{{index}}: {{skill.level}}</td>
+            <td v-if="notpoop != null">{{index}}: {{skill.level}}</td>
             <td v-if="jimbojango != null">{{index}}: {{jimbojango.main.skills[index].level}}</td>
           </tr>
         </thead>
@@ -57,12 +57,12 @@ export default {
     fetch(API_URL + "osrsAccounts/" + "not_poop")
       .then(response => response.json())
       .then(result => {
-        this.notpoop = result.account;
+        this.notpoop = result;
       });
     fetch(API_URL + "osrsAccounts/" + "jimbo_jango")
       .then(response => response.json())
       .then(result => {
-        this.jimbojango = result.account;
+        this.jimbojango = result;
       });
   },
   created: function() {}

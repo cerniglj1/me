@@ -8,6 +8,8 @@ import ProjectsVue from './components/ProjectsVue.vue'
 import firebase from 'firebase/app';
 import ContactVue from './components/ContactVue.vue'
 import Snake from './components/Snake.vue'
+import OsrsProfile from './components/OsrsProfile.vue';
+
 // Vue.use(BootstrapVue)
 const firebaseConfig = {
     apiKey: "AIzaSyBcDI1XiAFNdYdHMbVQoRZM_mzXRIX8cE0",
@@ -32,11 +34,12 @@ Vue.config.productionTip = false
 // We'll talk about nested routes later.
 const routes = [
     { path: '/', name: "Home", component: HomeVue, meta: { title: 'Home' } },
-    { path: '/Home', name: "Home", component: HomeVue, meta: { title: 'Home' } },
+    { path: '/Home', name: "Home2", component: HomeVue, meta: { title: 'Home' } },
     { path: '/Projects', name: "Projects", component: ProjectsVue, meta: { title: 'Projects' } },
     { path: '/Hobbies', name: "Hobbies", component: HobbiesVue, meta: { title: 'Hobbies' } },
     { path: '/Contact', name: "Contact", component: ContactVue, meta: { title: 'Contact' } },
     { path: '/Snake', name: "Snake", component: Snake, meta: { title: 'Snake' } },
+    { path: '/osrs/:userName', name: "OsrsProfile", component: OsrsProfile, props: true },
     { path: '/*', name: "Error404", component: Error404, meta: { title: 'Error404' } }
 ]
 

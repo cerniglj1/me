@@ -21,6 +21,7 @@
         "moment": "^2.24.0",
         "mongoose": "^5.8.11",
         "monk": "^7.1.2",
+        "node-fetch": "^2.6.0",
         "osrs-json-hiscores": "^2.0.2",
         "urllib": "^2.34.2",
         "vue": "^2.6.11",
