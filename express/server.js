@@ -21,15 +21,16 @@ app.get('/', (req, res) => {
 });
 
 app.get('/osrs/:userName', (req, res) => {
-    /*
+    /**
     * Way that currently works:
     // API_URL=https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=woox
-    console.log(req.params.userName);
-    // req.params.userName.replace('_', ' ')*/
-    console.log('Requested: ', req.params.userName);
+    console.log(req.params.userName);*/
+    var namePretty = req.params.userName.replace('_', ' ');
+    console.log('Requested: ', namePretty);
     osrshiscores
-        .getStats(req.params.userName)
+        .getStats(namePretty)
         .then(function (res1) {
+            console.log('Resolved: ',namePretty)
             res.json(res1);
         })
         .catch(err => console.error(err));
