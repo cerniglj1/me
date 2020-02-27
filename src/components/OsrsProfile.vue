@@ -310,7 +310,7 @@ export default {
     if (this.userName != "") {
       this.namePretty = this.userName.replace("_", " ");
       document.title = this.namePretty;
-      fetch(this.api_url + "osrs/users/" + this.namePretty)
+      fetch(this.api_url + "osrs/users/" + this.userName)
         .then(response => response.json())
         .then(result => {
           this.account = result;
