@@ -9,6 +9,7 @@ import firebase from 'firebase/app';
 import ContactVue from './components/ContactVue.vue'
 import Snake from './components/Snake.vue'
 import OsrsProfile from './components/OsrsProfile.vue';
+const API_URL = "https://stormy-springs-24454.herokuapp.com/";
 
 // Vue.use(BootstrapVue)
 const firebaseConfig = {
@@ -61,5 +62,8 @@ router.beforeEach((to, from, next) => {
 // whole app router-aware.
 new Vue({
     router: router,
+    data: {
+        API_URL: API_URL
+    },
     render: h => h(App),
 }).$mount('#app')

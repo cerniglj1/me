@@ -6,12 +6,15 @@
  * https://stormy-springs-24454.herokuapp.com/ | https://git.heroku.com/stormy-springs-24454.git
  * https://medium.com/@grantspilsbury/build-and-deploy-a-node-express-server-to-heroku-in-10-steps-70c936ab15dc
  * API_URL = "https://stormy-springs-24454.herokuapp.com/osrs/not_poop"
+ * heroku logs --tail
+ * 
  */
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const osrshiscores = require('osrs-json-hiscores');
-var personalData = require('./accountData.json');
+const notpoop = require('./notpoop.json');
+const zezima = require('./zezima.json');
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -23,16 +26,17 @@ app.get('/', (req, res) => {
 });
 
 
-app.get('/osrs/:userName', (req, res) => {
+app.get('/osrs/users/:userName', (req, res) => {
     /**
     * Way that currently works:
     // API_URL=https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=woox
     console.log(req.params.userName);*/
     var namePretty = req.params.userName.replace('_', ' ');
 
-    if (namePretty == 'not poop') {
-
-        res.json(personalData);
+    if (namePretty.toLowerCase() == 'not poop') {
+        res.json(notpoop);
+    } else if (namePretty.toLowerCase() == 'zezima') {
+        res.json(zezima);
     } else {
         console.log('Requesting: ', namePretty);
         osrshiscores

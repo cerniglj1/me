@@ -134,7 +134,6 @@
 </template>
 
 <script>
-const API_URL = "https://stormy-springs-24454.herokuapp.com/osrs/";
 export default {
   name: "OsrsProfile",
   data() {
@@ -227,12 +226,12 @@ export default {
       }
     }
   },
-  props: ["userName"],
+  props: ["userName", "API_URL"],
   mounted() {
     if (this.userName != "") {
       this.namePretty = this.userName.replace("_", " ");
       document.title = this.namePretty;
-      fetch(API_URL + this.userName)
+      fetch(this.API_URL + "/osrs/users/" + this.userName)
         .then(response => response.json())
         .then(result => {
           this.account = result;
