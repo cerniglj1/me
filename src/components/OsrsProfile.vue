@@ -1,10 +1,10 @@
 <template>
   <div id="OsrsProfile">
-    <div class="container">
-      <p>User Name: {{userName}}</p>
+    <div class="container-custom">
+      <p>User Name: {{namePretty}}</p>
       <!-- <p>account: {{account}}</p> -->
       <div class="row">
-        <div class="col-6">
+        <div class="col-4">
           <table class="table table-dark table-striped" v-if="account != null">
             <thead>
               <tr>
@@ -56,218 +56,73 @@
             </tbody>
           </table>
         </div>
-        <div class="col-6">
-          <table class="table" v-if="account != null" hidden>
-            <thead>
-              <tr>
-                <td colspan="3">Boss KCs</td>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td>abyssalSire: {{account.main.bosses.abyssalSire.score.score}}</td>
-                <td>alchemicalHydra: {{account.main.bosses.alchemicalHydra.score}}</td>
-                <td>barrows: {{account.main.bosses.barrows.score}}</td>
-                <td>bryophyta: {{account.main.bosses.bryophyta.score}}</td>
-              </tr>
-              <tr>
-                <td>callisto: {{account.main.bosses.callisto.score}}</td>
-                <td>cerberus: {{account.main.bosses.cerberus.score}}</td>
-                <td>chambersOfXeric: {{account.main.bosses.chambersOfXeric.score}}</td>
-                <td>chambersOfXericChallengeMode: {{account.main.bosses.chambersOfXericChallengeMode.score}}</td>
-                <td>chaosElemental: {{account.main.bosses.chaosElemental.score}}</td>
-              </tr>
-              <tr>
-                <td>chaosFanatic: {{account.main.bosses.chaosFanatic.score}}</td>
-                <td>commanderZilyana: {{account.main.bosses.commanderZilyana.score}}</td>
-                <td>corporealBeast: {{account.main.bosses.corporealBeast.score}}</td>
-                <td>crazyArchaeologist: {{account.main.bosses.crazyArchaeologist.score}}</td>
-                <td>dagannothPrime: {{account.main.bosses.dagannothPrime.score}}</td>
-              </tr>
-              <tr>
-                <td>dagannothRex: {{account.main.bosses.dagannothRex.score}}</td>
-                <td>dagannothSupreme: {{account.main.bosses.dagannothSupreme.score}}</td>
-                <td>derangedArchaeologist: {{account.main.bosses.derangedArchaeologist.score}}</td>
-                <td>generalGraardor: {{account.main.bosses.generalGraardor.score}}</td>
-                <td>giantMole: {{account.main.bosses.giantMole.score}}</td>
-              </tr>
-              <tr>
-                <td>giantMole: {{account.main.bosses.giantMole.score}}</td>
-                <td>grotesqueGuardians: {{account.main.bosses.grotesqueGuardians.score}}</td>
-                <td>hespori: {{account.main.bosses.hespori.score}}</td>
-                <td>kalphiteQueen: {{account.main.bosses.kalphiteQueen.score}}</td>
-                <td>kingBlackDragon: {{account.main.bosses.kingBlackDragon.score}}</td>
-              </tr>
-              "hespori": {
-              "rank": -1,
-              "score": -1
-              },
-              "kalphiteQueen": {
-              "rank": 53350,
-              "score": 35
-              },
-              "kingBlackDragon": {
-              "rank": 145193,
-              "score": 65
-              },
-              "kraken": {
-              "rank": 17344,
-              "score": 2832
-              },
-              "kreeArra": {
-              "rank": 90664,
-              "score": 4
-              },
-              "krilTsutsaroth": {
-              "rank": -1,
-              "score": -1
-              },
-              "mimic": {
-              "rank": -1,
-              "score": -1
-              },
-              "obor": {
-              "rank": -1,
-              "score": -1
-              },
-              "sarachnis": {
-              "rank": 163771,
-              "score": 1
-              },
-              "scorpia": {
-              "rank": -1,
-              "score": -1
-              },
-              "skotizo": {
-              "rank": -1,
-              "score": -1
-              },
-              "gauntlet": {
-              "rank": 17580,
-              "score": 44
-              },
-              "corruptedGauntlet": {
-              "rank": -1,
-              "score": -1
-              },
-              "theatreOfBlood": {
-              "rank": -1,
-              "score": -1
-              },
-              "thermonuclearSmokeDevil": {
-              "rank": -1,
-              "score": -1
-              },
-              "tzKalZuk": {
-              "rank": 67700,
-              "score": 58
-              },
-              "tzTokJad": {
-              "rank": -1,
-              "score": -1
-              },
-              "venenatis": {
-              "rank": 118041,
-              "score": 2
-              },
-              "vetion": {
-              "rank": 110085,
-              "score": 3
-              },
-              "vorkath": {
-              "rank": 29934,
-              "score": 15
-              },
-              "wintertodt": {
-              "rank": 68758,
-              "score": 265
-              },
-              "zalcano": {
-              "rank": 297560,
-              "score": 42
-              },
-              "zulrah": {
-              "rank": -1,
-              "score": -1
-              }
-              }
-            </tbody>
-          </table>
+        <div class="col-8">
           <table class="table table-dark table-striped" v-if="account != null">
             <thead>
               <tr>
-                <td colspan="3">Boss KCs</td>
+                <td colspan="4">Boss Killcounts</td>
               </tr>
             </thead>
 
             <tbody>
               <tr>
                 <td v-for="obj in bosses.slice(0,4)" v-bind:key="obj.data.name">
-                  {{obj.name}}:
-                  <div v-if="obj.data.score > 0">{{obj.data.score}}</div>
-                  <div v-else-if="obj.data.score == -1">0</div>
+                  <div v-if="obj.data.score > 0">{{obj.name}}: {{obj.data.score}}</div>
+                  <div v-else-if="obj.data.score == -1">{{obj.name}}: 0</div>
                 </td>
               </tr>
               <tr>
                 <td v-for="obj in bosses.slice(5,9)" v-bind:key="obj.data.name">
-                  {{obj.name}}:
-                  <div v-if="obj.data.score > 0">{{obj.data.score}}</div>
-                  <div v-else-if="obj.data.score == -1">0</div>
+                  <div v-if="obj.data.score > 0">{{obj.name}}: {{obj.data.score}}</div>
+                  <div v-else-if="obj.data.score == -1">{{obj.name}}: 0</div>
                 </td>
               </tr>
               <tr>
                 <td v-for="obj in bosses.slice(10,14)" v-bind:key="obj.data.name">
-                  {{obj.name}}:
-                  <div v-if="obj.data.score > 0">{{obj.data.score}}</div>
-                  <div v-else-if="obj.data.score == -1">0</div>
+                  <div v-if="obj.data.score > 0">{{obj.name}}: {{obj.data.score}}</div>
+                  <div v-else-if="obj.data.score == -1">{{obj.name}}: 0</div>
                 </td>
               </tr>
               <tr>
                 <td v-for="obj in bosses.slice(15,19)" v-bind:key="obj.data.name">
-                  {{obj.name}}:
-                  <div v-if="obj.data.score > 0">{{obj.data.score}}</div>
-                  <div v-else-if="obj.data.score == -1">0</div>
+                  <div v-if="obj.data.score > 0">{{obj.name}}: {{obj.data.score}}</div>
+                  <div v-else-if="obj.data.score == -1">{{obj.name}}: 0</div>
                 </td>
               </tr>
               <tr>
-                <td
-                  v-for="obj in bosses.slice(20,24)"
-                  v-bind:key="obj.data.name"
-                >{{obj.name}}: {{obj.data.score}}</td>
+                <td v-for="obj in bosses.slice(20,24)" v-bind:key="obj.data.name">
+                  <div v-if="obj.data.score > 0">{{obj.name}}: {{obj.data.score}}</div>
+                  <div v-else-if="obj.data.score == -1">{{obj.name}}: 0</div>
+                </td>
               </tr>
               <tr>
                 <td v-for="obj in bosses.slice(25,29)" v-bind:key="obj.data.name">
-                  {{obj.name}}:
-                  <div v-if="obj.data.score > 0">{{obj.data.score}}</div>
-                  <div v-else-if="obj.data.score == -1">0</div>
+                  <div v-if="obj.data.score > 0">{{obj.name}}: {{obj.data.score}}</div>
+                  <div v-else-if="obj.data.score == -1">{{obj.name}}: 0</div>
                 </td>
               </tr>
               <tr>
                 <td v-for="obj in bosses.slice(30,34)" v-bind:key="obj.data.name">
-                  {{obj.name}}:
-                  <div v-if="obj.data.score > 0">{{obj.data.score}}</div>
-                  <div v-else-if="obj.data.score == -1">0</div>
+                  <div v-if="obj.data.score > 0">{{obj.name}}: {{obj.data.score}}</div>
+                  <div v-else-if="obj.data.score == -1">{{obj.name}}: 0</div>
                 </td>
               </tr>
               <tr>
                 <td v-for="obj in bosses.slice(35,39)" v-bind:key="obj.data.name">
-                  {{obj.name}}:
-                  <div v-if="obj.data.score > 0">{{obj.data.score}}</div>
-                  <div v-else-if="obj.data.score == -1">0</div>
+                  <div v-if="obj.data.score > 0">{{obj.name}}: {{obj.data.score}}</div>
+                  <div v-else-if="obj.data.score == -1">{{obj.name}}: 0</div>
                 </td>
               </tr>
               <tr>
-                <td
-                  v-for="obj in bosses.slice(40,44)"
-                  v-bind:key="obj.data.name"
-                >{{obj.name}}: {{obj.data.score}}</td>
+                <td v-for="obj in bosses.slice(40,44)" v-bind:key="obj.data.name">
+                  <div v-if="obj.data.score > 0">{{obj.name}}: {{obj.data.score}}</div>
+                  <div v-else-if="obj.data.score == -1">{{obj.name}}: 0</div>
+                </td>
               </tr>
               <tr>
                 <td v-for="obj in bosses.slice(45,49)" v-bind:key="obj.data.name">
-                  {{obj.name}}:
-                  <div v-if="obj.data.score > 0">{{obj.data.score}}</div>
-                  <div v-else-if="obj.data.score == -1">0</div>
+                  <div v-if="obj.data.score > 0">{{obj.name}}: {{obj.data.score}}</div>
+                  <div v-else-if="obj.data.score == -1">{{obj.name}}: 0</div>
                 </td>
               </tr>
             </tbody>
@@ -279,13 +134,14 @@
 </template>
 
 <script>
-const API_URL = "http://localhost:4000/osrs/";
+const API_URL = "https://stormy-springs-24454.herokuapp.com/osrs/";
 export default {
   name: "OsrsProfile",
   data() {
     return {
       account: null,
-      bosses: []
+      bosses: [],
+      namePretty: ""
     };
   },
   methods: {
@@ -293,32 +149,122 @@ export default {
       switch (x) {
         case "abyssalSire":
           return "Abyssal Sire";
+        case "alchemicalHydra":
+          return "Alchemical Hydra";
+        case "barrows":
+          return "Barrows";
+        case "bryophyta":
+          return "Bryophyta";
+        case "cerberus":
+          return "Cerberus";
+        case "chambersOfXeric":
+          return "Chambers Of Xeric";
+        case "chambersOfXericChallengeMode":
+          return "Chambers Of Xeric Challenge Mode";
+        case "chaosElemental":
+          return "Chaos Elemental";
+        case "commanderZilyana":
+          return "Commander Zilyana";
+        case "corporealBeast":
+          return "Corporeal Beast";
+        case "crazyArchaeologist":
+          return "Crazy Archaeologist";
+        case "dagannothPrime":
+          return "DagannothPrime";
+        case "dagannothSupreme":
+          return "Dagannoth Supreme";
+        case "derangedArchaeologist":
+          return "Deranged Archaeologist";
+        case "generalGraardor":
+          return "General Graardor";
+        case "giantMole":
+          return "Giant Mole";
+        case "hespori":
+          return "Hespori";
+        case "kalphiteQueen":
+          return "KalphiteQueen";
+        case "kingBlackDragon":
+          return "KingBlackDragon";
+        case "kraken":
+          return "Kraken";
+        case "krilTsutsaroth":
+          return "K'ril Tsutsaroth";
+        case "mimic":
+          return "Mimic";
+        case "nightmare":
+          return "Nightmare";
+        case "obor":
+          return "Obor";
+        case "sarachnis":
+          return "Sarachnis";
+        case "skotizo":
+          return "Skotizo";
+        case "gauntlet":
+          return "Gauntlet";
+        case "corruptedGauntlet":
+          return "Corrupted Gauntlet";
+        case "theatreOfBlood":
+          return "Theatre Of Blood";
+        case "thermonuclearSmokeDevil":
+          return "Thermonuclear Smoke Devil";
+        case "tzKalZuk":
+          return "tz-Kal-Zuk";
+        case "tzTokJad":
+          return "tz-Tok-Jad";
+        case "venenatis":
+          return "Venenatis";
+        case "vetion":
+          return "Vetion";
+        case "wintertodt":
+          return "Wintertodt";
+        case "zalcano":
+          return "Zalcano";
+        case "zulrah":
+          return "Zulrah";
+
         default:
-          return "boss";
+          return x;
       }
     }
   },
   props: ["userName"],
   mounted() {
-    fetch(API_URL + this.userName)
-      .then(response => response.json())
-      .then(result => {
-        this.account = result;
-        for (var n in this.account.main.bosses) {
-          this.bosses.push({
-            name: this.prettyBoss(n),
-            data: this.account.main.bosses[n]
-          });
-        }
-      });
+    if (this.userName != "") {
+      this.namePretty = this.userName.replace("_", " ");
+      document.title = this.namePretty;
+      fetch(API_URL + this.userName)
+        .then(response => response.json())
+        .then(result => {
+          this.account = result;
+          for (var n in this.account.main.bosses) {
+            this.bosses.push({
+              name: this.prettyBoss(n),
+              data: this.account.main.bosses[n]
+            });
+          }
+        });
+    }
   }
 };
 </script>
 <style>
+.container-custom {
+  width: 95%;
+  height: 100%;
+  padding-top: 50px;
+  padding-right: 25px;
+  padding-left: 25px;
+  padding-bottom: 100px;
+}
 .table {
   color: white;
 }
+.table thead {
+  font-weight: bold;
+  font-size: 16px;
+}
+
 #OsrsProfile {
-  background-image: linear-gradient(rgba(65, 65, 65, 1) 40%, rgb(61, 77, 73));
+  background-color: black;
 }
 </style>

@@ -16,22 +16,22 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav navbar-center">
-          <router-link id="RL" class-active="active" class="nav-link" to="Home" exact>
+          <router-link id="RL" class-active="active" class="nav-link" to="/Home" exact>
             <li>
               <a class="nav-link">Home</a>
             </li>
           </router-link>
-          <router-link id="RL" class-active="active" class="nav-link" to="Projects" exact>
+          <router-link id="RL" class-active="active" class="nav-link" to="/Projects" exact>
             <li>
               <a class="nav-link">Projects</a>
             </li>
           </router-link>
-          <router-link id="RL" class-active="active" class="nav-link" to="Hobbies" exact>
+          <router-link id="RL" class-active="active" class="nav-link" to="/Hobbies" exact>
             <li>
               <a class="nav-link">Hobbies</a>
             </li>
           </router-link>
-          <router-link id="RL" class-active="active" class="nav-link" to="Contact" exact>
+          <router-link id="RL" class-active="active" class="nav-link" to="/Contact" exact>
             <li>
               <a class="nav-link">Contact Me</a>
             </li>
