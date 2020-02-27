@@ -203,28 +203,32 @@
 
             <tbody>
               <tr>
-                <td
-                  v-for="obj in bosses.slice(0,4)"
-                  v-bind:key="obj.data.name"
-                >{{obj.name}}: {{obj.data.score}}</td>
+                <td v-for="obj in bosses.slice(0,4)" v-bind:key="obj.data.name">
+                  {{obj.name}}:
+                  <div v-if="obj.data.score > 0">{{obj.data.score}}</div>
+                  <div v-else-if="obj.data.score == -1">0</div>
+                </td>
               </tr>
               <tr>
-                <td
-                  v-for="obj in bosses.slice(5,9)"
-                  v-bind:key="obj.data.name"
-                >{{obj.name}}: {{obj.data.score}}</td>
+                <td v-for="obj in bosses.slice(5,9)" v-bind:key="obj.data.name">
+                  {{obj.name}}:
+                  <div v-if="obj.data.score > 0">{{obj.data.score}}</div>
+                  <div v-else-if="obj.data.score == -1">0</div>
+                </td>
               </tr>
               <tr>
-                <td
-                  v-for="obj in bosses.slice(10,14)"
-                  v-bind:key="obj.data.name"
-                >{{obj.name}}: {{obj.data.score}}</td>
+                <td v-for="obj in bosses.slice(10,14)" v-bind:key="obj.data.name">
+                  {{obj.name}}:
+                  <div v-if="obj.data.score > 0">{{obj.data.score}}</div>
+                  <div v-else-if="obj.data.score == -1">0</div>
+                </td>
               </tr>
               <tr>
-                <td
-                  v-for="obj in bosses.slice(15,19)"
-                  v-bind:key="obj.data.name"
-                >{{obj.name}}: {{obj.data.score}}</td>
+                <td v-for="obj in bosses.slice(15,19)" v-bind:key="obj.data.name">
+                  {{obj.name}}:
+                  <div v-if="obj.data.score > 0">{{obj.data.score}}</div>
+                  <div v-else-if="obj.data.score == -1">0</div>
+                </td>
               </tr>
               <tr>
                 <td
@@ -233,22 +237,25 @@
                 >{{obj.name}}: {{obj.data.score}}</td>
               </tr>
               <tr>
-                <td
-                  v-for="obj in bosses.slice(25,29)"
-                  v-bind:key="obj.data.name"
-                >{{obj.name}}: {{obj.data.score}}</td>
+                <td v-for="obj in bosses.slice(25,29)" v-bind:key="obj.data.name">
+                  {{obj.name}}:
+                  <div v-if="obj.data.score > 0">{{obj.data.score}}</div>
+                  <div v-else-if="obj.data.score == -1">0</div>
+                </td>
               </tr>
               <tr>
-                <td
-                  v-for="obj in bosses.slice(30,34)"
-                  v-bind:key="obj.data.name"
-                >{{obj.name}}: {{obj.data.score}}</td>
+                <td v-for="obj in bosses.slice(30,34)" v-bind:key="obj.data.name">
+                  {{obj.name}}:
+                  <div v-if="obj.data.score > 0">{{obj.data.score}}</div>
+                  <div v-else-if="obj.data.score == -1">0</div>
+                </td>
               </tr>
               <tr>
-                <td
-                  v-for="obj in bosses.slice(35,39)"
-                  v-bind:key="obj.data.name"
-                >{{obj.name}}: {{obj.data.score}}</td>
+                <td v-for="obj in bosses.slice(35,39)" v-bind:key="obj.data.name">
+                  {{obj.name}}:
+                  <div v-if="obj.data.score > 0">{{obj.data.score}}</div>
+                  <div v-else-if="obj.data.score == -1">0</div>
+                </td>
               </tr>
               <tr>
                 <td
@@ -260,7 +267,7 @@
                 <td v-for="obj in bosses.slice(45,49)" v-bind:key="obj.data.name">
                   {{obj.name}}:
                   <div v-if="obj.data.score > 0">{{obj.data.score}}</div>
-                  <div v-else>0</div>
+                  <div v-else-if="obj.data.score == -1">0</div>
                 </td>
               </tr>
             </tbody>
@@ -281,6 +288,15 @@ export default {
       bosses: []
     };
   },
+  methods() {
+    function prettyBoss(x) {
+      switch (x) {
+        case "abyssalSire":
+          return "Abyssal Sire";
+        default:
+          return "boss";
+      }
+    }},
   props: ["userName"],
   mounted() {
     fetch(API_URL + this.userName)
@@ -288,9 +304,10 @@ export default {
       .then(result => {
         this.account = result;
         for (var n in this.account.main.bosses) {
-          this.bosses.push({ name: n, data: this.account.main.bosses[n] });
+          this.bosses.push({ name: this.prettyBoss(n), data: this.account.main.bosses[n] });
         }
       });
+  }
   }
 };
 </script>
