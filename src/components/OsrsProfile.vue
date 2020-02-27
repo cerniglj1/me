@@ -1,8 +1,9 @@
 <template>
   <div id="OsrsProfile">
     <div class="container-custom">
-      <p>User Name: {{namePretty}}</p>
-      <!-- <p>account: {{account}}</p> -->
+      <h2>{{namePretty}}</h2>
+
+      <p></p>
       <div class="row">
         <div class="col-4">
           <table class="table table-dark table-striped" v-if="account != null">
@@ -14,44 +15,118 @@
 
             <tbody>
               <tr>
-                <td>Attack: {{account.main.skills.attack.level}}</td>
-                <td>Hitpoints: {{account.main.skills.hitpoints.level}}</td>
-                <td>Mining: {{account.main.skills.mining.level}}</td>
+                <td>
+                  <img src="../assets/skills/Attack_icon.png" />
+                  {{account.main.skills.attack.level}}
+                </td>
+                <td>
+                  <img src="../assets/skills/Hitpoints_icon.png" />
+                  {{account.main.skills.hitpoints.level}}
+                </td>
+                <td>
+                  <img src="../assets/skills/Mining_icon.png" />
+                  {{account.main.skills.mining.level}}
+                </td>
               </tr>
               <tr>
-                <td>Strength:{{ account.main.skills.strength.level}}</td>
-                <td>Agility: {{account.main.skills.agility.level}}</td>
-                <td>Smithing: {{account.main.skills.smithing.level}}</td>
+                <td>
+                  <img src="../assets/skills/Strength_icon.png" />
+                  {{ account.main.skills.strength.level}}
+                </td>
+                <td>
+                  <img src="../assets/skills/Agility_icon.png" />
+                  {{account.main.skills.agility.level}}
+                </td>
+                <td>
+                  <img src="../assets/skills/Smithing_icon.png" />
+                  {{account.main.skills.smithing.level}}
+                </td>
               </tr>
               <tr>
-                <td>Defence:{{account.main.skills.defence.level}}</td>
-                <td>Herblore: {{account.main.skills.herblore.level}}</td>
-                <td>Fishing: {{account.main.skills.fishing.level}}</td>
+                <td>
+                  <img src="../assets/skills/Defence_icon.png" />
+                  {{account.main.skills.defence.level}}
+                </td>
+                <td>
+                  <img src="../assets/skills/Herblore_icon.png" />
+                  {{account.main.skills.herblore.level}}
+                </td>
+                <td>
+                  <img src="../assets/skills/Fishing_icon.png" />
+                  {{account.main.skills.fishing.level}}
+                </td>
               </tr>
               <tr>
-                <td>Ranged: {{account.main.skills.ranged.level}}</td>
-                <td>Thieving: {{account.main.skills.thieving.level}}</td>
-                <td>Cooking: {{account.main.skills.cooking.level}}</td>
+                <td>
+                  <img src="../assets/skills/Ranged_icon.png" />
+                  {{account.main.skills.ranged.level}}
+                </td>
+                <td>
+                  <img src="../assets/skills/Thieving_icon.png" />
+                  {{account.main.skills.thieving.level}}
+                </td>
+                <td>
+                  <img src="../assets/skills/Cooking_icon.png" />
+                  {{account.main.skills.cooking.level}}
+                </td>
               </tr>
               <tr>
-                <td>Prayer: {{account.main.skills.prayer.level}}</td>
-                <td>Crafting: {{account.main.skills.crafting.level}}</td>
-                <td>Firemaking: {{account.main.skills.firemaking.level}}</td>
+                <td>
+                  <img src="../assets/skills/Prayer_icon.png" />
+                  {{account.main.skills.prayer.level}}
+                </td>
+                <td>
+                  <img src="../assets/skills/Crafting_icon.png" />
+                  {{account.main.skills.crafting.level}}
+                </td>
+                <td>
+                  <img src="../assets/skills/Firemaking_icon.png" />
+                  {{account.main.skills.firemaking.level}}
+                </td>
               </tr>
               <tr>
-                <td>Magic: {{account.main.skills.magic.level}}</td>
-                <td>Fletching: {{account.main.skills.fletching.level}}</td>
-                <td>Woodcutting:{{account.main.skills.woodcutting.level}}</td>
+                <td>
+                  <img src="../assets/skills/Magic_icon.png" />
+                  {{account.main.skills.magic.level}}
+                </td>
+                <td>
+                  <img src="../assets/skills/Fletching_icon.png" />
+                  {{account.main.skills.fletching.level}}
+                </td>
+                <td>
+                  <img src="../assets/skills/Woodcutting_icon.png" />
+                  {{account.main.skills.woodcutting.level}}
+                </td>
               </tr>
               <tr>
-                <td>Runecrafting: {{account.main.skills.runecraft.level}}</td>
-                <td>Slayer: {{account.main.skills.slayer.level}}</td>
-                <td>Farming:{{account.main.skills.farming.level}}</td>
+                <td>
+                  <img src="../assets/skills/Runecraft_icon.png" />
+                  {{account.main.skills.runecraft.level}}
+                </td>
+                <td>
+                  <img src="../assets/skills/Slayer_icon.png" />
+                  {{account.main.skills.slayer.level}}
+                </td>
+                <td>
+                  <img src="../assets/skills/Farming_icon.png" />
+                  {{account.main.skills.farming.level}}
+                </td>
               </tr>
               <tr>
-                <td>Construction: {{account.main.skills.construction.level}}</td>
-                <td>Hunter: {{account.main.skills.hunter.level}}</td>
-                <td>Total Level:{{account.main.skills.overall.level}}</td>
+                <td>
+                  <img src="../assets/skills/Construction_icon.png" />
+                  {{account.main.skills.construction.level}}
+                </td>
+                <td>
+                  <img src="../assets/skills/Hunter_icon.png" />
+                  {{account.main.skills.hunter.level}}
+                </td>
+                <td
+                  style="font-family: 'runescape_chat_bold_07regular';
+  font-size: 18px;
+  color: #FFFF00;
+  text-shadow: 1px 1px black;"
+                >Total Level: {{account.main.skills.overall.level}}</td>
               </tr>
             </tbody>
           </table>
@@ -140,6 +215,7 @@ export default {
     return {
       account: null,
       bosses: [],
+      api_url: "https://stormy-springs-24454.herokuapp.com/",
       namePretty: ""
     };
   },
@@ -226,12 +302,15 @@ export default {
       }
     }
   },
-  props: ["userName", "API_URL"],
+  props: ["userName"],
+
   mounted() {
+    // eslint-disable-next-line no-console
+    console.log(this.props);
     if (this.userName != "") {
       this.namePretty = this.userName.replace("_", " ");
       document.title = this.namePretty;
-      fetch(this.API_URL + "/osrs/users/" + this.userName)
+      fetch(this.api_url + "osrs/users/" + this.namePretty)
         .then(response => response.json())
         .then(result => {
           this.account = result;
@@ -248,9 +327,6 @@ export default {
 </script>
 <style>
 .container-custom {
-  width: 95%;
-  height: 100%;
-  padding-top: 50px;
   padding-right: 25px;
   padding-left: 25px;
   padding-bottom: 100px;

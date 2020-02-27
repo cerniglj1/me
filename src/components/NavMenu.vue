@@ -83,6 +83,7 @@ export default {
 }
 
 .nav-link {
+  font-size: 16px;
   color: white;
 }
 .nav-link:hover {

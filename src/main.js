@@ -9,7 +9,6 @@ import firebase from 'firebase/app';
 import ContactVue from './components/ContactVue.vue'
 import Snake from './components/Snake.vue'
 import OsrsProfile from './components/OsrsProfile.vue';
-const API_URL = "https://stormy-springs-24454.herokuapp.com/";
 
 // Vue.use(BootstrapVue)
 const firebaseConfig = {
@@ -40,7 +39,7 @@ const routes = [
     { path: '/Hobbies', name: "Hobbies", component: HobbiesVue, meta: { title: 'Hobbies' } },
     { path: '/Contact', name: "Contact", component: ContactVue, meta: { title: 'Contact' } },
     { path: '/Snake', name: "Snake", component: Snake, meta: { title: 'Snake' } },
-    { path: '/osrs/:userName', name: "OsrsProfile", component: OsrsProfile, props: true },
+    { path: '/osrs/users/:userName', name: "OsrsProfile", component: OsrsProfile, props: true },
     { path: '/*', name: "Error404", component: Error404, meta: { title: 'Error404' } }
 ]
 
@@ -62,8 +61,6 @@ router.beforeEach((to, from, next) => {
 // whole app router-aware.
 new Vue({
     router: router,
-    data: {
-        API_URL: API_URL
-    },
+
     render: h => h(App),
 }).$mount('#app')
