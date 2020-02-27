@@ -50,27 +50,10 @@ app.get('/osrs/users/:userName', (req, res) => {
 
 
 
-    // var api_url = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player="
-    // var namePretty = req.params.userName.replace('_', ' ');
-    // var urlName = encodeURIComponent(namePretty);
-    // var call = api_url.concat(urlName)
-
-    // fetch(call)
-    //     .then(res => res.text())
-    //     .then(function (body) {
-    //         createAccount(namePretty, body);
-
-    //     });
 
 
 });
 
-// function createAccount(namePretty, body) {
-//     var account = {};
-//     console.log(typeof (body));
-//     console.log(body);
-//     return account;
-// }
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
