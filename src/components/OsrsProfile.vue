@@ -288,15 +288,16 @@ export default {
       bosses: []
     };
   },
-  methods() {
-    function prettyBoss(x) {
+  methods: {
+    prettyBoss: function(x) {
       switch (x) {
         case "abyssalSire":
           return "Abyssal Sire";
         default:
           return "boss";
       }
-    }},
+    }
+  },
   props: ["userName"],
   mounted() {
     fetch(API_URL + this.userName)
@@ -304,10 +305,12 @@ export default {
       .then(result => {
         this.account = result;
         for (var n in this.account.main.bosses) {
-          this.bosses.push({ name: this.prettyBoss(n), data: this.account.main.bosses[n] });
+          this.bosses.push({
+            name: this.prettyBoss(n),
+            data: this.account.main.bosses[n]
+          });
         }
       });
-  }
   }
 };
 </script>
