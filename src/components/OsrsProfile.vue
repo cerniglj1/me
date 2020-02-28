@@ -215,7 +215,7 @@ export default {
     return {
       account: null,
       bosses: [],
-      api_url: "https://stormy-springs-24454.herokuapp.com/",
+      api_url: "https://jamescerniglia.herokuapp.com/",
       namePretty: ""
     };
   },

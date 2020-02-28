@@ -22,18 +22,7 @@
         </tbody>
       </table>
       <table class="table">
-        <thead>
-          <tr>
-            <th scope="row">OSRS Accounts</th>
-            <th scope="row">Not Poop</th>
-            <th scope="row">Jimbo Jango</th>
-          </tr>
-          <tr v-for="(skill,index) in notpoop.main.skills" v-bind:key="skill">
-            <td></td>
-            <td v-if="notpoop != null">{{index}}: {{skill.level}}</td>
-            <td v-if="jimbojango != null">{{index}}: {{jimbojango.main.skills[index].level}}</td>
-          </tr>
-        </thead>
+        <thead></thead>
         <tbody></tbody>
       </table>
     </div>
@@ -41,7 +30,6 @@
 </template>
 
 <script>
-const API_URL = "http://localhost:4000/";
 export default {
   name: "HobbiesVue",
   data() {
@@ -53,18 +41,7 @@ export default {
       dani: null
     };
   },
-  mounted() {
-    fetch(API_URL + "osrsAccounts/" + "not_poop")
-      .then(response => response.json())
-      .then(result => {
-        this.notpoop = result;
-      });
-    fetch(API_URL + "osrsAccounts/" + "jimbo_jango")
-      .then(response => response.json())
-      .then(result => {
-        this.jimbojango = result;
-      });
-  },
+  mounted() {},
   created: function() {}
 };
 </script>
