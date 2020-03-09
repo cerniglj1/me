@@ -3,7 +3,9 @@
 <template>
   <div id="LeagueProfile">
     <div class="container-custom">
-      <div class="row" v-if="leagueAccount != null">
+      <div class="row" v-if="leagueAccountNotFound == true ">Not Found</div>
+
+      <div class="row" v-if="leagueAccount != null && leagueAccountNotFound== false ">
         <div class="col-">
           <div class="row">
             <div class="col">
@@ -20,41 +22,29 @@
         <div class="col-xl">
           <div v-if="matchData!=null">
             <div>
-              <div v-for="match in matchData" :key="match.gameId" class="card bg-dark text-white">
-                <div class="row" v-if="match !=null">
-                  <div class="col-2 center">
-                    <!-- <img class="championTile" :src="getChampionPicture(match.champion)" /> -->
-                  </div>
-                  <div class="col-10">
-                    <h5 class="card-title">{{match.gameMode}}</h5>
-                    <!-- <p class="card-text">{{match}}</p> -->
-                    <div class="row">
-                      <!-- {{match}} -->
+              <div v-for="game in matchData" :key="game.gameId" class="card bg-dark text-white">
+                <div v-if="game !=null">
+                  <h5 class="card-title">{{game.gameMode}}</h5>
 
-                      <div class="col">
-                        <div
-                          class="row"
-                          v-for="player in gameData.one.participantIdentities"
-                          :key="player.championId"
-                        >
-                          <div class="col">
-                            <ul>
-                              <li>
-                                <img class="championIcon" :src="getChampionIcon(player.championId)" />
-                              </li>
-                            </ul>
-                          </div>
-                          <div class="col">
-                            <ul>
-                              <li>{{player.summonerName}}</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <p class="card-text">{{getTimeSince(match.timestamp)}}</p>
+                  <div class="col-6" id="blueSide">
+                    <div class="row">{{game.blueTop.profile.player.summonerName}}</div>
+                    <div class="row">{{game.blueJungler.profile.player.summonerName}}</div>
+                    <div class="row">{{game.blueMid.profile.player.summonerName}}</div>
+                    <div class="row">{{game.blueAdc.profile.player.summonerName}}</div>
+                    <div class="row">{{game.blueSupport.profile.player.summonerName}}</div>
+
+                    <!-- <img
+                            class="championIcon"
+                            :src="getChampionPicture(game.model.blueTop.championId)"
+                    />Z-->
+                    <!-- {{game.blueTop.profile.summonerName}}-->
+                  </div>
+                  <div class="col-6" id="redSide">
+                    
                   </div>
                 </div>
+
+                <p class="card-text">{{getTimeSince(game.gameCreation)}}</p>
               </div>
             </div>
           </div>
@@ -72,6 +62,7 @@ export default {
   data() {
     return {
       leagueAccount: null,
+      leagueAccountNotFound: false,
       matchHistory: [],
       matchData: [],
       iconUrl: "",
@@ -92,6 +83,8 @@ export default {
         .then(response => {
           // JSON responses are automatically parsed.
 
+          console.log(response);
+
           this.namePretty = response.data.name;
           document.title = this.namePretty;
 
@@ -102,48 +95,45 @@ export default {
             "LeagueOfLegends/assets/icons/" +
             response.data.profileIconId +
             ".png";
-          axios
-            .get(
-              this.api_url +
-                "LeagueOfLegends/" +
-                this.leagueAccount.accountId +
-                "/matches"
-            )
-            .then(response => {
-              // JSON responses are automatically parsed.
+          if (this.leagueAccount != null) {
+            axios
+              .get(
+                this.api_url +
+                  "LeagueOfLegends/" +
+                  this.leagueAccount.accountId +
+                  "/matches"
+              )
+              .then(response => {
+                // JSON responses are automatically parsed.
 
-              //lIMIT FOR QUERY PURPOSES
-              this.matchHistory = response.data.matches.slice(0, 9);
-              for (var i in this.matchHistory) {
-                axios
-                  .get(
-                    this.api_url +
-                      "LeagueOfLegends/matchDetails/" +
-                      this.matchHistory[i].gameId
-                  )
-                  .then(response => {
-                    this.matchData.push(response.data);
-                  });
-              }
-            });
+                //Limit to 5 queries to start
+                this.matchHistory = response.data.matches.slice(0, 5);
+                for (var i in this.matchHistory) {
+                  axios
+                    .get(
+                      this.api_url +
+                        "LeagueOfLegends/matchDetails/" +
+                        this.matchHistory[i].gameId
+                    )
+                    .then(response => {
+                      // var matchObject = response.data;
+                      // matchObject.account = this.matchHistory.filter(
+                      //   game => (game.gameId = response.data.gameId)
+                      // )[0];
+                      this.matchData.push(this.organizeGame(response.data));
+                    });
+                }
+              });
+          }
         })
 
         .catch(e => {
-          this.errors.push(e);
+          console.log(e);
         });
     }
   },
   created() {},
-  computed: {
-    gameData() {
-      return this.matchData.map((match, i) => {
-        return {
-          one: match,
-          two: this.matchHistory[i]
-        };
-      });
-    }
-  },
+  computed: {},
   methods: {
     getChampionPicture: function(id) {
       var champ = "";
@@ -508,7 +498,7 @@ export default {
           champ = "MissFortune";
           break;
         case 62:
-          champ = "Wukong";
+          champ = "MonkeyKing";
           break;
         case 53:
           champ = "Blitzcrank";
@@ -998,6 +988,9 @@ export default {
       );
     },
     getTimeSince: function(epochTimeOfMatch) {
+      epochTimeOfMatch = epochTimeOfMatch / 1000;
+      var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
+      d.setUTCSeconds(epochTimeOfMatch);
       // var matchTime = epochTimeOfMatch;
       // var now = Date.now();
       // var diff = Math.abs(now - matchTime);
@@ -1005,7 +998,142 @@ export default {
 
       // console.log(now, matchTime, diff, difdate);
       // return now;
-      return epochTimeOfMatch;
+      return d;
+    },
+    redTeam: function(model) {
+      return model.participants.filter(player => player.teamId == 200);
+    },
+    blueTeam: function(model) {
+      return model.participants.filter(player => player.teamId == 100);
+    },
+    organizeGame: function(game) {
+      var blueTeam = game.participants.filter(player => player.teamId == 100);
+      var redTeam = game.participants.filter(player => player.teamId == 200);
+      if (game.gameMode == "CLASSIC") {
+        //Lets do Top-jg-mid-adc-sup then blue side top...
+        game.blueTop = blueTeam.filter(
+          player => player.timeline.lane == "TOP"
+        )[0];
+        game.blueTop.profile = blueTeam.filter(
+          player => player.participantId == game.blueTop.participantId
+        )[0];
+
+        game.blueJungler = blueTeam.filter(
+          player => player.timeline.lane == "JUNGLE"
+        )[0];
+
+        game.blueJungler.profile = blueTeam.filter(
+          player => player.participantId == game.blueJungler.participantId
+        )[0];
+
+        game.blueMid = blueTeam.filter(
+          player => player.timeline.lane == "MIDDLE"
+        )[0];
+        game.blueMid.profile = blueTeam.filter(
+          player => player.participantId == game.blueMid.participantId
+        )[0];
+
+        game.blueAdc = blueTeam.filter(
+          player =>
+            player.timeline.lane == "BOTTOM" &&
+            player.timeline.role == "DUO_CARRY"
+        )[0];
+        game.blueAdc.profile = blueTeam.filter(
+          player => player.participantId == game.blueAdc.participantId
+        )[0];
+
+        game.blueSupport = blueTeam.filter(
+          player => player.timeline.lane == "BOTTOM"
+        )[0];
+        game.blueSupport.profile = blueTeam.filter(
+          player => player.participantId == game.blueSupport.participantId
+        )[0];
+
+        game.redTop = redTeam.filter(
+          player => player.timeline.lane == "TOP"
+        )[0];
+        game.redTop.profile = redTeam.filter(
+          player => player.participantId == game.redTop.participantId
+        )[0];
+
+        game.redJungler = redTeam.filter(
+          player => player.timeline.lane == "JUNGLE"
+        )[0];
+        game.redJungler.profile = redTeam.filter(
+          player => player.participantId == game.redJungler.participantId
+        )[0];
+
+        game.redMid = redTeam.filter(
+          player => player.timeline.lane == "MIDDLE"
+        )[0];
+        game.redMid.profile = redTeam.filter(
+          player => player.participantId == game.redMid.participantId
+        )[0];
+
+        game.redAdc = redTeam.filter(
+          player =>
+            player.timeline.lane == "BOTTOM" &&
+            player.timeline.role == "DUO_CARRY"
+        )[0];
+        game.redAdc.profile = redTeam.filter(
+          player => player.participantId == game.redAdc.participantId
+        )[0];
+
+        game.redSupport = redTeam.filter(
+          player =>
+            player.timeline.lane == "BOTTOM" &&
+            player.timeline.role == "DUO_SUPPORT"
+        )[0];
+        game.redSupport.profile = redTeam.filter(
+          player => player.participantId == game.redSupport.participantId
+        )[0];
+      } else if (game.gameMode == "ARAM") {
+        game.blueTop = blueTeam[0];
+        game.blueTop.profile = blueTeam.filter(
+          player => player.participantId == game.blueTop.participantId
+        )[0];
+        
+
+        game.blueJungler = blueTeam[1];
+        game.blueJungler.profile = blueTeam.filter(
+          player => player.participantId == game.blueJungler.participantId
+        )[0];
+        game.blueMid = blueTeam[2];
+        game.blueMid.profile = blueTeam.filter(
+          player => player.participantId == game.blueMid.participantId
+        )[0];
+        game.blueAdc = blueTeam[3];
+        game.blueAdc.profile = blueTeam.filter(
+          player => player.participantId == game.blueAdc.participantId
+        )[0];
+        game.blueSupport = blueTeam[4];
+        game.blueSupport.profile = blueTeam.filter(
+          player => player.participantId == game.blueSupport.participantId
+        )[0];
+
+        game.redTop = redTeam[0];
+        game.redTop.profile = redTeam.filter(
+          player => player.participantId == game.redTop.participantId
+        )[0];
+        game.redJungler = redTeam[0];
+        game.redJungler.profile = redTeam.filter(
+          player => player.participantId == game.redJungler.participantId
+        )[0];
+        game.redMid = redTeam[0];
+        game.redMid.profile = redTeam.filter(
+          player => player.participantId == game.redMid.participantId
+        )[0];
+        game.redAdc = redTeam[0];
+        game.redAdc.profile = redTeam.filter(
+          player => player.participantId == game.redAdc.participantId
+        )[0];
+        game.redSupport = redTeam[0];
+        game.redSupport.profile = redTeam.filter(
+          player => player.participantId == game.redSupport.participantId
+        )[0];
+      }
+      var newgame = game;
+      return newgame;
     }
   }
 };

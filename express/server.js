@@ -17,11 +17,11 @@ const bodyParser = require('body-parser');
 const osrshiscores = require('osrs-json-hiscores');
 const notpoop = require('./notpoop.json');
 const zezima = require('./zezima.json');
-const LeagueAccounts = require('./LeagueAccounts.json');
+// const LeagueAccounts = require('./LeagueAccounts.json');
 const app = express();
 
 const request = require('request');
-const riotApiKey = 'RGAPI-2749bf19-586a-4de6-8bc3-494bf56e8d03';
+const riotApiKey = 'RGAPI-56d2cd77-e976-4598-be42-6ae272abd43a';
 const ddragonRevision = "10.5.1"
 app.use(cors());
 app.use(bodyParser.json());
