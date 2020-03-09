@@ -3,8 +3,10 @@
     <div class="container">
       <p class="error-title">
         Error
-        <a class="lights">
+        <a class="lights1">
           <a class="blinking">4</a>
+        </a>
+        <a class="lights">
           0
           <a class="blinking2">4</a>
         </a>
@@ -31,14 +33,28 @@ export default {
   /* -webkit-text-stroke: 0.1px #f1f1f1; */
   font-size: 120px;
 }
+.lights1 {
+  /* -webkit-text-fill-color: transparent; */
+  position: relative;
+  /* -webkit-text-stroke: 0.1px #f1f1f1; */
+  font-size: 120px;
+  color: transparent;
+  background-clip: text;
+  background-image: -webkit-linear-gradient(
+    #da3939 0%,
+    #792727 50%,
+    #df3c3c 51%,
+    #a14141 52%,
+    #e73d3d 100%
+  );
+  filter: drop-shadow(0px 0px 10px red);
+}
 .lights {
   /* -webkit-text-fill-color: transparent; */
   position: relative;
   /* -webkit-text-stroke: 0.1px #f1f1f1; */
   font-size: 120px;
   color: transparent;
-}
-.lights {
   background-clip: text;
   background-image: -webkit-linear-gradient(
     #da3939 0%,
@@ -52,6 +68,7 @@ export default {
 .blinking {
   animation: blinkingText 5s infinite;
 }
+
 @keyframes blinkingText {
   0% {
     color: transparent;
