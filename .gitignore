@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
-
+express/static/Cerniglia/
+express/Osrs/
 
 # local env files
 .env.local

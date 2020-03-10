@@ -31,8 +31,8 @@ app.get('/', (req, res) => {
 
 });
 app.use('/LeagueOfLegends/assets', express.static(__dirname + '/static/LeagueOfLegends'));
-app.use('/Osrs/assets', express.static(__dirname + '/static/Osrs'));
-app.use('/Cerniglia', express.static(__dirname + '/static/Cerniglia/'));
+// app.use('/Osrs/assets', express.static(__dirname + '/static/Osrs'));
+// app.use('/Cerniglia', express.static(__dirname + '/static/Cerniglia/'));
 
 app.get('/LeagueOfLegends/matchDetails/:matchId', function(req, res) {
     var matchId = req.params.matchId;
@@ -94,7 +94,6 @@ app.get('/:game/user/:username', (req, res) => {
     }
 
     switch (req.params.game) {
-
         case 'osrs':
             var namePretty = req.params.username.replace('_', ' ').toLowerCase();
 
@@ -123,9 +122,6 @@ app.get('/:game/user/:username', (req, res) => {
                                 })
                                 .catch(err => console.error(err));
                         }
-
-
-
                     });
                 if (err) { throw err }
             });
@@ -171,10 +167,7 @@ app.get('/:game/user/:username', (req, res) => {
                 if (err) { throw err }
 
             });
-
-
             break
-
         default:
             res.json({
                 'No game found': 404,
@@ -183,7 +176,6 @@ app.get('/:game/user/:username', (req, res) => {
             break
     }
 });
-
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
