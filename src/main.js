@@ -14,23 +14,81 @@ import LeagueProfile from './components/LeagueProfile.vue';
 Vue.use(VueRouter)
 Vue.config.productionTip = false
 
-
+// API URL ==  https://jamescerniglia.herokuapp.com/
 
 // 2. Define some routes
 // Each route should map to a component. The "component" can
 // either be an actual component constructor created via
 // `Vue.extend()`, or just a component options object.
 // We'll talk about nested routes later.
-const routes = [
-    { path: '/', name: "Home", component: HomeVue, meta: { title: 'Home' } },
-    { path: '/Home', name: "Home2", component: HomeVue, meta: { title: 'Home' } },
-    { path: '/Projects', name: "Projects", component: ProjectsVue, meta: { title: 'Projects' } },
-    { path: '/Hobbies', name: "Hobbies", component: HobbiesVue, meta: { title: 'Hobbies' } },
-    { path: '/Contact', name: "Contact", component: ContactVue, meta: { title: 'Contact' } },
-    { path: '/Snake', name: "Snake", component: Snake, meta: { title: 'Snake' } },
-    { path: '/osrs/users/:userName', name: "OsrsProfile", component: OsrsProfile, props: true },
-    { path: '/league/users/:leagueName', name: "LeagueProfile", component: LeagueProfile, props: true },
-    { path: '/*', name: "Error404", component: Error404, meta: { title: 'Error404' } }
+const routes = [{
+        path: '/',
+        name: "Home",
+        component: HomeVue,
+        meta: {
+            title: 'Home'
+        }
+    },
+    {
+        path: '/Home',
+        name: "Home2",
+        component: HomeVue,
+        meta: {
+            title: 'Home'
+        }
+    },
+    {
+        path: '/Projects',
+        name: "Projects",
+        component: ProjectsVue,
+        meta: {
+            title: 'Projects'
+        }
+    },
+    {
+        path: '/Hobbies',
+        name: "Hobbies",
+        component: HobbiesVue,
+        meta: {
+            title: 'Hobbies'
+        }
+    },
+    {
+        path: '/Contact',
+        name: "Contact",
+        component: ContactVue,
+        meta: {
+            title: 'Contact'
+        }
+    },
+    {
+        path: '/Snake',
+        name: "Snake",
+        component: Snake,
+        meta: {
+            title: 'Snake'
+        }
+    },
+    {
+        path: '/osrs/users/:userName',
+        name: "OsrsProfile",
+        component: OsrsProfile,
+        props: true
+    },
+    {
+        path: '/league/users/:leagueName',
+        name: "LeagueProfile",
+        component: LeagueProfile,
+        props: true
+    },
+    {
+        path: '/*',
+        name: "Error404",
+        component: Error404,
+        meta: {
+            title: 'Error404'
+        }
+    }
 ]
 
 // 3. Create the router instance and pass the `routes` option

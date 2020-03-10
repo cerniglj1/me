@@ -39,9 +39,7 @@
                     />Z-->
                     <!-- {{game.blueTop.profile.summonerName}}-->
                   </div>
-                  <div class="col-6" id="redSide">
-                    
-                  </div>
+                  <div class="col-6" id="redSide"></div>
                 </div>
 
                 <p class="card-text">{{getTimeSince(game.gameCreation)}}</p>
@@ -77,7 +75,7 @@ export default {
     /* eslint-disable no-console */
     if (this.leagueName != "") {
       this.namePretty = this.leagueName;
-      document.title = this.namePretty;
+      document.title = this.namePretty + "...";
       axios
         .get(this.api_url + "LeagueOfLegends/user/" + this.leagueName)
         .then(response => {
@@ -1092,7 +1090,6 @@ export default {
         game.blueTop.profile = blueTeam.filter(
           player => player.participantId == game.blueTop.participantId
         )[0];
-        
 
         game.blueJungler = blueTeam[1];
         game.blueJungler.profile = blueTeam.filter(

@@ -1,8 +1,9 @@
 {
-    "name": "vueapp",
-    "version": "0.1.0",
+    "name": "jamesmcerniglia",
+    "version": "0.2.0",
     "private": true,
     "main": "./express/server.js",
+    "exports": false,
     "scripts": {
         "start": "node ./express/server.js",
         "serve": "vue-cli-service serve",
@@ -22,15 +23,11 @@
         "moment": "^2.24.0",
         "mongoose": "^5.8.11",
         "monk": "^7.1.2",
-        "node-fetch": "^2.6.0",
         "osrs-json-hiscores": "^2.0.2",
-        "react-wordcloud": "^1.1.1",
         "urllib": "^2.34.2",
         "vue": "^2.6.11",
         "vue-router": "^3.1.5",
-        "vue-wordcloud": "^1.1.1",
-        "vuetify": "^2.2.8",
-        "wordcloud": "^1.1.1"
+        "vuetify": "^2.2.8"
     },
     "devDependencies": {
         "@vue/cli-plugin-babel": "^4.1.0",
@@ -40,6 +37,9 @@
         "eslint": "^5.16.0",
         "eslint-plugin-vue": "^5.0.0",
         "vue-template-compiler": "^2.6.10"
+    },
+    "peerDependencies": {
+        "@babel/core": "^7.0.0"
     },
     "eslintConfig": {
         "root": true,
