@@ -1,55 +1,41 @@
 <template>
   <div id="Projects">
     <h1>Projects</h1>
-    <div class="container">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-            </ol>
-            <div class="carousel-inner">
-              <div>
-                <div
-                  class="carousel-item"
-                  :class="{ active: image.id === 0 }"
-                  v-for="image in images"
-                  v-bind:index="index"
-                  v-bind:key="image.id"
-                >
-                  <div :class="{ crop: image.id === 0|| image.id ===1 }">
-                    <img :src="getImgUrl(image.url)" class="d-block w-100" />
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>{{image.informationTitle}}</h5>
-                      <p>{{image.informationDetail}}</p>
-                    </div>
-                  </div>
-                </div>
+
+    <div class="row p-4">
+      <div class="col-lg">
+        <h4>Data Related</h4>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item p-0 m-1" v-for="image in dataImages" :key="image.id">
+            <div class="card bg-dark text-white">
+              <img class="card-img" :src="getProjectsImage(image.url)" alt="Card image" />
+              <div class="card-img-overlay marginTopCard">
+                <h5 class="card-title">{{image.informationTitle}}</h5>
+                <p class="card-text">{{image.informationDetail}}</p>
               </div>
             </div>
-            <a
-              class="carousel-control-prev"
-              href="#carouselExampleCaptions"
-              role="button"
-              data-slide="prev"
-            >
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a
-              class="carousel-control-next"
-              href="#carouselExampleCaptions"
-              role="button"
-              data-slide="next"
-            >
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-        </li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-      </ul>
+          </li>
+
+        </ul>
+      </div>
+      <div class="col-sm">
+        <h4>Software</h4>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <div class="card bg-dark text-white">
+              <img class="card-img" :src="getProjectsImage('CSMS')" alt="Card image" />
+              <div class="card-img-overlay marginTopCard">
+                <h5 class="card-title pb-2">Cornerstone Managment Software</h5>
+               
+                <p
+                  class="card-text"
+                >Management Software built using Python with Kivy interfaces. Used on RaspberryPi and PC. Allows employees to sign in and choose the work they do in order for the business to estimate time spent on projects.</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
       <!-- <div v-for="image in images" v-bind:index="index" v-bind:key="image.id">
         <h5>{{image.informationTitle}} , {{image.url}} , {{image.informationDetail}}</h5>
         <img :src="getImgUrl(image.url)" class="d-block w-100" />
@@ -64,7 +50,8 @@ export default {
   components: {},
   data() {
     return {
-      images: [
+      api_url: "http://localhost:4000/",
+      dataImages: [
         {
           id: 0,
           url: "nycSubway2",
@@ -84,30 +71,32 @@ export default {
     };
   },
   methods: {
-    getImgUrl(imageName) {
-      var images = require.context("../assets/pics/", false, /\.png$/);
-      return images("./" + imageName + ".png");
+    getProjectsImage(imageName) {
+      return this.api_url + "Cerniglia/Projects/" + imageName + ".png";
     }
   }
 };
 </script>
 
 <style>
-.carousel-item img {
-  filter: brightness(50%);
+.card img {
+  filter: brightness(30%);
 }
-
 #Projects {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: white;
-  background-image: linear-gradient(rgba(65, 65, 65, 1) 40%, rgb(61, 77, 73));
+  background: linear-gradient(rgba(65, 65, 65, 1) 40%, rgb(61, 77, 73));
   /* background-color:  */
+}
+.marginTopCard {
+  margin-top: 80px;
+  font-size: 13px;
 }
 .list-group,
 .list-group-item {
-  background-color: rgba(65, 65, 65, 1);
+  background: transparent;
 }
 </style>

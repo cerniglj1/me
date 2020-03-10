@@ -9,6 +9,7 @@ import ContactVue from './components/ContactVue.vue'
 import Snake from './components/Snake.vue'
 import OsrsProfile from './components/OsrsProfile.vue';
 import LeagueProfile from './components/LeagueProfile.vue';
+import GameDetails from './components/GameDetails.vue';
 // Vue.use(BootstrapVue)
 
 Vue.use(VueRouter)
@@ -82,6 +83,12 @@ const routes = [{
         props: true
     },
     {
+        path: '/league/users/:leagueName/matches/:gameId',
+        name: "GameDetails",
+        component: GameDetails,
+        props: true
+    },
+    {
         path: '/*',
         name: "Error404",
         component: Error404,
@@ -101,12 +108,12 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    document.title = to.meta.title
-    next()
-})
-// 4. Create and mount the root instance.
-// Make sure to inject the router with the router option to make the
-// whole app router-aware.
+        document.title = to.meta.title
+        next()
+    })
+    // 4. Create and mount the root instance.
+    // Make sure to inject the router with the router option to make the
+    // whole app router-aware.
 new Vue({
     router: router,
 

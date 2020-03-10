@@ -3,7 +3,6 @@
     <div class="container-custom">
       <h2>{{namePretty}}</h2>
 
-      <p></p>
       <div class="row">
         <div class="col-4">
           <table class="table table-dark table-striped" v-if="account != null">
@@ -16,117 +15,112 @@
             <tbody>
               <tr>
                 <td>
-                  <img src="../assets/skills/Attack_icon.png" />
+                  <img :src="getSkillIcon('Attack')" />
                   {{account.main.skills.attack.level}}
                 </td>
                 <td>
-                  <img src="../assets/skills/Hitpoints_icon.png" />
+                  <img :src="getSkillIcon('Hitpoints')" />
                   {{account.main.skills.hitpoints.level}}
                 </td>
                 <td>
-                  <img src="../assets/skills/Mining_icon.png" />
+                  <img :src="getSkillIcon('Mining')" />
                   {{account.main.skills.mining.level}}
                 </td>
               </tr>
               <tr>
                 <td>
-                  <img src="../assets/skills/Strength_icon.png" />
+                  <img :src="getSkillIcon('Strength')" />
                   {{ account.main.skills.strength.level}}
                 </td>
                 <td>
-                  <img src="../assets/skills/Agility_icon.png" />
+                  <img :src="getSkillIcon('Agility')" />
                   {{account.main.skills.agility.level}}
                 </td>
                 <td>
-                  <img src="../assets/skills/Smithing_icon.png" />
+                  <img :src="getSkillIcon('Smithing')" />
                   {{account.main.skills.smithing.level}}
                 </td>
               </tr>
               <tr>
                 <td>
-                  <img src="../assets/skills/Defence_icon.png" />
+                  <img :src="getSkillIcon('Defence')" />
                   {{account.main.skills.defence.level}}
                 </td>
                 <td>
-                  <img src="../assets/skills/Herblore_icon.png" />
+                  <img :src="getSkillIcon('Herblore')" />
                   {{account.main.skills.herblore.level}}
                 </td>
                 <td>
-                  <img src="../assets/skills/Fishing_icon.png" />
+                  <img :src="getSkillIcon('Fishing')" />
                   {{account.main.skills.fishing.level}}
                 </td>
               </tr>
               <tr>
                 <td>
-                  <img src="../assets/skills/Ranged_icon.png" />
+                  <img :src="getSkillIcon('Ranged')" />
                   {{account.main.skills.ranged.level}}
                 </td>
                 <td>
-                  <img src="../assets/skills/Thieving_icon.png" />
+                  <img :src="getSkillIcon('Thieving')" />
                   {{account.main.skills.thieving.level}}
                 </td>
                 <td>
-                  <img src="../assets/skills/Cooking_icon.png" />
+                  <img :src="getSkillIcon('Cooking')" />
                   {{account.main.skills.cooking.level}}
                 </td>
               </tr>
               <tr>
                 <td>
-                  <img src="../assets/skills/Prayer_icon.png" />
+                  <img :src="getSkillIcon('Prayer')" />
                   {{account.main.skills.prayer.level}}
                 </td>
                 <td>
-                  <img src="../assets/skills/Crafting_icon.png" />
+                  <img :src="getSkillIcon('Crafting')" />
                   {{account.main.skills.crafting.level}}
                 </td>
                 <td>
-                  <img src="../assets/skills/Firemaking_icon.png" />
+                  <img :src="getSkillIcon('Firemaking')" />
                   {{account.main.skills.firemaking.level}}
                 </td>
               </tr>
               <tr>
                 <td>
-                  <img src="../assets/skills/Magic_icon.png" />
+                  <img :src="getSkillIcon('Magic')" />
                   {{account.main.skills.magic.level}}
                 </td>
                 <td>
-                  <img src="../assets/skills/Fletching_icon.png" />
+                  <img :src="getSkillIcon('Fletching')" />
                   {{account.main.skills.fletching.level}}
                 </td>
                 <td>
-                  <img src="../assets/skills/Woodcutting_icon.png" />
+                  <img :src="getSkillIcon('Woodcutting')" />
                   {{account.main.skills.woodcutting.level}}
                 </td>
               </tr>
               <tr>
                 <td>
-                  <img src="../assets/skills/Runecraft_icon.png" />
+                  <img :src="getSkillIcon('Runecraft')" />
                   {{account.main.skills.runecraft.level}}
                 </td>
                 <td>
-                  <img src="../assets/skills/Slayer_icon.png" />
+                  <img :src="getSkillIcon('Slayer')" />
                   {{account.main.skills.slayer.level}}
                 </td>
                 <td>
-                  <img src="../assets/skills/Farming_icon.png" />
+                  <img :src="getSkillIcon('Farming')" />
                   {{account.main.skills.farming.level}}
                 </td>
               </tr>
               <tr>
                 <td>
-                  <img src="../assets/skills/Construction_icon.png" />
+                  <img :src="getSkillIcon('Construction')" />
                   {{account.main.skills.construction.level}}
                 </td>
                 <td>
-                  <img src="../assets/skills/Hunter_icon.png" />
+                  <img :src="getSkillIcon('Hunter')" />
                   {{account.main.skills.hunter.level}}
                 </td>
-                <td
-                  style="font-family: 'runescape_chat_bold_07regular';
-  font-size: 18px;
-  color: #FFFF00;
-  text-shadow: 1px 1px black;"
-                >Total Level: {{account.main.skills.overall.level}}</td>
+                <td class="rsfont" style>Total Level: {{account.main.skills.overall.level}}</td>
               </tr>
             </tbody>
           </table>
@@ -204,6 +198,9 @@
           </table>
         </div>
       </div>
+      <div class="row text-center">
+        <h2 class>Quest Data</h2>
+      </div>
     </div>
   </div>
 </template>
@@ -215,8 +212,10 @@ export default {
     return {
       account: null,
       bosses: [],
+      api_url2: "http://localhost:4000/",
       api_url: "https://jamescerniglia.herokuapp.com/",
-      namePretty: ""
+      namePretty: "",
+      questData: null
     };
   },
   methods: {
@@ -232,6 +231,8 @@ export default {
           return "Bryophyta";
         case "cerberus":
           return "Cerberus";
+        case "callisto":
+          return "Callisto";
         case "chambersOfXeric":
           return "Chambers Of Xeric";
         case "chambersOfXericChallengeMode":
@@ -257,9 +258,9 @@ export default {
         case "hespori":
           return "Hespori";
         case "kalphiteQueen":
-          return "KalphiteQueen";
+          return "Kalphite Queen";
         case "kingBlackDragon":
-          return "KingBlackDragon";
+          return "King Black Dragon";
         case "kraken":
           return "Kraken";
         case "krilTsutsaroth":
@@ -289,7 +290,9 @@ export default {
         case "venenatis":
           return "Venenatis";
         case "vetion":
-          return "Vetion";
+          return "Vet'ion";
+        case "vorkath":
+          return "Vorkath";
         case "wintertodt":
           return "Wintertodt";
         case "zalcano":
@@ -298,8 +301,12 @@ export default {
           return "Zulrah";
 
         default:
-          return x;
+          return "UNKNONWN NAME";
       }
+    },
+    getSkillIcon: function(skillName) {
+      // eslint-disable-next-line no-console
+      return this.api_url + "Osrs/assets/skills/" + skillName + "_icon.png";
     }
   },
   props: ["userName"],
@@ -310,7 +317,18 @@ export default {
     if (this.userName != "") {
       this.namePretty = this.userName.replace("_", " ");
       document.title = this.namePretty;
-      fetch(this.api_url + "osrs/users/" + this.userName)
+      fetch(this.api_url + "osrs/user/" + this.userName)
+        .then(response => response.json())
+        .then(result => {
+          this.account = result;
+          for (var n in this.account.main.bosses) {
+            this.bosses.push({
+              name: this.prettyBoss(n),
+              data: this.account.main.bosses[n]
+            });
+          }
+        });
+      fetch(this.api_url + "osrs/user/" + this.userName)
         .then(response => response.json())
         .then(result => {
           this.account = result;
@@ -329,7 +347,6 @@ export default {
 .container-custom {
   padding-right: 25px;
   padding-left: 25px;
-  padding-bottom: 100px;
 }
 .table {
   color: white;
@@ -341,5 +358,11 @@ export default {
 
 #OsrsProfile {
   background-color: black;
+}
+.rsfont {
+  font-family: "runescape_chat_bold_07regular";
+  font-size: 18px;
+  color: #ffff00;
+  text-shadow: 1px 1px black;
 }
 </style>

@@ -2,29 +2,17 @@
   <div id="HobbiesVue">
     <div class="container">
       <h3>Hobbies</h3>
-
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="row">Summoner Data</th>
-            <th scope="row">Info</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Me: {{ summonerData }}</td>
-            <td>Info Test: {{ info }}</td>
-          </tr>
-          <tr>
-            <td>Dani: {{ dani }}</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-      <table class="table">
-        <thead></thead>
-        <tbody></tbody>
-      </table>
+      <div class="row">
+        <div class="col">
+          <div class="container">
+            <h3>Powerlifting</h3>
+          </div>
+        </div>
+        <div class="col">c2</div>
+        <div class="col">c3</div>
+      </div>
+      <div class="row">r4</div>
+      <div class="row">r5</div>
     </div>
   </div>
 </template>
