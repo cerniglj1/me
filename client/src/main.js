@@ -9,7 +9,7 @@ import ContactVue from './components/ContactVue.vue'
 import Snake from './components/Snake.vue'
 import OsrsProfile from './components/OsrsProfile.vue';
 import LeagueProfile from './components/LeagueProfile.vue';
-import GameDetails from './components/GameDetails.vue';
+import LeagueGame from './components/LeagueGame.vue';
 // Vue.use(BootstrapVue)
 
 Vue.use(VueRouter)
@@ -77,15 +77,15 @@ const routes = [{
         props: true
     },
     {
-        path: '/league/users/:leagueName',
+        path: '/LeagueOfLegends/users/:leagueName',
         name: "LeagueProfile",
         component: LeagueProfile,
         props: true
     },
     {
-        path: '/league/users/:leagueName/matches/:gameId',
-        name: "GameDetails",
-        component: GameDetails,
+        path: '/LeagueOfLegends/matches/:gameId/',
+        name: "LeagueGame",
+        component: LeagueGame,
         props: true
     },
     {

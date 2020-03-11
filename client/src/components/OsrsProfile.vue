@@ -212,8 +212,8 @@ export default {
     return {
       account: null,
       bosses: [],
-      api_url2: "http://localhost:4000/",
-      api_url: "https://jamescerniglia.herokuapp.com/",
+      api_url: "http://localhost:4000/",
+      api_url2: "https://jamescerniglia.herokuapp.com/",
       namePretty: "",
       questData: null
     };

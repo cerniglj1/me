@@ -1,208 +1,259 @@
-
-
 <template>
-  <div id="LeagueProfile">
-    <div class="container-custom">
-      <div class="row" v-if="leagueAccountNotFound == true ">Not Found</div>
-
-      <div class="row" v-if="leagueAccount != null && leagueAccountNotFound== false ">
-        <div class="col-">
-          <div class="row">
-            <div class="col">
-              <img class="avatar" :src="leagueAccount.iconUrl" />
-              <h2>{{namePretty}}</h2>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <h2>Level: {{leagueAccount.summonerLevel}}</h2>
-            </div>
-          </div>
+  <div id="LeagueGame">
+    <div class="container-custom p-2">
+      <div v-if="matchData != null" class="jumbotron">
+        <div v-if="matchData.gameMode === 'CLASSIC'">
+          <h3 class="pt-1">Summoner's Rift</h3>
         </div>
-        <div class="col-xl">
-          <div v-if="matchData!=null">
-            <div>
-              <div v-for="game in matchData" :key="game.gameId" class="card bg-dark text-white">
-                <div v-if="game !=null">
-                  <h5 class="card-title">{{game.gameMode}}</h5>
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col" id="blueSide">
-                        <div class="row">
-                          <img
-                            class="championIcon"
-                            :src="getChampionPicture(game.blueTop.championId)"
-                          />
-                          <p>{{game.blueTop.profile.summonerName}}</p>
-                        </div>
-                        <div class="row">
-                          <img
-                            class="championIcon"
-                            :src="getChampionPicture(game.blueJungler.championId)"
-                          />
-                          <p>{{game.blueJungler.profile.summonerName}}</p>
-                        </div>
-                        <div class="row">
-                          <img
-                            class="championIcon"
-                            :src="getChampionPicture(game.blueMid.championId)"
-                          />
-                          <p>{{game.blueMid.profile.summonerName}}</p>
-                        </div>
-                        <div class="row">
-                          <img
-                            class="championIcon"
-                            :src="getChampionPicture(game.blueAdc.championId)"
-                          />
-                          <p>{{game.blueAdc.profile.summonerName}}</p>
-                        </div>
-                        <div class="row">
-                          <img
-                            class="championIcon"
-                            :src="getChampionPicture(game.blueSupport.championId)"
-                          />
-                          <p>{{game.blueSupport.profile.summonerName}}</p>
-                        </div>
-                      </div>
-                      <!-- {{game}} -->
+        <div v-else-if="matchData.gameMode === 'ARAM'">
+          <h3 class="pt-1">Howling Abyss</h3>
+        </div>
+        <div v-else-if="matchData.gameMode === 'C'">C</div>
+        <div v-else>Not A/B/C</div>
 
-                      <div class="col" id="redSide">
-                        <div class="row">
-                          <p>{{game.redTop.profile.summonerName}}</p>
-                          <img
-                            class="championIcon"
-                            :src="getChampionPicture(game.redTop.championId)"
-                          />
-                        </div>
-                        <div class="row">
-                          <p>{{game.redJungler.profile.summonerName}}</p>
-                          <img
-                            class="championIcon"
-                            :src="getChampionPicture(game.redJungler.championId)"
-                          />
-                        </div>
-                        <div class="row">
-                          <p>{{game.redMid.profile.summonerName}}</p>
-                          <img
-                            class="championIcon"
-                            :src="getChampionPicture(game.redMid.championId)"
-                          />
-                        </div>
-                        <div class="row">
-                          <p>{{game.redAdc.profile.summonerName}}</p>
-                          <img
-                            class="championIcon"
-                            :src="getChampionPicture(game.redAdc.championId)"
-                          />
-                        </div>
-                        <div class="row">
-                          <p>{{game.redSupport.profile.summonerName}}</p>
-                          <img
-                            class="championIcon"
-                            :src="getChampionPicture(game.redSupport.championId)"
-                          />
-                        </div>
-                      </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col m-1" id="blueSide">
+              <div class="row m-1" v-for="player in matchData.blueTeam" :key="player.participantId">
+                <button type="button" class="btn playerbtn">
+                  <div class="row">
+                    <div class="col">
+                      <img class="championIcon" :src="getChampionPicture(player.championId)" />
+                    </div>
+                    <div class="col">
+                      <p>{{player.profile.summonerName}}</p>
+                    </div>
+                    <div class="col">
+                      <p>{{player.stats.kills}}/{{player.stats.deaths}}/{{player.stats.assists}}</p>
                     </div>
                   </div>
-                  <p class="card-text">
-                    <a>
-                      <router-link
-                        :to="{ name: 'GameDetails', params: { gameId: game.gameId }}"
-                      >More Information</router-link>
-                    </a>
-                  </p>
-                  <p class="card-text">{{getTimeSince(game.gameCreation)}}</p>
-                </div>
+                </button>
+              </div>
+            </div>
+            <div class="col m-1" id="redSide">
+              <div class="row m-1" v-for="player in matchData.redTeam" :key="player.participantId">
+                <button type="button" class="btn playerbtn">
+                  <div class="row">
+                    <div class="col">
+                      <p>{{player.stats.kills}}/{{player.stats.deaths}}/{{player.stats.assists}}</p>
+                    </div>
+                    <div class="col">
+                      <p>{{player.profile.summonerName}}</p>
+                    </div>
+                    <div class="col">
+                      <img class="championIcon" :src="getChampionPicture(player.championId)" />
+                    </div>
+                  </div>
+                </button>
               </div>
             </div>
           </div>
         </div>
+
+        <p class="card-text">{{getTimeSince(matchData.gameCreation)}}</p>
       </div>
+    </div>
+
+    <canvas id="myChart" width="200" height="200"></canvas>
+    <p v-if="currentPlayerData !=null">{{currentPlayerData}}</p>
+
+    <p>{{gameId}}</p>
+    <p>{{matchData}}</p>
+    <div v-if="gameId.length <4">
+      <h4>BAD GAME ID</h4>
     </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
+import Chart from "chart.js";
 
+import axios from "axios";
 export default {
-  name: "LeagueProfile",
+  name: "LeagueGame",
   data() {
     return {
-      leagueAccount: null,
-      leagueAccountNotFound: false,
-      matchHistory: [],
-      matchData: [],
-      iconUrl: "",
-      api_url2: "http://localhost:4000/",
-      api_url: "https://jamescerniglia.herokuapp.com/",
-      namePretty: ""
+      api_url: "http://localhost:4000/",
+      matchData: null,
+      currentPlayerData: null
     };
   },
-
-  props: ["leagueName"],
+  props: ["gameId"],
 
   mounted() {
     /* eslint-disable no-console */
-    if (this.leagueName != "") {
-      this.namePretty = this.leagueName;
-      document.title = this.namePretty + "...";
+
+    if (this.gameId != "") {
+      document.title = "Match " + this.gameId;
       axios
-        .get(this.api_url + "LeagueOfLegends/user/" + this.leagueName)
+        .get(this.api_url + "LeagueOfLegends/matchDetails/" + this.gameId)
         .then(response => {
-          // JSON responses are automatically parsed.
-
-          this.namePretty = response.data.name;
-          document.title = this.namePretty;
-          document.title = this.namePretty;
-          this.leagueAccount = response.data;
-
-          this.leagueAccount.iconUrl =
-            this.api_url +
-            "LeagueOfLegends/assets/icons/" +
-            response.data.profileIconId +
-            ".png";
-          if (this.leagueAccount != null) {
-            axios
-              .get(
-                this.api_url +
-                  "LeagueOfLegends/" +
-                  this.leagueAccount.accountId +
-                  "/matches"
-              )
-              .then(response => {
-                // JSON responses are automatically parsed.
-
-                //Limit to 5 queries to start
-                this.matchHistory = response.data.matches.slice(0, 5);
-                for (var i in this.matchHistory) {
-                  axios
-                    .get(
-                      this.api_url +
-                        "LeagueOfLegends/matchDetails/" +
-                        this.matchHistory[i].gameId
-                    )
-                    .then(response => {
-                      // var matchObject = response.data;
-                      // matchObject.account = this.matchHistory.filter(
-                      //   game => (game.gameId = response.data.gameId)
-                      // )[0];
-                      this.matchData.push(this.organizeGame(response.data));
-                    });
-                }
-              });
-          }
-        })
-
-        .catch(e => {
-          console.log(e);
+          // var matchObject = response.data;
+          // matchObject.account = this.matchHistory.filter(
+          //   game => (game.gameId = response.data.gameId)
+          // )[0];
+          this.matchData = this.organizeGame(response.data);
+          this.currentPlayerData = this.matchData.blueTeam[0];
         });
     }
   },
-  created() {},
-  computed: {},
   methods: {
+    organizeGame: function(game) {
+      var blueTeam = game.participants.filter(x => x.teamId == 100);
+      var redTeam = game.participants.filter(x => x.teamId == 200);
+      /**
+       * Order: Top Jg Mid Adc Sup
+       */
+      var blueTop = null;
+      var blueJungler = null;
+      var blueMid = null;
+      var blueAdc = null;
+      var blueSupport = null;
+      var redTop = null;
+      var redJungler = null;
+      var redMid = null;
+      var redAdc = null;
+      var redSupport = null;
+
+      var blueTeamInOrder = [];
+      var redTeamInOrder = [];
+
+      if (game.gameMode == "CLASSIC") {
+        //Lets do Top-jg-mid-adc-sup then red side top...
+        console.log(redTeam, game.gameId, game.participantIdentities);
+        blueTop = blueTeam.filter(
+          x => x.timeline.lane == "TOP" && x.timeline.role == "SOLO"
+        )[0];
+        blueTop.profile = game.participantIdentities.filter(
+          x => x.participantId == blueTop.participantId
+        )[0].player;
+
+        blueJungler = blueTeam.filter(x => x.timeline.lane == "JUNGLE")[0];
+
+        blueJungler.profile = game.participantIdentities.filter(
+          x => x.participantId == blueJungler.participantId
+        )[0].player;
+
+        blueMid = blueTeam.filter(x => x.timeline.lane == "MIDDLE")[0];
+        blueMid.profile = game.participantIdentities.filter(
+          x => x.participantId == blueMid.participantId
+        )[0].player;
+
+        blueAdc = blueTeam.filter(
+          x => x.timeline.lane == "BOTTOM" && x.timeline.role == "DUO_CARRY"
+        )[0];
+        blueAdc.profile = game.participantIdentities.filter(
+          x => x.participantId == blueAdc.participantId
+        )[0].player;
+        blueSupport = blueTeam.filter(
+          x => x.timeline.lane == "BOTTOM" && x.timeline.role == "DUO_SUPPORT"
+        )[0];
+        blueSupport.profile = game.participantIdentities.filter(
+          x => x.participantId == blueSupport.participantId
+        )[0].player;
+
+        redTop = redTeam.filter(
+          x => x.timeline.lane == "TOP" && x.timeline.role == "SOLO"
+        )[0];
+        redTop.profile = game.participantIdentities.filter(
+          x => x.participantId == redTop.participantId
+        )[0].player;
+
+        redJungler = redTeam.filter(x => x.timeline.lane == "JUNGLE")[0];
+        redJungler.profile = game.participantIdentities.filter(
+          x => x.participantId == redJungler.participantId
+        )[0].player;
+
+        redMid = redTeam.filter(x => x.timeline.lane == "MIDDLE")[0];
+        redMid.profile = game.participantIdentities.filter(
+          x => x.participantId == redMid.participantId
+        )[0].player;
+
+        redAdc = redTeam.filter(
+          player =>
+            player.timeline.lane == "BOTTOM" &&
+            player.timeline.role == "DUO_CARRY"
+        )[0];
+        redAdc.profile = game.participantIdentities.filter(
+          x => x.participantId == redAdc.participantId
+        )[0].player;
+
+        redSupport = redTeam.filter(
+          player =>
+            player.timeline.lane == "BOTTOM" &&
+            player.timeline.role == "DUO_SUPPORT"
+        )[0];
+        redSupport.profile = game.participantIdentities.filter(
+          x => x.participantId == redSupport.participantId
+        )[0].player;
+        blueTeamInOrder.push(blueTop);
+        blueTeamInOrder.push(blueJungler);
+        blueTeamInOrder.push(blueMid);
+        blueTeamInOrder.push(blueAdc);
+        blueTeamInOrder.push(blueSupport);
+        redTeamInOrder.push(redTop);
+        redTeamInOrder.push(redJungler);
+        redTeamInOrder.push(redMid);
+        redTeamInOrder.push(redAdc);
+        redTeamInOrder.push(redSupport);
+      } else if (game.gameMode == "ARAM") {
+        blueTop = blueTeam[0];
+        blueTop.profile = game.participantIdentities.filter(
+          x => x.participantId == blueTop.participantId
+        )[0].player;
+
+        blueJungler = blueTeam[1];
+        blueJungler.profile = game.participantIdentities.filter(
+          x => x.participantId == blueJungler.participantId
+        )[0].player;
+        blueMid = blueTeam[2];
+        blueMid.profile = game.participantIdentities.filter(
+          x => x.participantId == blueMid.participantId
+        )[0].player;
+        blueAdc = blueTeam[3];
+        blueAdc.profile = game.participantIdentities.filter(
+          x => x.participantId == blueAdc.participantId
+        )[0].player;
+        blueSupport = blueTeam[4];
+        blueSupport.profile = game.participantIdentities.filter(
+          x => x.participantId == blueSupport.participantId
+        )[0].player;
+
+        redTop = redTeam[0];
+        redTop.profile = game.participantIdentities.filter(
+          x => x.participantId == redTop.participantId
+        )[0].player;
+        redJungler = redTeam[1];
+        redJungler.profile = game.participantIdentities.filter(
+          x => x.participantId == redJungler.participantId
+        )[0].player;
+        redMid = redTeam[2];
+        redMid.profile = game.participantIdentities.filter(
+          x => x.participantId == redMid.participantId
+        )[0].player;
+        redAdc = redTeam[3];
+        redAdc.profile = game.participantIdentities.filter(
+          x => x.participantId == redAdc.participantId
+        )[0].player;
+        redSupport = redTeam[4];
+        redSupport.profile = game.participantIdentities.filter(
+          x => x.participantId == redSupport.participantId
+        )[0].player;
+        blueTeamInOrder.push(blueTop);
+        blueTeamInOrder.push(blueJungler);
+        blueTeamInOrder.push(blueMid);
+        blueTeamInOrder.push(blueAdc);
+        blueTeamInOrder.push(blueSupport);
+        redTeamInOrder.push(redTop);
+        redTeamInOrder.push(redJungler);
+        redTeamInOrder.push(redMid);
+        redTeamInOrder.push(redAdc);
+        redTeamInOrder.push(redSupport);
+      }
+      game.blueTeam = blueTeamInOrder;
+      game.redTeam = redTeamInOrder;
+      return game;
+    },
     getChampionPicture: function(id) {
       var champ = "";
       // eslint-disable-next-line no-console
@@ -283,8 +334,17 @@ export default {
         case 127:
           champ = "Lissandra";
           break;
+        case 555:
+          champ = "Pyke";
+          break;
+        case 246:
+          champ = "Qiyana";
+          break;
         case 57:
           champ = "Maokai";
+          break;
+        case 142:
+          champ = "Zoe";
           break;
         case 25:
           champ = "Morgana";
@@ -622,12 +682,17 @@ export default {
         case 81:
           champ = "Ezreal";
           break;
+        case 518:
+          champ = "Neeko";
+          break;
+        case 875:
+          champ = "Sett";
+          break;
         default:
-          champ = "Draven";
+          champ = id;
       }
       // eslint-disable-next-line no-console
-
-      champ = champ.replace(" ", "_");
+      if (typeof champ == String) champ = champ.replace(" ", "_");
       return (
         this.api_url +
         "LeagueOfLegends/assets/champions/tiles/" +
@@ -1074,224 +1139,55 @@ export default {
       // return now;
       return d;
     },
-    redTeam: function(model) {
-      return model.participants.filter(x => x.teamId == 200);
-    },
-    blueTeam: function(model) {
-      return model.participants.filter(x => x.teamId == 100);
-    },
-    getMatchDetails: function(game) {
-      return game.gameId;
-    },
-    organizeGame: function(game) {
-      var blueTeam = game.participants.filter(x => x.teamId == 100);
-      var redTeam = game.participants.filter(x => x.teamId == 200);
-
-      if (game.gameMode == "CLASSIC") {
-        //Lets do Top-jg-mid-adc-sup then red side top...
-
-        game.blueTop = blueTeam.filter(x => x.timeline.lane == "TOP")[0];
-        game.blueTop.profile = game.participantIdentities.filter(
-          x => x.participantId == game.blueTop.participantId
-        )[0].player;
-
-        game.blueJungler = blueTeam.filter(x => x.timeline.lane == "JUNGLE")[0];
-
-        game.blueJungler.profile = game.participantIdentities.filter(
-          x => x.participantId == game.blueJungler.participantId
-        )[0].player;
-
-        game.blueMid = blueTeam.filter(x => x.timeline.lane == "MIDDLE")[0];
-        game.blueMid.profile = game.participantIdentities.filter(
-          x => x.participantId == game.blueMid.participantId
-        )[0].player;
-
-        game.blueAdc = blueTeam.filter(
-          player =>
-            player.timeline.lane == "BOTTOM" &&
-            player.timeline.role == "DUO_CARRY"
-        )[0];
-        game.blueAdc.profile = game.participantIdentities.filter(
-          x => x.participantId == game.blueAdc.participantId
-        )[0].player;
-
-        game.blueSupport = blueTeam.filter(x => x.timeline.lane == "BOTTOM")[0];
-        game.blueSupport.profile = game.participantIdentities.filter(
-          x => x.participantId == game.blueSupport.participantId
-        )[0].player;
-
-        game.redTop = redTeam.filter(x => x.timeline.lane == "TOP")[0];
-        game.redTop.profile = game.participantIdentities.filter(
-          x => x.participantId == game.redTop.participantId
-        )[0];
-
-        game.redJungler = redTeam.filter(x => x.timeline.lane == "JUNGLE")[0];
-        game.redJungler.profile = game.participantIdentities.filter(
-          x => x.participantId == game.redJungler.participantId
-        )[0].player;
-
-        game.redMid = redTeam.filter(x => x.timeline.lane == "MIDDLE")[0];
-        game.redMid.profile = game.participantIdentities.filter(
-          x => x.participantId == game.redMid.participantId
-        )[0].player;
-
-        game.redAdc = redTeam.filter(
-          player =>
-            player.timeline.lane == "BOTTOM" &&
-            player.timeline.role == "DUO_CARRY"
-        )[0];
-        game.redAdc.profile = game.participantIdentities.filter(
-          x => x.participantId == game.redAdc.participantId
-        )[0].player;
-
-        game.redSupport = redTeam.filter(
-          player =>
-            player.timeline.lane == "BOTTOM" &&
-            player.timeline.role == "DUO_SUPPORT"
-        )[0];
-        game.redSupport.profile = game.participantIdentities.filter(
-          x => x.participantId == game.redSupport.participantId
-        )[0].player;
-      } else if (game.gameMode == "ARAM") {
-        game.blueTop = blueTeam[0];
-        game.blueTop.profile = game.participantIdentities.filter(
-          x => x.participantId == game.blueTop.participantId
-        )[0].player;
-
-        game.blueJungler = blueTeam[1];
-        game.blueJungler.profile = game.participantIdentities.filter(
-          x => x.participantId == game.blueJungler.participantId
-        )[0];
-        game.blueMid = blueTeam[2];
-        game.blueMid.profile = game.participantIdentities.filter(
-          x => x.participantId == game.blueMid.participantId
-        )[0].player;
-        game.blueAdc = blueTeam[3];
-        game.blueAdc.profile = game.participantIdentities.filter(
-          x => x.participantId == game.blueAdc.participantId
-        )[0].player;
-        game.blueSupport = blueTeam[4];
-        game.blueSupport.profile = game.participantIdentities.filter(
-          x => x.participantId == game.blueSupport.participantId
-        )[0].player;
-
-        game.redTop = redTeam[0];
-        game.redTop.profile = game.participantIdentities.filter(
-          x => x.participantId == game.redTop.participantId
-        )[0];
-        game.redJungler = redTeam[1];
-        game.redJungler.profile = game.participantIdentities.filter(
-          x => x.participantId == game.redJungler.participantId
-        )[0].player;
-        game.redMid = redTeam[2];
-        game.redMid.profile = game.participantIdentities.filter(
-          x => x.participantId == game.redMid.participantId
-        )[0].player;
-        game.redAdc = redTeam[3];
-        game.redAdc.profile = game.participantIdentities.filter(
-          x => x.participantId == game.redAdc.participantId
-        )[0].player;
-        game.redSupport = redTeam[4];
-        game.redSupport.profile = game.participantIdentities.filter(
-          x => x.participantId == game.redSupport.participantId
-        )[0].player;
+    getCurrentPlayerData: function(obj) {
+      var ctx = document.getElementById("myChart").getContext("2d");
+      var myChart = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          datasets: [
+            {
+              label: "# of Votes",
+              data: [12, 19, 3, 5, 2, 3],
+              backgroundColor: [
+                "rgba(255, 99, 132, 0.2)",
+                "rgba(54, 162, 235, 0.2)",
+                "rgba(255, 206, 86, 0.2)",
+                "rgba(75, 192, 192, 0.2)",
+                "rgba(153, 102, 255, 0.2)",
+                "rgba(255, 159, 64, 0.2)"
+              ],
+              borderColor: [
+                "rgba(255, 99, 132, 1)",
+                "rgba(54, 162, 235, 1)",
+                "rgba(255, 206, 86, 1)",
+                "rgba(75, 192, 192, 1)",
+                "rgba(153, 102, 255, 1)",
+                "rgba(255, 159, 64, 1)"
+              ],
+              borderWidth: 1
+            }
+          ]
+        },
+        options: {}
+      });
+      if (myChart != null) {
+        console.log(1);
       }
-
-      return game;
-    },
-    getPlayer: function(game, team, role) {
-      var blueTeam = game.participants.filter(x => x.teamId == 100);
-      var redTeam = game.participants.filter(x => x.teamId == 200);
-      var player = null;
-      console.log(blueTeam[0], game);
-      if (game.gameMode == "CLASSIC") {
-        if (team == "blue") {
-          switch (role) {
-            case "top":
-              player = blueTeam.filter(x => x.timeline.lane == "TOP")[0];
-              player.profile = game.participantIdentities.filter(
-                x => x.participantId == player.participantId
-              )[0];
-              console.log(player);
-              break;
-            case "jg":
-              break;
-            case "mid":
-              break;
-            case "adc":
-              break;
-            case "support":
-              break;
-            default:
-              break;
-          }
-        } else if (team == "red") {
-          switch (role) {
-            case "top":
-              player = redTeam.filter(x => x.timeline.lane == "TOP")[0];
-              player.profile = redTeam.filter(
-                x => x.participantId == player.participantId
-              )[0];
-              break;
-            case "jg":
-              break;
-            case "mid":
-              break;
-            case "adc":
-              break;
-            case "support":
-              break;
-            default:
-              break;
-          }
-        }
-      }
-      return player;
+      return obj;
     }
   }
 };
 </script>
-<style>
-.ProfileSection {
-  border: 5px red solid;
-  color: blue;
+
+<style scoped>
+.jumbotron {
+  background-color: rgb(11, 61, 61);
 }
-.container-custom {
-  padding-right: 25px;
-  padding-left: 25px;
-  padding-bottom: 100px;
-}
-.avatar {
-  vertical-align: middle;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-}
-.table {
+.playerbtn {
   color: white;
-}
-.table thead {
-  font-weight: bold;
-  font-size: 16px;
-}
-
-#LeagueProfile {
-  background-color: black;
-}
-#redSide {
-  align-items: right;
-}
-.card {
-  color: black;
-
-  max-height: 320px;
-}
-.championIcon {
-  max-width: 25px;
-  max-height: 25px;
-}
-.card-img {
-  filter: brightness(50%);
-  max-height: 320px;
+  width: 100%;
+  background-color: rgb(11, 61, 61);
+  transition: all 0.5s;
 }
 </style>

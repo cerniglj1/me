@@ -13,8 +13,6 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const osrshiscores = require('osrs-json-hiscores');
-const notpoop = require('./static/Osrs/notpoop.json');
-const zezima = require('./static/Osrs/zezima');
 const app = express();
 const request = require('request');
 const riotApiKey = 'RGAPI-69e54282-fb8e-4460-b890-53ee267cc440';
@@ -30,32 +28,10 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/server.html');
 
 });
+
 app.use('/LeagueOfLegends/assets', express.static(__dirname + '/static/LeagueOfLegends'));
 // app.use('/Osrs/assets', express.static(__dirname + '/static/Osrs'));
 // app.use('/Cerniglia', express.static(__dirname + '/static/Cerniglia/'));
-
-app.get('/LeagueOfLegends/matchDetails/:matchId', function(req, res) {
-    var matchId = req.params.matchId;
-    var apiCall = 'https://na1.api.riotgames.com/lol/match/v4/matches/' + matchId + '?api_key=' + riotApiKey
-        // console.log('Calling Match details for match: ' + matchId);
-    request({
-        'uri': apiCall,
-        'json': true
-    }, function(error, response, matchDetailsJson) {
-        if (!error && response.statusCode === 200) {
-            // console.log(matchDetailsJson);
-            res.json(matchDetailsJson);
-        } else {
-            res.json({
-                "status": {
-                    "message": "Not Found",
-                    "status_code": 404
-                }
-            });
-        }
-    });
-
-});
 app.get('/LeagueOfLegends/:accountId/matches', function(req, res) {
     var accountId = req.params.accountId;
     var matchesCallURI = 'https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/' + accountId + '?api_key=' + riotApiKey
@@ -70,8 +46,8 @@ app.get('/LeagueOfLegends/:accountId/matches', function(req, res) {
         } else {
             res.json({
                 "status": {
-                    "message": "Not Matches Found for accountId: " + accountId,
-                    "status_code": 404
+                    "message": "No Matches Found for accountId: " + accountId,
+                    "statusCode": 404
                 }
             });
         }
@@ -79,6 +55,55 @@ app.get('/LeagueOfLegends/:accountId/matches', function(req, res) {
 
 });
 
+app.get('/LeagueOfLegends/matchDetails/:matchId', function(req, res) {
+
+    var matchId = Number(req.params.matchId);
+
+    client.connect(err => {
+        var LeagueOfLegends = client.db("LeagueOfLegends")
+        LeagueOfLegends.collection("matches").findOne({ "gameId": matchId }, function(err, databaseResult) {
+            if (err) { throw err }
+
+            console.log('result:', databaseResult, err);
+            if (databaseResult != null) {
+
+                res.json(databaseResult);
+                return databaseResult;
+            } else if (databaseResult == null) {
+                var apiCall = 'https://na1.api.riotgames.com/lol/match/v4/matches/' + matchId + '?api_key=' + riotApiKey
+                request({
+                    'uri': apiCall,
+                    'json': true
+                }, function(error, response, matchDetailsJson) {
+                    if (!error && response.statusCode === 200) {
+                        // console.log(matchDetailsJson);
+                        // var databaseObject = matchDetailsJson;
+                        LeagueOfLegends.collection("matches").insertOne(matchDetailsJson, function(err, res) {
+                            if (err) { throw err }
+                            if (res == null) {
+                                err = null
+                            }
+                            client.close();
+                        });
+
+                        res.json(matchDetailsJson);
+                        return matchDetailsJson;
+
+                    } else {
+                        res.json({
+                            "status": {
+                                "message": "Not Found",
+                                "statusCode": 404
+                            }
+                        });
+                    }
+                });
+            }
+        });
+        if (err) { throw err }
+    });
+
+});
 
 app.get('/:game/user/:username', (req, res) => {
     /**
@@ -128,8 +153,8 @@ app.get('/:game/user/:username', (req, res) => {
             break
         case 'LeagueOfLegends':
             client.connect(err => {
-                var LeagueOfLegendsPlayers = client.db("LeagueOfLegends")
-                LeagueOfLegendsPlayers.collection("players").findOne({ "summonerName": req.params.username.toLowerCase() }, function(err, databaseResult) {
+                var LeagueOfLegends = client.db("LeagueOfLegends")
+                LeagueOfLegends.collection("players").findOne({ "summonerName": req.params.username.toLowerCase() }, function(err, databaseResult) {
                     if (err) { throw err }
                     console.log('result:', databaseResult);
                     if (databaseResult != null) {
@@ -145,7 +170,7 @@ app.get('/:game/user/:username', (req, res) => {
                             if (!error && response.statusCode === 200) {
                                 var databaseObject = accountJson;
                                 databaseObject.summonerName = accountJson.name.toLowerCase();
-                                LeagueOfLegendsPlayers.collection("players").insertOne(databaseObject, function(err, res) {
+                                LeagueOfLegends.collection("players").insertOne(databaseObject, function(err, res) {
 
                                     console.log(res);
                                     client.close();
@@ -155,7 +180,7 @@ app.get('/:game/user/:username', (req, res) => {
                                 res.json({
                                     "status": {
                                         "message": "No Account found for username: " + req.params.username.toLowerCase(),
-                                        "status_code": 404
+                                        "statusCode": 404
                                     }
                                 });
                             }
@@ -177,7 +202,7 @@ app.get('/:game/user/:username', (req, res) => {
     }
 });
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 8081;
 app.listen(port, () => {
-    console.log(`listening on ${port}, try clicking this https://jamescerniglia.herokuapp.com/osrs/user/not_poop or this http://localhost:4000/osrs/user/not_poop`);
+    console.log(`listening on ${port}, try clicking this https://jamescerniglia.herokuapp.com/osrs/user/not_poop or this http://localhost:8081/osrs/user/not_poop`);
 });

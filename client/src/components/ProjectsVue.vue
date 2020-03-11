@@ -15,7 +15,6 @@
               </div>
             </div>
           </li>
-
         </ul>
       </div>
       <div class="col-sm">
@@ -26,7 +25,7 @@
               <img class="card-img" :src="getProjectsImage('CSMS')" alt="Card image" />
               <div class="card-img-overlay marginTopCard">
                 <h5 class="card-title pb-2">Cornerstone Managment Software</h5>
-               
+
                 <p
                   class="card-text"
                 >Management Software built using Python with Kivy interfaces. Used on RaspberryPi and PC. Allows employees to sign in and choose the work they do in order for the business to estimate time spent on projects.</p>
@@ -78,8 +77,8 @@ export default {
 };
 </script>
 
-<style>
-.card img {
+<style scoped>
+ .card img {
   filter: brightness(30%);
 }
 #Projects {
