@@ -67,13 +67,11 @@
 
 <script>
 import Chart from "chart.js";
-
-import axios from "axios";
+import ApiMethods from "@/services/ApiMethods";
 export default {
   name: "LeagueGame",
   data() {
     return {
-      api_url: "http://localhost:4000/",
       matchData: null,
       currentPlayerData: null
     };
@@ -84,176 +82,14 @@ export default {
     /* eslint-disable no-console */
 
     if (this.gameId != "") {
-      document.title = "Match " + this.gameId;
-      axios
-        .get(this.api_url + "LeagueOfLegends/matchDetails/" + this.gameId)
-        .then(response => {
-          // var matchObject = response.data;
-          // matchObject.account = this.matchHistory.filter(
-          //   game => (game.gameId = response.data.gameId)
-          // )[0];
-          this.matchData = this.organizeGame(response.data);
-          this.currentPlayerData = this.matchData.blueTeam[0];
-        });
+      document.title = "Match: " + this.gameId;
+      ApiMethods.getMatchDetails(this.gameId).then(res => {
+        this.matchData = res;
+        this.currentPlayerData = this.matchData.blueTeam[0];
+      });
     }
   },
   methods: {
-    organizeGame: function(game) {
-      var blueTeam = game.participants.filter(x => x.teamId == 100);
-      var redTeam = game.participants.filter(x => x.teamId == 200);
-      /**
-       * Order: Top Jg Mid Adc Sup
-       */
-      var blueTop = null;
-      var blueJungler = null;
-      var blueMid = null;
-      var blueAdc = null;
-      var blueSupport = null;
-      var redTop = null;
-      var redJungler = null;
-      var redMid = null;
-      var redAdc = null;
-      var redSupport = null;
-
-      var blueTeamInOrder = [];
-      var redTeamInOrder = [];
-
-      if (game.gameMode == "CLASSIC") {
-        //Lets do Top-jg-mid-adc-sup then red side top...
-        console.log(redTeam, game.gameId, game.participantIdentities);
-        blueTop = blueTeam.filter(
-          x => x.timeline.lane == "TOP" && x.timeline.role == "SOLO"
-        )[0];
-        blueTop.profile = game.participantIdentities.filter(
-          x => x.participantId == blueTop.participantId
-        )[0].player;
-
-        blueJungler = blueTeam.filter(x => x.timeline.lane == "JUNGLE")[0];
-
-        blueJungler.profile = game.participantIdentities.filter(
-          x => x.participantId == blueJungler.participantId
-        )[0].player;
-
-        blueMid = blueTeam.filter(x => x.timeline.lane == "MIDDLE")[0];
-        blueMid.profile = game.participantIdentities.filter(
-          x => x.participantId == blueMid.participantId
-        )[0].player;
-
-        blueAdc = blueTeam.filter(
-          x => x.timeline.lane == "BOTTOM" && x.timeline.role == "DUO_CARRY"
-        )[0];
-        blueAdc.profile = game.participantIdentities.filter(
-          x => x.participantId == blueAdc.participantId
-        )[0].player;
-        blueSupport = blueTeam.filter(
-          x => x.timeline.lane == "BOTTOM" && x.timeline.role == "DUO_SUPPORT"
-        )[0];
-        blueSupport.profile = game.participantIdentities.filter(
-          x => x.participantId == blueSupport.participantId
-        )[0].player;
-
-        redTop = redTeam.filter(
-          x => x.timeline.lane == "TOP" && x.timeline.role == "SOLO"
-        )[0];
-        redTop.profile = game.participantIdentities.filter(
-          x => x.participantId == redTop.participantId
-        )[0].player;
-
-        redJungler = redTeam.filter(x => x.timeline.lane == "JUNGLE")[0];
-        redJungler.profile = game.participantIdentities.filter(
-          x => x.participantId == redJungler.participantId
-        )[0].player;
-
-        redMid = redTeam.filter(x => x.timeline.lane == "MIDDLE")[0];
-        redMid.profile = game.participantIdentities.filter(
-          x => x.participantId == redMid.participantId
-        )[0].player;
-
-        redAdc = redTeam.filter(
-          player =>
-            player.timeline.lane == "BOTTOM" &&
-            player.timeline.role == "DUO_CARRY"
-        )[0];
-        redAdc.profile = game.participantIdentities.filter(
-          x => x.participantId == redAdc.participantId
-        )[0].player;
-
-        redSupport = redTeam.filter(
-          player =>
-            player.timeline.lane == "BOTTOM" &&
-            player.timeline.role == "DUO_SUPPORT"
-        )[0];
-        redSupport.profile = game.participantIdentities.filter(
-          x => x.participantId == redSupport.participantId
-        )[0].player;
-        blueTeamInOrder.push(blueTop);
-        blueTeamInOrder.push(blueJungler);
-        blueTeamInOrder.push(blueMid);
-        blueTeamInOrder.push(blueAdc);
-        blueTeamInOrder.push(blueSupport);
-        redTeamInOrder.push(redTop);
-        redTeamInOrder.push(redJungler);
-        redTeamInOrder.push(redMid);
-        redTeamInOrder.push(redAdc);
-        redTeamInOrder.push(redSupport);
-      } else if (game.gameMode == "ARAM") {
-        blueTop = blueTeam[0];
-        blueTop.profile = game.participantIdentities.filter(
-          x => x.participantId == blueTop.participantId
-        )[0].player;
-
-        blueJungler = blueTeam[1];
-        blueJungler.profile = game.participantIdentities.filter(
-          x => x.participantId == blueJungler.participantId
-        )[0].player;
-        blueMid = blueTeam[2];
-        blueMid.profile = game.participantIdentities.filter(
-          x => x.participantId == blueMid.participantId
-        )[0].player;
-        blueAdc = blueTeam[3];
-        blueAdc.profile = game.participantIdentities.filter(
-          x => x.participantId == blueAdc.participantId
-        )[0].player;
-        blueSupport = blueTeam[4];
-        blueSupport.profile = game.participantIdentities.filter(
-          x => x.participantId == blueSupport.participantId
-        )[0].player;
-
-        redTop = redTeam[0];
-        redTop.profile = game.participantIdentities.filter(
-          x => x.participantId == redTop.participantId
-        )[0].player;
-        redJungler = redTeam[1];
-        redJungler.profile = game.participantIdentities.filter(
-          x => x.participantId == redJungler.participantId
-        )[0].player;
-        redMid = redTeam[2];
-        redMid.profile = game.participantIdentities.filter(
-          x => x.participantId == redMid.participantId
-        )[0].player;
-        redAdc = redTeam[3];
-        redAdc.profile = game.participantIdentities.filter(
-          x => x.participantId == redAdc.participantId
-        )[0].player;
-        redSupport = redTeam[4];
-        redSupport.profile = game.participantIdentities.filter(
-          x => x.participantId == redSupport.participantId
-        )[0].player;
-        blueTeamInOrder.push(blueTop);
-        blueTeamInOrder.push(blueJungler);
-        blueTeamInOrder.push(blueMid);
-        blueTeamInOrder.push(blueAdc);
-        blueTeamInOrder.push(blueSupport);
-        redTeamInOrder.push(redTop);
-        redTeamInOrder.push(redJungler);
-        redTeamInOrder.push(redMid);
-        redTeamInOrder.push(redAdc);
-        redTeamInOrder.push(redSupport);
-      }
-      game.blueTeam = blueTeamInOrder;
-      game.redTeam = redTeamInOrder;
-      return game;
-    },
     getChampionPicture: function(id) {
       var champ = "";
       // eslint-disable-next-line no-console
@@ -693,6 +529,7 @@ export default {
       }
       // eslint-disable-next-line no-console
       if (typeof champ == String) champ = champ.replace(" ", "_");
+
       return (
         this.api_url +
         "LeagueOfLegends/assets/champions/tiles/" +
@@ -1140,15 +977,18 @@ export default {
       return d;
     },
     getCurrentPlayerData: function(obj) {
+      var damageLabels = [""];
+      var damageNumbers = [1];
+
       var ctx = document.getElementById("myChart").getContext("2d");
       var myChart = new Chart(ctx, {
         type: "doughnut",
         data: {
-          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          labels: damageLabels,
           datasets: [
             {
               label: "# of Votes",
-              data: [12, 19, 3, 5, 2, 3],
+              data: damageNumbers,
               backgroundColor: [
                 "rgba(255, 99, 132, 0.2)",
                 "rgba(54, 162, 235, 0.2)",

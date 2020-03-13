@@ -20,9 +20,13 @@
           </div>
         </div>
         <div class="col-10 p-2">
-          <div v-if="matchData!=null">
+          <div v-if="dataOfMatches!=null">
             <div>
-              <div v-for="game in matchData" :key="game.gameId" class="card bg-dark text-white pb-3">
+              <div
+                v-for="game in dataOfMatches"
+                :key="game.gameId"
+                class="card bg-dark text-white pb-3"
+              >
                 <div v-if="game !=null">
                   <div v-if="game.gameMode === 'CLASSIC'">
                     <a>
@@ -91,8 +95,7 @@
 </template>
 
 <script>
-import axios from "axios";
-
+import ApiMethods from "@/services/ApiMethods";
 export default {
   name: "LeagueProfile",
   data() {
@@ -100,10 +103,9 @@ export default {
       leagueAccount: null,
       leagueAccountNotFound: false,
       matchHistory: [],
-      matchData: [],
+      dataOfMatches: [],
       iconUrl: "",
-      api_url: "http://localhost:4000/",
-      api_url2: "https://jamescerniglia.herokuapp.com/",
+
       namePretty: ""
     };
   },
@@ -112,53 +114,35 @@ export default {
 
   mounted() {
     /* eslint-disable no-console */
+
     if (this.leagueName != "") {
       this.namePretty = this.leagueName;
+      ApiMethods.getLeagueOfLegendsProfile(this.leagueName)
 
-      axios
-        .get(this.api_url + "LeagueOfLegends/user/" + this.leagueName)
         .then(response => {
           // JSON responses are automatically parsed.
 
           this.namePretty = response.data.name;
           document.title = this.namePretty;
-          document.title = this.namePretty;
           this.leagueAccount = response.data;
 
-          this.leagueAccount.iconUrl =
-            this.api_url +
-            "LeagueOfLegends/assets/icons/" +
-            response.data.profileIconId +
-            ".png";
+          this.leagueAccount.iconUrl = ApiMethods.getProfileIcon(
+            response.data.profileIconId
+          );
+
           if (this.leagueAccount != null) {
-            axios
-              .get(
-                this.api_url +
-                  "LeagueOfLegends/" +
-                  this.leagueAccount.accountId +
-                  "/matches"
-              )
-              .then(response => {
-                // JSON responses are automatically parsed.
-                console.log(response, response.datas);
-                //Limit to 5 queries to start
-                this.matchHistory = response.data.matches.slice(0, 5);
+            ApiMethods.getMatchHistory(this.leagueAccount.accountId).then(
+              res => {
+                this.matchHistory = res;
                 for (var i in this.matchHistory) {
-                  axios
-                    .get(
-                      this.api_url +
-                        "LeagueOfLegends/matchDetails/" +
-                        this.matchHistory[i].gameId
-                    )
-                    .then(response => {
-                      // var matchObject = response.data;
-                      // matchObject.account = this.matchHistory.filter(
-                      //   game => (game.gameId = response.data.gameId)
-                      // )[0];
-                      this.matchData.push(this.organizeGame(response.data));
-                    });
+                  ApiMethods.getMatchDetails(this.matchHistory[i].gameId).then(
+                    response => {
+                      this.dataOfMatches.push(response.data);
+                    }
+                  );
                 }
-              });
+              }
+            );
           }
         })
 
@@ -1055,171 +1039,7 @@ export default {
       // return now;
       return d;
     },
-    redTeam: function(model) {
-      return model.participants.filter(x => x.teamId == 200);
-    },
-    blueTeam: function(model) {
-      return model.participants.filter(x => x.teamId == 100);
-    },
-    getMatchDetails: function(game) {
-      return game.gameId;
-    },
-    organizeGame: function(game) {
-      var blueTeam = game.participants.filter(x => x.teamId == 100);
-      var redTeam = game.participants.filter(x => x.teamId == 200);
-      /**
-       * Order: Top Jg Mid Adc Sup
-       */
-      var blueTop = null;
-      var blueJungler = null;
-      var blueMid = null;
-      var blueAdc = null;
-      var blueSupport = null;
-      var redTop = null;
-      var redJungler = null;
-      var redMid = null;
-      var redAdc = null;
-      var redSupport = null;
 
-      var blueTeamInOrder = [];
-      var redTeamInOrder = [];
-
-      if (game.gameMode == "CLASSIC") {
-        //Lets do Top-jg-mid-adc-sup then red side top...
-        console.log(redTeam, game.gameId, game.participantIdentities);
-        blueTop = blueTeam.filter(
-          x => x.timeline.lane == "TOP" && x.timeline.role == "SOLO"
-        )[0];
-        blueTop.profile = game.participantIdentities.filter(
-          x => x.participantId == blueTop.participantId
-        )[0].player;
-
-        blueJungler = blueTeam.filter(x => x.timeline.lane == "JUNGLE")[0];
-
-        blueJungler.profile = game.participantIdentities.filter(
-          x => x.participantId == blueJungler.participantId
-        )[0].player;
-
-        blueMid = blueTeam.filter(x => x.timeline.lane == "MIDDLE")[0];
-        blueMid.profile = game.participantIdentities.filter(
-          x => x.participantId == blueMid.participantId
-        )[0].player;
-
-        blueAdc = blueTeam.filter(
-          x => x.timeline.lane == "BOTTOM" && x.timeline.role == "DUO_CARRY"
-        )[0];
-        blueAdc.profile = game.participantIdentities.filter(
-          x => x.participantId == blueAdc.participantId
-        )[0].player;
-        blueSupport = blueTeam.filter(
-          x => x.timeline.lane == "BOTTOM" && x.timeline.role == "DUO_SUPPORT"
-        )[0];
-        blueSupport.profile = game.participantIdentities.filter(
-          x => x.participantId == blueSupport.participantId
-        )[0].player;
-
-        redTop = redTeam.filter(
-          x => x.timeline.lane == "TOP" && x.timeline.role == "SOLO"
-        )[0];
-        redTop.profile = game.participantIdentities.filter(
-          x => x.participantId == redTop.participantId
-        )[0].player;
-
-        redJungler = redTeam.filter(x => x.timeline.lane == "JUNGLE")[0];
-        redJungler.profile = game.participantIdentities.filter(
-          x => x.participantId == redJungler.participantId
-        )[0].player;
-
-        redMid = redTeam.filter(x => x.timeline.lane == "MIDDLE")[0];
-        redMid.profile = game.participantIdentities.filter(
-          x => x.participantId == redMid.participantId
-        )[0].player;
-
-        redAdc = redTeam.filter(
-          player =>
-            player.timeline.lane == "BOTTOM" &&
-            player.timeline.role == "DUO_CARRY"
-        )[0];
-        redAdc.profile = game.participantIdentities.filter(
-          x => x.participantId == redAdc.participantId
-        )[0].player;
-
-        redSupport = redTeam.filter(
-          player =>
-            player.timeline.lane == "BOTTOM" &&
-            player.timeline.role == "DUO_SUPPORT"
-        )[0];
-        redSupport.profile = game.participantIdentities.filter(
-          x => x.participantId == redSupport.participantId
-        )[0].player;
-        blueTeamInOrder.push(blueTop);
-        blueTeamInOrder.push(blueJungler);
-        blueTeamInOrder.push(blueMid);
-        blueTeamInOrder.push(blueAdc);
-        blueTeamInOrder.push(blueSupport);
-        redTeamInOrder.push(redTop);
-        redTeamInOrder.push(redJungler);
-        redTeamInOrder.push(redMid);
-        redTeamInOrder.push(redAdc);
-        redTeamInOrder.push(redSupport);
-      } else if (game.gameMode == "ARAM") {
-        blueTop = blueTeam[0];
-        blueTop.profile = game.participantIdentities.filter(
-          x => x.participantId == blueTop.participantId
-        )[0].player;
-
-        blueJungler = blueTeam[1];
-        blueJungler.profile = game.participantIdentities.filter(
-          x => x.participantId == blueJungler.participantId
-        )[0].player;
-        blueMid = blueTeam[2];
-        blueMid.profile = game.participantIdentities.filter(
-          x => x.participantId == blueMid.participantId
-        )[0].player;
-        blueAdc = blueTeam[3];
-        blueAdc.profile = game.participantIdentities.filter(
-          x => x.participantId == blueAdc.participantId
-        )[0].player;
-        blueSupport = blueTeam[4];
-        blueSupport.profile = game.participantIdentities.filter(
-          x => x.participantId == blueSupport.participantId
-        )[0].player;
-
-        redTop = redTeam[0];
-        redTop.profile = game.participantIdentities.filter(
-          x => x.participantId == redTop.participantId
-        )[0].player;
-        redJungler = redTeam[1];
-        redJungler.profile = game.participantIdentities.filter(
-          x => x.participantId == redJungler.participantId
-        )[0].player;
-        redMid = redTeam[2];
-        redMid.profile = game.participantIdentities.filter(
-          x => x.participantId == redMid.participantId
-        )[0].player;
-        redAdc = redTeam[3];
-        redAdc.profile = game.participantIdentities.filter(
-          x => x.participantId == redAdc.participantId
-        )[0].player;
-        redSupport = redTeam[4];
-        redSupport.profile = game.participantIdentities.filter(
-          x => x.participantId == redSupport.participantId
-        )[0].player;
-        blueTeamInOrder.push(blueTop);
-        blueTeamInOrder.push(blueJungler);
-        blueTeamInOrder.push(blueMid);
-        blueTeamInOrder.push(blueAdc);
-        blueTeamInOrder.push(blueSupport);
-        redTeamInOrder.push(redTop);
-        redTeamInOrder.push(redJungler);
-        redTeamInOrder.push(redMid);
-        redTeamInOrder.push(redAdc);
-        redTeamInOrder.push(redSupport);
-      }
-      game.blueTeam = blueTeamInOrder;
-      game.redTeam = redTeamInOrder;
-      return game;
-    },
     getPlayer: function(game, team, role) {
       var blueTeam = game.participants.filter(x => x.teamId == 100);
       var redTeam = game.participants.filter(x => x.teamId == 200);

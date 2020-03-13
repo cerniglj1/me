@@ -2,9 +2,9 @@
     "name": "jamesmcerniglia",
     "version": "0.2.0",
     "private": true,
-    "main": "./express/server.js",
+    "main": "./meApi/server.js",
     "scripts": {
-        "start": "node ./server/server.js",
+        "start": "node ./meApi/server.js",
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint"
