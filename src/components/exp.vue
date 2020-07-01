@@ -1,6 +1,6 @@
 <template>
-  <div id="Projects">
-    <h1>Projects</h1>
+  <div id="exp">
+    <h1>exp</h1>
 
     <div class="row p-4">
       <div class="col-lg">
@@ -45,11 +45,12 @@
 
 <script>
 export default {
-  name: "ProjectsVue",
+  name: "exp",
   components: {},
   data() {
     return {
-      api_url: "http://localhost:4000/",
+      api_url: "https://jamescerniglia.herokuapp.com/",
+      // api_url: "http://localhost:4000/",
       dataImages: [
         {
           id: 0,
@@ -78,7 +79,7 @@ export default {
 </script>
 
 <style scoped>
- .card img {
+.card img {
   filter: brightness(30%);
 }
 #Projects {

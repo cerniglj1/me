@@ -1,5 +1,5 @@
 <template>
-  <div id="ErrorVue">
+  <div id="missing">
     <div class="container">
       <p class="error-title">
         Error
@@ -17,14 +17,14 @@
 
 <script>
 export default {
-  name: "Error404",
+  name: "missing",
   data() {
     return { msg: "Welcome to Your Vue.js App" };
   },
   created: function() {}
 };
 </script>
-<style>
+<style scoped>
 @import url(https://fonts.googleapis.com/css?family=Monoton);
 
 .error-title {

@@ -1,7 +1,6 @@
 <template>
-  <div id="NavMenu">
-    <nav class="navbar navbar-expand-lg navbar-center">
-      <img alt="Vue logo" src="../assets/logo.png" class="navbar-brand" />
+  <div id="navb">
+    <nav class="navbar navbar-expand-lg navbar-center stick-navbar">
       <button
         class="navbar-toggler"
         type="button"
@@ -11,35 +10,36 @@
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <i class="fas fa-bars" id="mobileBars"></i>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav navbar-center">
           <router-link id="RL" class-active="active" class="nav-link" to="/Home" exact>
             <li>
-              <a class="nav-link">Home</a>
+              <a class="nav-link">
+                <i class="fas fa-home"></i> Home
+              </a>
             </li>
           </router-link>
           <router-link id="RL" class-active="active" class="nav-link" to="/Projects" exact>
             <li>
-              <a class="nav-link">Projects</a>
+              <a class="nav-link">
+                <i class="fas fa-project-diagram"></i> Projects
+              </a>
             </li>
           </router-link>
-          <router-link id="RL" class-active="active" class="nav-link" to="/Hobbies" exact>
+          <router-link id="RL" class-active="active" class="nav-link" to="/AboutMe" exact>
             <li>
-              <a class="nav-link">Hobbies</a>
-            </li>
-          </router-link>
-          <router-link id="RL" class-active="active" class="nav-link" to="/Contact" exact>
-            <li>
-              <a class="nav-link">Contact Me</a>
+              <a class="nav-link">
+                <i class="far fa-address-card"></i> About Me
+              </a>
             </li>
           </router-link>
 
-          <li class="nav-item dropdown">
+          <!-- <li class="nav-item dropdown">
             <a
-              class="nav-link dropdown-toggle disabled"
+              class="nav-link dropdown-toggle"
               href="#"
               id="navbarDropdown"
               role="button"
@@ -53,31 +53,31 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
-          </li>
-          
+          </li>-->
         </ul>
       </div>
     </nav>
+    <div class id="navBottom"></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "NavMenu",
+  name: "navb",
   fun_facts: [
     "Deadlifted 405 lbs May 2019",
-    "Bench Pressed 225 for 2 lbs January 2020",
+    "Bench Pressed 225 lbs for 2 reps January 2020",
     "Deadlifted 405 lbs May 2019"
   ]
 };
 </script>
-<style>
+<style scoped>
+#mobileBars {
+  color: white;
+  font-size: 2rem;
+}
 .navbar .navbar-collapse {
   text-align: center;
-}
-
-.navbar {
-  background-image: linear-gradient(rgb(94, 93, 93), 55%, rgba(65, 65, 65, 1));
 }
 
 .nav-link {
@@ -100,15 +100,19 @@ export default {
   max-height: 50px;
 }
 #RL:hover {
-  box-shadow: 0 5px 15px rgba(121, 253, 202, 0.7);
+  /* box-shadow: 0 5px 15px rgba(121, 253, 202, 0.7); */
+  background: #0041a1;
+}
+/* #navBottom {
+  border-bottom: 1rem dotted white;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 150px;
+} */
+.router-link-active {
+  background: #01255c;
 }
 
-.router-link-active {
-  background: rgba(121, 253, 202, 0.7);
-}
-.router-link .nav-link:hover {
-  box-shadow: 0 5px 15px rgba(121, 253, 202, 0.7);
-}
 .dropdown-menu {
   background-color: #414141;
 }

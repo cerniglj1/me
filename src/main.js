@@ -1,15 +1,16 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import App from './App.vue'
-import Error404 from './components/Error404.vue'
-import HomeVue from './components/HomeVue.vue'
-import HobbiesVue from './components/HobbiesVue.vue'
-import ProjectsVue from './components/ProjectsVue.vue'
-import ContactVue from './components/ContactVue.vue'
-import Snake from './components/Snake.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import App from './App.vue';
+import missing from './components/missing.vue';
+import home from './components/home.vue';
+import about from './components/about.vue';
+import exp from './components/exp.vue';
+import Snake from './components/Snake.vue';
 import OsrsProfile from './components/OsrsProfile.vue';
 import LeagueProfile from './components/LeagueProfile.vue';
 import LeagueGame from './components/LeagueGame.vue';
+import projects from './components/projects.vue';
+
 // Vue.use(BootstrapVue)
 
 Vue.use(VueRouter)
@@ -25,7 +26,7 @@ Vue.config.productionTip = false
 const routes = [{
         path: '/',
         name: "Home",
-        component: HomeVue,
+        component: home,
         meta: {
             title: 'Home'
         }
@@ -33,35 +34,28 @@ const routes = [{
     {
         path: '/Home',
         name: "Home2",
-        component: HomeVue,
+        component: home,
         meta: {
             title: 'Home'
         }
     },
     {
-        path: '/Projects',
-        name: "Projects",
-        component: ProjectsVue,
+        path: '/Experience',
+        name: "Experience",
+        component: exp,
         meta: {
-            title: 'Projects'
+            title: 'Experience'
         }
     },
     {
-        path: '/Hobbies',
-        name: "Hobbies",
-        component: HobbiesVue,
+        path: '/AboutMe',
+        name: "AboutMe",
+        component: about,
         meta: {
-            title: 'Hobbies'
+            title: 'About Me'
         }
     },
-    {
-        path: '/Contact',
-        name: "Contact",
-        component: ContactVue,
-        meta: {
-            title: 'Contact'
-        }
-    },
+
     {
         path: '/Snake',
         name: "Snake",
@@ -69,15 +63,22 @@ const routes = [{
         meta: {
             title: 'Snake'
         }
+    }, {
+        path: '/Projects',
+        name: "Projects",
+        component: projects,
+        meta: {
+            title: 'Projects'
+        }
     },
     {
-        path: '/osrs/users/:userName',
+        path: '/osrs/u/:userName',
         name: "OsrsProfile",
         component: OsrsProfile,
         props: true
     },
     {
-        path: '/LeagueOfLegends/users/:leagueName',
+        path: '/LeagueOfLegends/u/:leagueName',
         name: "LeagueProfile",
         component: LeagueProfile,
         props: true
@@ -91,9 +92,9 @@ const routes = [{
     {
         path: '/*',
         name: "Error404",
-        component: Error404,
+        component: missing,
         meta: {
-            title: 'Error404'
+            title: 'Error 404'
         }
     }
 ]
@@ -108,14 +109,13 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-        document.title = to.meta.title
-        next()
-    })
-    // 4. Create and mount the root instance.
-    // Make sure to inject the router with the router option to make the
-    // whole app router-aware.
+    document.title = to.meta.title
+    next()
+})
+// 4. Create and mount the root instance.
+// Make sure to inject the router with the router option to make the
+// whole app router-aware.
 new Vue({
     router: router,
-
     render: h => h(App),
 }).$mount('#app')

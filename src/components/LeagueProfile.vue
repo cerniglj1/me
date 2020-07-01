@@ -1092,7 +1092,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 .ProfileSection {
   border: 5px red solid;
   color: blue;

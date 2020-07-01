@@ -618,7 +618,7 @@ export default {
             .get("LeagueOfLegends/" + accountId + "/matches")
             .then(response => {
 
-                //Limit to 5 queries to start
+                //Limit to 2 queries to start
                 var matchHistory = response.data.matches.slice(0, 2);
                 return matchHistory;
             });
