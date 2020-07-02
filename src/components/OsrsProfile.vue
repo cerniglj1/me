@@ -1,3 +1,4 @@
+
 <template>
   <div id="OsrsProfile">
     <div class="d-flex justify-content-center warningBanner" v-if="status.code">
@@ -370,6 +371,9 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
+import ApiMethods from "@/services/ApiMethods";
+
 export default {
   name: "OsrsProfile",
   data() {
@@ -475,12 +479,36 @@ export default {
     getSkillIcon: function(skillName) {
       // eslint-disable-next-line no-console
       //here we determine which skill to get
-   
-     
-      return this.api_url + "Osrs/assets/skills/" + skillName.toLowerCase() + "_icon.png";
+
+      return (
+        this.api_url +
+        "Osrs/assets/skills/" +
+        skillName.toLowerCase() +
+        "_icon.png"
+      );
     },
-    getUser: function(name) {
-      this.$router.push({ path: `/osrs/u/${name}` });
+    getUser: async function() {
+      console.log("getting " + this.userName);
+      const response = await ApiMethods.getOsrsUser(this.userName);
+
+      if (response != undefined) {
+        this.account = response.data;
+        for (var n in this.account.main.bosses) {
+        this.bosses.push({
+          name: this.prettyBoss(n),
+          data: this.account.main.bosses[n]
+        });
+      }
+      } else {
+        this.status = {
+          name: response,
+          code: 400,
+          reason: "Failed to find a user: " + this.userName
+        };
+      }
+      this.status = { name: "Success", code: 100 };
+   
+      
     },
     updateUser: function(nameToUpdate) {
       fetch(this.api_url + "osrs/update/?username=" + nameToUpdate)
@@ -553,36 +581,40 @@ export default {
 
   mounted() {
     // eslint-disable-next-line no-console
-    console.log(this.props);
+
     if (this.userName != "") {
       this.namePretty = this.userName.replace("_", " ");
       document.title = this.namePretty;
       this.status = { name: "Loading", code: 10 };
-      fetch(this.api_url + "osrs/u/?username=" + this.userName)
-        .then(response => response.json())
-        .then(result => {
-          this.status = { name: "Success", code: 100 };
-          this.account = result;
-          for (var n in this.account.main.bosses) {
-            this.bosses.push({
-              name: this.prettyBoss(n),
-              data: this.account.main.bosses[n]
-            });
-          }
-        })
-        .catch(error => {
-          // eslint-disable-next-line no-console
-          console.error("Error:", { error });
-          if (error.message == "Failed to fetch") {
-            this.status = {
-              name: error,
-              code: 400,
-              reason: "Failed to find a user: " + this.userName
-            };
-          } else {
-            this.status = { name: error, code: 400, reason: "" };
-          }
-        });
+
+      this.account = this.getUser();
+
+      //   fetch(this.api_url + "osrs/u/?username=" + this.userName)
+      //     .then(response => response.json())
+      //     .then(result => {
+      //       this.status = { name: "Success", code: 100 };
+      //       this.account = result;
+      //       for (var n in this.account.main.bosses) {
+      //         this.bosses.push({
+      //           name: this.prettyBoss(n),
+      //           data: this.account.main.bosses[n]
+      //         });
+      //       }
+      //     })
+      //     .catch(error => {
+      //       // eslint-disable-next-line no-console
+      //       console.error("Error:", { error });
+      //       if (error.message == "Failed to fetch") {
+      //         this.status = {
+      //           name: error,
+      //           code: 400,
+      //           reason: "Failed to find a user: " + this.userName
+      //         };
+      //       } else {
+      //         this.status = { name: error, code: 400, reason: "" };
+      //       }
+      //     });
+      //
     }
   },
   functions: {}

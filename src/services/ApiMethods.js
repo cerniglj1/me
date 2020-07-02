@@ -574,6 +574,23 @@ function getChampionNameFromId(id) {
     return champ;
 }
 export default {
+    async getOsrsUser(username) {
+        return Api().get('osrs/u/?username=' + username).catch(function (error) {
+            return {
+
+                name: error,
+                code: 400,
+                reason: "Failed to find a user: " + username
+
+            }
+        });
+    },
+    async updateOsrsUser(username) {
+        return Api().get('/osrs/update/' + username)
+    },
+    async getOsrsSkillIcon(skillName) {
+        return Api().get("osrs/assets/skills/" + skillName.toLowerCase() + "_icon.png")
+    },
 
     async getLeagueOfLegendsProfile(leagueName) {
         return Api().get("LeagueOfLegends/user/" + leagueName);
@@ -590,8 +607,12 @@ export default {
         var champ = getChampionNameFromId(id)
 
         // eslint-disable-next-line no-console
-        if (typeof champ == String) { champ = champ.replace(" ", "_"); }
-        Api().get("LeagueOfLegends/assets/champions/tiles/" + champ + "_0.jpg", { type: 'image/jpg' }).then((res) => {
+        if (typeof champ == String) {
+            champ = champ.replace(" ", "_");
+        }
+        Api().get("LeagueOfLegends/assets/champions/tiles/" + champ + "_0.jpg", {
+            type: 'image/jpg'
+        }).then((res) => {
             console.log(res);
         });
         return '';

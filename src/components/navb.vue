@@ -62,6 +62,7 @@
 </template>
 
 <script>
+
 export default {
   name: "navb",
   fun_facts: [
