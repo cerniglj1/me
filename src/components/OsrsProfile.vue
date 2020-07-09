@@ -75,7 +75,7 @@
               <td>{{n}}</td>
               <td>{{skill.rank}}</td>
               <td>{{skill.level}}</td>
-              <td>{{skill.xp}}</td>
+              <td>{{prettyExp(skill.xp)}}</td>
             </tr>
           </tbody>
           <tbody hidden>
@@ -290,6 +290,11 @@
           </tbody>
         </table>
       </div>
+      <div class="row">
+        <div class="col">
+          <button class="btn compareBtn">Compare</button>
+        </div>
+      </div>
 
       <div class="row" hidden>
         <div class="col-4"></div>
@@ -381,7 +386,7 @@ export default {
       account: null,
       bosses: [],
       api_url1: "http://localhost:4000/",
-      api_url: "https://jamescerniglia.herokuapp.com/",
+      api_url: "https://jamescerniglia-api.herokuapp.com/",
       namePretty: "",
       questData: null,
       account2: null,
@@ -391,6 +396,9 @@ export default {
     };
   },
   methods: {
+    prettyExp: function numberWithCommas(x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
     prettyBoss: function(x) {
       switch (x) {
         case "abyssalSire":
@@ -479,36 +487,34 @@ export default {
     getSkillIcon: function(skillName) {
       // eslint-disable-next-line no-console
       //here we determine which skill to get
-
+      // TODO
       return (
         this.api_url +
-        "Osrs/assets/skills/" +
+        "osrs/assets/skills/" +
         skillName.toLowerCase() +
         "_icon.png"
       );
     },
     getUser: async function() {
       console.log("getting " + this.userName);
-      const response = await ApiMethods.getOsrsUser(this.userName);
-
-      if (response != undefined) {
-        this.account = response.data;
+      var r = await ApiMethods.getOsrsUser(this.userName);
+      if (r != undefined) {
+        this.account = r.data;
         for (var n in this.account.main.bosses) {
-        this.bosses.push({
-          name: this.prettyBoss(n),
-          data: this.account.main.bosses[n]
-        });
-      }
+          this.bosses.push({
+            name: this.prettyBoss(n),
+            data: this.account.main.bosses[n]
+          });
+        }
       } else {
         this.status = {
-          name: response,
+          name: r,
           code: 400,
           reason: "Failed to find a user: " + this.userName
         };
       }
       this.status = { name: "Success", code: 100 };
-   
-      
+      console.log({ R: r });
     },
     updateUser: function(nameToUpdate) {
       fetch(this.api_url + "osrs/update/?username=" + nameToUpdate)
@@ -689,7 +695,7 @@ export default {
   background: #bebebe;
   color: white;
 }
-.errorBanner .btn {
+.errorBanner {
   margin-left: 15px;
 }
 .loadingBanner {
@@ -719,6 +725,18 @@ export default {
 }
 .warningTriangle {
   font-size: 36px;
+}
+.compareBtn {
+  background: #503401;
+  border: 1px solid #eb8500a2;
+  color: white;
+  /* color: #013f09a2; */
+}
+.compareBtn:hover {
+  background: #fc9004a2;
+  border: 1px solid #fc9004a2;
+  color: white;
+  /* color: #013f09a2; */
 }
 .failedUpdate {
   background: #e98585;

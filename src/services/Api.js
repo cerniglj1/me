@@ -1,11 +1,11 @@
 import axios from 'axios';
 /** 
  *  "http://localhost:8081/",
- *  "https://jamescerniglia.herokuapp.com/",
+ *  "https://jamescerniglia-api.herokuapp.com/",
  * 
  *  */
 
-const base = "http://localhost:8081/";
+const base = "https://jamescerniglia-api.herokuapp.com/";
 export default () => {
     return axios.create({
         baseURL: base

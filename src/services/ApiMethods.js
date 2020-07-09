@@ -577,11 +577,9 @@ export default {
     async getOsrsUser(username) {
         return Api().get('osrs/u/?username=' + username).catch(function (error) {
             return {
-
                 name: error,
                 code: 400,
                 reason: "Failed to find a user: " + username
-
             }
         });
     },

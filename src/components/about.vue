@@ -25,7 +25,7 @@
           </div>
           <div class="col-8">
             <p class="bio">
-              Computer Science student, web developer, blah blah blah.
+              Computer Science graduate, software & web developer.
               Thanks for visiting my website.
             </p>
             <input
