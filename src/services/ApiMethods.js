@@ -575,7 +575,7 @@ function getChampionNameFromId(id) {
 }
 export default {
     async getOsrsUser(username) {
-        return Api().get('osrs/u/?username=' + username).catch(function (error) {
+        return Api().get('/osrs/u/?username=' + username).catch(function (error) {
             return {
                 name: error,
                 code: 400,
@@ -584,12 +584,29 @@ export default {
         });
     },
     async updateOsrsUser(username) {
-        return Api().get('/osrs/update/' + username)
+        return Api().get('/osrs/update/u/' + username)
     },
     async getOsrsSkillIcon(skillName) {
-        return Api().get("osrs/assets/skills/" + skillName.toLowerCase() + "_icon.png")
+        return Api().get("/osrs/assets/skills/" + skillName.toLowerCase() + "_icon.png")
     },
-
+    async getProjects() {
+        return Api().get("/Portfolio/projects").catch(function (error) {
+            return {
+                name: error,
+                code: 400,
+                reason: "Failed to find projects"
+            }
+        });
+    },
+    async updateProjectLike(projectId,likes) {
+        return Api().get("/Portfolio/projects/update/likes/?projectId="+projectId+"&likes="+likes).catch(function (error) {
+            return {
+                name: error,
+                code: 400,
+                reason: "Failed to find project:"+ projectId
+            }
+        });
+    },
     async getLeagueOfLegendsProfile(leagueName) {
         return Api().get("LeagueOfLegends/user/" + leagueName);
     },

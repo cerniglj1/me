@@ -1,22 +1,22 @@
 <template>
   <div id="ftr">
-    <div class="fixed-bottom">
+    <div class="">
       <footer class="footer">
         <div class="ftr">
           <div id="icons">
-            <a href="https://twitter.com/zessedlol">
+            <a href="https://twitter.com/BIG_SQUEEZER">
               <i class="fab fa-facebook-square fa-2x rounded"></i>
             </a>
             <a href="https://www.instagram.com/big.squeezer/">
               <i class="fab fa-instagram fa-2x rounded"></i>
             </a>
-            <a href="https://twitch.tv/zessed">
+            <a href="https://twitch.tv/BIG_SQUEEZER">
               <i class="fab fa-twitch fa-2x rounded"></i>
             </a>
             <a href="https://www.linkedin.com/in/jamescerniglia/">
               <i class="fab fa-linkedin fa-2x rounded"></i>
             </a>
-            <a href="https://twitter.com/zessedlol">
+            <a href="https://twitter.com/BIG_SQUEEZER">
               <i class="fab fa-twitter-square fa-2x rounded"></i>
             </a>
             <div>
@@ -36,16 +36,15 @@ export default {
   data() {
     return { msg: "Welcome to ftr" };
   },
-  created: function() {}
+  created: function () {},
 };
 </script>
 <style scoped>
 .ftr {
-  color: white;
-  
+  color: black;
 }
 #icons i {
-  color: white;
+  color: black;
   transition: all 0.2s ease-in-out;
   padding: 13px;
   padding: 13px;

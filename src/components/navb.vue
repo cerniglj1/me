@@ -62,14 +62,13 @@
 </template>
 
 <script>
-
 export default {
   name: "navb",
   fun_facts: [
     "Deadlifted 405 lbs May 2019",
     "Bench Pressed 225 lbs for 2 reps January 2020",
-    "Deadlifted 405 lbs May 2019"
-  ]
+    "Deadlifted 405 lbs May 2019",
+  ],
 };
 </script>
 <style scoped>
@@ -88,7 +87,9 @@ export default {
 .nav-link:hover {
   color: white;
 }
-
+.navbar {
+  background: rgb(2, 64, 75);
+}
 .nav-item,
 .nav-link {
   transition: all 0.2s ease-in-out;

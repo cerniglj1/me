@@ -26,7 +26,7 @@ export default {
   /* font-family: "Avenir", Helvetica, Arial, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #06718b;
+  background-color: rgb(223, 255, 251);
   /* background-color: rgba(65, 65, 65, 1); #0064ff */
   /* background-image: url("./assets/big.png"); */
   /* background-size: cover; */

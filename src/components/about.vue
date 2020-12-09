@@ -16,36 +16,7 @@
           </div>
         </div>
       </div>
-      <div class="jumbotron rs" id="slide">
-        <div class="row">
-          <div class="col-4 xy">
-            <div class="brd">
-              <!-- <img class="profile-picture" src="../assets/me.png" width="200" /> -->
-            </div>
-          </div>
-          <div class="col-8">
-            <p class="bio">
-              Computer Science graduate, software & web developer.
-              Thanks for visiting my website.
-            </p>
-            <input
-              class="form-control"
-              type="search"
-              placeholder="Search username..."
-              aria-label="Search"
-              v-model="osrsUsernameInput"
-            />
-
-            <button
-              class="btn btn-success osrsSearchBtn"
-              type="submit"
-              v-on:click="osrsSearch(osrsUsernameInput)"
-            >Search</button>
-
-            <button class="btn btn-success luckyBtn" type="submit">Im Feeling Lucky</button>
-          </div>
-        </div>
-      </div>
+     
     </div>
   </div>
 </template>
@@ -60,19 +31,19 @@ export default {
       notpoop: null,
       jimbojango: null,
       info: null,
-      dani: null
+      dani: null,
     };
   },
   mounted() {},
-  created: function() {},
+  created: function () {},
   methods: {
-    osrsSearch: function(name) {
+    osrsSearch: function (name) {
       // eslint-disable-next-line no-console
       console.log(name);
       this.$router.push({ path: `/osrs/users/${name}` });
       return name;
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
@@ -102,7 +73,6 @@ export default {
   background: black;
 }
 .rs {
-  background-image: url("../assets/hydra2.png");
   height: 350px;
   filter: saturate(2);
   background-size: cover;

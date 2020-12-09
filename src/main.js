@@ -6,9 +6,6 @@ import home from './components/home.vue';
 import about from './components/about.vue';
 import exp from './components/exp.vue';
 import Snake from './components/Snake.vue';
-import OsrsProfile from './components/OsrsProfile.vue';
-import LeagueProfile from './components/LeagueProfile.vue';
-import LeagueGame from './components/LeagueGame.vue';
 import projects from './components/projects.vue';
 
 // Vue.use(BootstrapVue)
@@ -71,24 +68,7 @@ const routes = [{
             title: 'Projects'
         }
     },
-    {
-        path: '/osrs/u/:userName',
-        name: "OsrsProfile",
-        component: OsrsProfile,
-        props: true
-    },
-    {
-        path: '/LeagueOfLegends/u/:leagueName',
-        name: "LeagueProfile",
-        component: LeagueProfile,
-        props: true
-    },
-    {
-        path: '/LeagueOfLegends/matches/:gameId/',
-        name: "LeagueGame",
-        component: LeagueGame,
-        props: true
-    },
+
     {
         path: '/*',
         name: "Error404",
