@@ -21,7 +21,7 @@
           </div>
         </div>
         <div class="col-6">
-          <img src="../assets/t12.jpg" style="max-height: 500px" />
+          <!-- <img src="../assets/t1.jpg" style="max-height: 500px" /> -->
         </div>
       </div>
     </div>
