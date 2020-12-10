@@ -169,10 +169,16 @@
       <div class="col-4">
         <img src="../assets/test.png" style="max-height: 500px" />
       </div>
-      <div class="col-8">
+      <div class="col-8 mb-2">
+        <h2>Reach out to me!</h2>
         <div>
-          <div >
-            <form>
+          <div>
+            <form
+              action="mailto:jamesmcerniglia@gmail.com"
+              method="POST"
+              enctype="multipart/form-data"
+              name="EmailForm"
+            >
               <div class="form-group">
                 <label for="name">Name</label>
                 <input
@@ -469,9 +475,9 @@ export default {
   background: #790a8f;
   margin-bottom: 1px;
 }
-.codeBtn{
-  border-radius:.15rem;
-   display: inline-block;
+.codeBtn {
+  border-radius: 0.15rem;
+  display: inline-block;
   font-weight: 400;
   color: white;
   text-align: center;
@@ -484,8 +490,9 @@ export default {
   border: 1px solid transparent;
   font-size: 1rem;
 }
-.demoBtn{border-radius:.15rem;
-   display: inline-block;
+.demoBtn {
+  border-radius: 0.15rem;
+  display: inline-block;
   font-weight: 400;
   color: white;
   text-align: center;
@@ -494,7 +501,7 @@ export default {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  background-color:rgb(2, 64, 75);
+  background-color: rgb(2, 64, 75);
   border: 1px solid transparent;
   font-size: 1rem;
 }

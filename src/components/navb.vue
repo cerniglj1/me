@@ -15,21 +15,37 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav navbar-center">
-          <router-link id="RL" class-active="active" class="nav-link" to="/Home" exact>
+          <router-link
+            id="RL"
+            class-active="active"
+            class="nav-link"
+            to="/Home"
+            exact
+          >
             <li>
-              <a class="nav-link">
-                <i class="fas fa-home"></i> Home
-              </a>
+              <a class="nav-link"> <i class="fas fa-home"></i> Home </a>
             </li>
           </router-link>
-          <router-link id="RL" class-active="active" class="nav-link" to="/Projects" exact>
+          <router-link
+            id="RL"
+            class-active="active"
+            class="nav-link"
+            to="/Projects"
+            exact
+          >
             <li>
               <a class="nav-link">
                 <i class="fas fa-project-diagram"></i> Projects
               </a>
             </li>
           </router-link>
-          <router-link id="RL" class-active="active" class="nav-link" to="/AboutMe" exact>
+          <router-link
+            id="RL"
+            class-active="active"
+            class="nav-link"
+            to="/AboutMe"
+            exact
+          >
             <li>
               <a class="nav-link">
                 <i class="far fa-address-card"></i> About Me
@@ -112,7 +128,7 @@ export default {
   max-width: 150px;
 } */
 .router-link-active {
-  background: #01255c;
+  background: rgb(2, 45, 53);
 }
 
 .dropdown-menu {

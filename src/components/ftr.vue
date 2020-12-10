@@ -19,10 +19,10 @@
             <a href="https://twitter.com/BIG_SQUEEZER">
               <i class="fab fa-twitter-square fa-2x rounded"></i>
             </a>
-            <div>
+            <a>
               <i class="far fa-copyright"></i>
               <a class="ftrtxt">James Cerniglia</a>
-            </div>
+            </a>
           </div>
         </div>
       </footer>
