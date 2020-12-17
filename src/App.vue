@@ -66,6 +66,9 @@ body {
 .nodeBadge {
   background: #023b02;
 }
+.mongoBadge {
+  background: #805d29;
+}
 
 .codeIcon {
   width: 15px;

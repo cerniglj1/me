@@ -21,6 +21,7 @@
           </div>
         </div>
         <div class="col-6">
+          <img src="../assets/test.png" style="max-height: 500px" />
           <!-- <img src="../assets/t1.jpg" style="max-height: 500px" /> -->
         </div>
       </div>
@@ -50,22 +51,29 @@
 
             <p class="card-text">{{ p.description }}</p>
             <div class="d-flex justify-content-center">
-              <button
-                class="codeBtn"
+              <a
                 :href="p.codeUrl"
+                target="_blank"
                 :class="{ disabled: p.sourceBool == false }"
-              >
-                View Code
-                <i class="fab fa-github projectCodeIcon"></i>
-              </button>
-              <button
-                class="demoBtn ml-2"
-                :class="{ disabled: p.liveBool == false }"
+                ><button
+                  class="codeBtn"
+                  :class="{ disabled: p.sourceBool == false }"
+                >
+                  View Code
+                  <i class="fab fa-github projectCodeIcon"></i></button
+              ></a>
+              <a
                 :href="p.liveUrl"
+                target="_blank"
+                :class="{ disabled: p.liveBool == false }"
               >
-                View Demo
-                <i class="fas fa-location-arrow projectCodeIcon"></i>
-              </button>
+                <button
+                  class="demoBtn ml-2"
+                  :class="{ disabled: p.liveBool == false }"
+                >
+                  View Demo
+                  <i class="fas fa-location-arrow projectCodeIcon"></i></button
+              ></a>
             </div>
             <div class="mb-auto pt-2">
               <table>
@@ -135,6 +143,19 @@
                           <img class="codeIcon" src="../assets/icons/vue.png" />
                           Vue
                         </span>
+                        <span
+                          class="badge mongoBadge mr-1"
+                          v-if="
+                            p.skillsUsed.includes('Mongo') ||
+                            p.skillsUsed.includes('mongo')
+                          "
+                        >
+                          <img
+                            class="codeIcon"
+                            src="../assets/icons/mongodb.png"
+                          />
+                          Mongo
+                        </span>
                       </div>
                     </td>
                   </tr>
@@ -166,10 +187,66 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-4">
+      <div class="col">
         <img src="../assets/test.png" style="max-height: 500px" />
+        <form name="simpleContactForm" method="POST" data-netlify="true" id="simple-contact-form" class="contact-form">
+          name="simpleContactForm"
+          method="POST"
+          id="simple-contact-form"
+          class="contact-form"
+        >
+          <p class="form-row">
+            <label
+              id="contact-form-name-label"
+              for="contact-form-name"
+              class="form-label"
+              >Name</label
+            >
+            <input
+              type="text"
+              name="name"
+              id="contact-form-name"
+              aria-labelledby="contact-form-name-label"
+              class="form-input"
+            />
+          </p>
+          <p class="form-row">
+            <label
+              id="contact-form-email-label"
+              for="contact-form-email"
+              class="form-label"
+              >Email address</label
+            >
+            <input
+              type="email"
+              name="email"
+              id="contact-form-email"
+              aria-labelledby="contact-form-email-label"
+              class="form-input"
+            />
+          </p>
+          <p class="form-row">
+            <label
+              id="contact-form-message-label"
+              for="contact-form-message"
+              class="form-label"
+              >Message</label
+            >
+            <textarea
+              name="message"
+              id="contact-form-message"
+              aria-labelledby="contact-form-message-label"
+              class="form-textarea"
+              rows="7"
+            ></textarea>
+          </p>
+          <p class="form-row form-submit">
+            <button type="submit" class="button">Send Message</button>
+          </p>
+        </form>
       </div>
-      <div class="col-8 mb-2">
+
+      <div class="col mb-2 mt-2 contactMeSection">
         <h2>Reach out to me!</h2>
         <div>
           <div>
@@ -179,29 +256,32 @@
               enctype="multipart/form-data"
               name="EmailForm"
             >
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input
-                  type="username"
-                  class="form-control"
-                  id="name"
-                  aria-describedby="nameHelp"
-                  placeholder="Enter name..."
-                />
+              <div class="form-row">
+                <div class="col">
+                  <label for="name">Name</label>
+                  <input
+                    type="username"
+                    class="form-control"
+                    id="name"
+                    aria-describedby="nameHelp"
+                    placeholder="Enter name..."
+                  />
+                </div>
+                <div class="col">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email..."
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >I'll never share your email with anyone else.</small
+                  >
+                </div>
               </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  placeholder="Enter email..."
-                />
-                <small id="emailHelp" class="form-text text-muted"
-                  >I'll never share your email with anyone else.</small
-                >
-              </div>
+
               <div class="form-group">
                 <label for="exampleFormControlTextarea1">Message</label>
                 <textarea
@@ -229,6 +309,7 @@
           </div>
         </div>
       </div>
+      <div class="col"></div>
     </div>
     <ftr class="ftr" />
   </div>
@@ -365,6 +446,13 @@ export default {
 </script>
 
 <style scoped>
+/* Contact Me Sectio // Reach out to me */
+.contactMeSection {
+  border-radius: 0.5rem;
+  background-color: rgb(47, 73, 69);
+  color: white;
+}
+
 #home {
   color: black;
   font-family: Arial, Helvetica, sans-serif;
@@ -390,7 +478,7 @@ export default {
 
 .emailSpan {
   background-color: #030a66;
-  /* border-radius: 11px; */
+  border-radius: 0.5rem;
   min-width: 22%;
   padding-left: 2%;
   padding-right: 2%;

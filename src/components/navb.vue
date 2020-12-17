@@ -72,6 +72,9 @@
           </li>-->
         </ul>
       </div>
+      <div class="text-white">
+        <i class="fas fa-wrench"></i> Work in Progress
+      </div>
     </nav>
     <div class id="navBottom"></div>
   </div>
@@ -83,7 +86,7 @@ export default {
   fun_facts: [
     "Deadlifted 405 lbs May 2019",
     "Bench Pressed 225 lbs for 2 reps January 2020",
-    "Deadlifted 405 lbs May 2019",
+    "Squatted 315 for 2 in February 2020"
   ],
 };
 </script>
