@@ -189,123 +189,69 @@
     <div class="row">
       <div class="col">
         <img src="../assets/test.png" style="max-height: 500px" />
-        <form name="simpleContactForm" method="POST" data-netlify="true" id="simple-contact-form" class="contact-form">
-          name="simpleContactForm"
-          method="POST"
-          id="simple-contact-form"
-          class="contact-form"
-        >
-          <p class="form-row">
-            <label
-              id="contact-form-name-label"
-              for="contact-form-name"
-              class="form-label"
-              >Name</label
-            >
-            <input
-              type="text"
-              name="name"
-              id="contact-form-name"
-              aria-labelledby="contact-form-name-label"
-              class="form-input"
-            />
-          </p>
-          <p class="form-row">
-            <label
-              id="contact-form-email-label"
-              for="contact-form-email"
-              class="form-label"
-              >Email address</label
-            >
-            <input
-              type="email"
-              name="email"
-              id="contact-form-email"
-              aria-labelledby="contact-form-email-label"
-              class="form-input"
-            />
-          </p>
-          <p class="form-row">
-            <label
-              id="contact-form-message-label"
-              for="contact-form-message"
-              class="form-label"
-              >Message</label
-            >
-            <textarea
-              name="message"
-              id="contact-form-message"
-              aria-labelledby="contact-form-message-label"
-              class="form-textarea"
-              rows="7"
-            ></textarea>
-          </p>
-          <p class="form-row form-submit">
-            <button type="submit" class="button">Send Message</button>
-          </p>
-        </form>
       </div>
 
       <div class="col mb-2 mt-2 contactMeSection">
-        <h2>Reach out to me!</h2>
-        <div>
+        <div class="container pt-2">
+          <h2>Email me! <i class="fas fa-envelope-open-text"></i></h2>
           <div>
-            <form
-              action="mailto:jamesmcerniglia@gmail.com"
-              method="POST"
-              enctype="multipart/form-data"
-              name="EmailForm"
-            >
-              <div class="form-row">
-                <div class="col">
-                  <label for="name">Name</label>
-                  <input
-                    type="username"
-                    class="form-control"
-                    id="name"
-                    aria-describedby="nameHelp"
-                    placeholder="Enter name..."
-                  />
+            <div>
+              <form class="contact-form" @submit.prevent="sendEmail">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="user_name"
+                      id="inputName1"
+                      v-model="emailData.user_name"
+                      placeholder="Charles Darwin"
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Email</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="inputEmail4"
+                      name="user_email"
+                      v-model="emailData.user_email"
+                      placeholder="CharlieD@gmail.com"
+                    />
+                  </div>
                 </div>
-                <div class="col">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                    placeholder="Enter email..."
-                  />
-                  <small id="emailHelp" class="form-text text-muted"
-                    >I'll never share your email with anyone else.</small
-                  >
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label for="message1">Message</label>
+                    <textarea
+                      class="form-control"
+                      id="message1"
+                      rows="3"
+                      name="message"
+                      v-model="emailData.message"
+                    ></textarea>
+                  </div>
                 </div>
-              </div>
-
-              <div class="form-group">
-                <label for="exampleFormControlTextarea1">Message</label>
-                <textarea
-                  class="form-control"
-                  id="exampleFormControlTextarea1"
-                  rows="3"
-                  placeholder="Hi James..."
-                ></textarea>
-              </div>
-
-              <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            </form>
+                <div class="form-row pt-2">
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary mb-2">
+                      Send <i class="fas fa-paper-plane"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
-        <div class="d-flex justify-content-center">
-          <div class="emailSpan">
-            <p>
-              Email:
-              <a href="mailto:jamesmcerniglia@gmail.com" class="emailLink"
-                >jamesmcerniglia@gmail.com</a
-              >
-            </p>
+          <div class="d-flex justify-content-center">
+            <div class="emailSpan">
+              <p>
+                Email:
+                <a href="mailto:jamesmcerniglia@gmail.com" class="emailLink"
+                  >jamesmcerniglia@gmail.com</a
+                >
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -318,7 +264,7 @@
 <script>
 /* eslint-disable no-console */
 // import ApiMethods from "@/services/ApiMethods";
-
+import emailjs from "emailjs-com";
 import ftr from "./ftr.vue";
 import ApiMethods from "../services/ApiMethods";
 export default {
@@ -327,7 +273,8 @@ export default {
   components: { ftr },
   data() {
     return {
-      msg: "Welcome to Your Vue.js App",
+      emailData: { user_email: "", user_name: "", message: "" },
+      
       pendingLikes: {},
       projects: [
         {
@@ -339,7 +286,7 @@ export default {
           imgUrl:
             "https://cf-simple-s3-origin-cloudfrontfors3-515897288344.s3.amazonaws.com/Projects/osgg2.png",
           codeUrl: "https://github.com/cerniglj1/os.gg",
-          liveUrl: "https://osgg.herokuapp.com/",
+          liveUrl: "https://osgg.netlify.app/",
           likes: 174,
           liveBool: true,
           description:
@@ -389,7 +336,7 @@ export default {
   },
 
   mounted() {
-    this.getProjects();
+    this.router = this.getProjects();
     // console.log(this.projects);
 
     // var colors = ["#0093ff", "#00ffe4", "#8300ff", "#0020ff"];
@@ -408,6 +355,32 @@ export default {
     // });
   },
   methods: {
+    sendEmail: function (e) {
+      console.log(this.emailData);
+      emailjs
+        .sendForm(
+          "service_1",
+          "template_1",
+          e.target,
+          "user_iNFzjHUj7RT9VwggkCfsD"
+        )
+        .then(
+          (result) => {
+            console.log("SUCCESS!", result);
+            this.$router.push({
+              name: "thankyou",
+              params: {
+                user_email: this.emailData.user_email,
+                user_name: this.emailData.user_name,
+                user_message: this.emailData.message,
+              },
+            });
+          },
+          (error) => {
+            console.log("FAILED...", error);
+          }
+        );
+    },
     getProjects: async function () {
       var p = await ApiMethods.getProjects();
       this.projects = p.data.result;
@@ -455,11 +428,11 @@ export default {
 
 #home {
   color: black;
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding-top: 2rem;
-  padding-bottom: 5%;
+
   overflow-y: hidden;
   overflow: hidden;
 }

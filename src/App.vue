@@ -15,14 +15,15 @@ export default {
   components: {
     navb,
     // ftr
-  }
+  },
 };
 </script>
 
 <style >
-@import url(https://fonts.googleapis.com/css?family=Josefin+Sans);
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 #app {
-  font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   /* font-family: "Avenir", Helvetica, Arial, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

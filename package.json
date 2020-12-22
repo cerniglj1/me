@@ -9,14 +9,15 @@
         "lint": "vue-cli-service lint"
     },
     "dependencies": {
+        "@babel/compat-data": "^7.9.0",
         "axios": "^0.19.2",
         "body-parser": "^1.19.0",
         "bootstrap": "^4.4.1",
         "bootstrap-vue": "^2.6.1",
-        "@babel/compat-data": "^7.9.0",
         "canvasjs": "^1.8.3",
         "chart.js": "^2.9.3",
         "core-js": "^3.4.4",
+        "emailjs-com": "^2.6.4",
         "joi": "^14.3.1",
         "moment": "^2.24.0",
         "osrs-quest-tool": "^0.2.0",

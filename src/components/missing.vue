@@ -1,3 +1,4 @@
+
 <template>
   <div id="missing">
     <div class="container">
@@ -21,11 +22,12 @@ export default {
   data() {
     return { msg: "Welcome to Your Vue.js App" };
   },
-  created: function() {}
+  created: function () {},
+  methods: {},
 };
 </script>
 <style scoped>
-@import url(https://fonts.googleapis.com/css?family=Monoton);
+
 
 .error-title {
   /* -webkit-text-fill-color: transparent; */

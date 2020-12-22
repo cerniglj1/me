@@ -4,10 +4,9 @@ import App from './App.vue';
 import missing from './components/missing.vue';
 import home from './components/home.vue';
 import about from './components/about.vue';
-import exp from './components/exp.vue';
 import Snake from './components/Snake.vue';
 import projects from './components/projects.vue';
-
+import thankyou from './components/thankyou.vue';
 // Vue.use(BootstrapVue)
 
 Vue.use(VueRouter)
@@ -25,7 +24,7 @@ const routes = [{
         name: "Home",
         component: home,
         meta: {
-            title: 'Home'
+            title: 'home'
         }
     },
     {
@@ -36,14 +35,7 @@ const routes = [{
             title: 'Home'
         }
     },
-    {
-        path: '/Experience',
-        name: "Experience",
-        component: exp,
-        meta: {
-            title: 'Experience'
-        }
-    },
+  
     {
         path: '/AboutMe',
         name: "AboutMe",
@@ -66,6 +58,20 @@ const routes = [{
         component: projects,
         meta: {
             title: 'Projects'
+        }
+    },
+
+    {
+        path: '/thankyou',
+        name: "thankyou",
+        component: thankyou,
+        params: {
+            user_name: '',
+            user_email: '',
+            user_message: ''
+        },
+        meta: {
+            title: 'Thank You'
         }
     },
 
