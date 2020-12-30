@@ -19,7 +19,7 @@
             id="RL"
             class-active="active"
             class="nav-link"
-            to="/Home"
+            to="/home"
             exact
           >
             <li>
@@ -29,7 +29,7 @@
           <router-link
             id="RL"
             class-active="active"
-            class="nav-link"
+            class="nav-link disabled"
             to="/Projects"
             exact
           >
@@ -42,7 +42,7 @@
           <router-link
             id="RL"
             class-active="active"
-            class="nav-link"
+            class="nav-link disabled"
             to="/AboutMe"
             exact
           >
@@ -86,7 +86,7 @@ export default {
   fun_facts: [
     "Deadlifted 405 lbs May 2019",
     "Bench Pressed 225 lbs for 2 reps January 2020",
-    "Squatted 315 for 2 in February 2020"
+    "Squatted 315 for 2 in February 2020",
   ],
 };
 </script>
@@ -157,5 +157,9 @@ export default {
   margin-right: auto;
   left: 0;
   right: 0;
+}
+.navbar-nav .disabled {
+  background: black;
+  color: grey;
 }
 </style>

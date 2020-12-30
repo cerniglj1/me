@@ -10,12 +10,54 @@
               <h4 id="position">Software & Web Developer</h4>
               <div class="landingButtons">
                 <div class="d-flex justify-content-center">
-                  <button class="mr-4 profileBtn" id="projectBtn">
+                  <a
+                    class="btn mr-4 profileBtn text-white"
+                    type="button"
+                    @click="scrollToSection()"
+                    id="projectBtn"
+                  >
                     View Projects
-                  </button>
-
-                  <button class="profileBtn" id="resumeBtn">View Resume</button>
+                  </a>
+                  <a
+                    class="btn profileBtn"
+                    id="resumeBtn"
+                    type="button"
+                    href="https://cf-simple-s3-origin-cloudfrontfors3-515897288344.s3.amazonaws.com/Projects/Resume+v2.pdf"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    View Resume
+                  </a>
                 </div>
+              </div>
+              <div
+                class="d-flex justify-content-center mt-4 contactIconsWrapper"
+              >
+                <a
+                  class="contactIcon githubLink ml-2"
+                  href="https://github.com/cerniglj1"
+                  target="_blank"
+                  rel="noopener"
+                  ><i class="fab fa-github fa-2x rounded"></i> </a
+                ><a
+                  class="contactIcon linkedInLink ml-2"
+                  href="https://www.linkedin.com/in/jamescerniglia/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <i class="fab fa-linkedin fa-2x rounded"></i> </a
+                ><a
+                  class="contactIcon twitterLink ml-2"
+                  href="https://twitter.com/BIG_SQUEEZER"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <i class="fab fa-twitter-square fa-2x rounded"></i>
+                </a>
+              </div>
+
+              <div class="ftr">
+                <div id="icons"></div>
               </div>
             </div>
           </div>
@@ -27,176 +69,134 @@
       </div>
     </div>
 
-    <div class="container projectsContainer m-3" :v-if="projects">
+    <div class="container projectsContainer" :v-if="projects" id="myProjects">
       <h4>Projects</h4>
       <div class="d-flex justify-content-between">
+        <!-- style changes background darkness and pulls background image for amazon s3 storage -->
         <div
           class="card projectCard m-2"
           v-for="p in projects"
           :key="p.name"
           :style="{
             backgroundImage:
-              'linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3)),url(' +
+              'linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.9)),url(' +
               p.imgUrl +
               ')',
           }"
         >
           <!-- <img class="card-img-top" :src="p.imgUrl" :alt="p.imgUrl" /> -->
           <div class="card-body projectCardBody">
-            <div class="row">
-              <div class="col-10">
-                <p>{{ p.name }}</p>
-              </div>
-            </div>
-
+            <h5 class="card-title">{{ p.name }}</h5>
             <p class="card-text">{{ p.description }}</p>
-            <div class="d-flex justify-content-center">
+            <div class="d-flex projectCardButtonWrapper">
               <a
                 :href="p.codeUrl"
                 target="_blank"
+                class="btn projectCodeBtn"
                 :class="{ disabled: p.sourceBool == false }"
-                ><button
-                  class="codeBtn"
-                  :class="{ disabled: p.sourceBool == false }"
-                >
-                  View Code
-                  <i class="fab fa-github projectCodeIcon"></i></button
-              ></a>
+              >
+                View Code
+                <i class="fab fa-github projectCodeIcon"></i>
+              </a>
               <a
                 :href="p.liveUrl"
                 target="_blank"
+                class="btn projectDemoBtn"
                 :class="{ disabled: p.liveBool == false }"
               >
-                <button
-                  class="demoBtn ml-2"
-                  :class="{ disabled: p.liveBool == false }"
-                >
-                  View Demo
-                  <i class="fas fa-location-arrow projectCodeIcon"></i></button
+                View Demo
+                <i class="fas fa-location-arrow projectCodeIcon"></i
               ></a>
             </div>
-            <div class="mb-auto pt-2">
-              <table>
-                <tbody>
-                  <tr>
-                    <td class="d-flex justify-content-center">
-                      <div id="icons">
-                        <span
-                          class="badge pythonBadge mr-1"
-                          v-if="
-                            p.skillsUsed.includes('Python') ||
-                            p.skillsUsed.includes('python')
-                          "
-                        >
-                          <img
-                            class="codeIcon"
-                            src="../assets/icons/python.png"
-                          />
-                          Python
-                        </span>
-                        <span
-                          class="badge kivyBadge mr-1"
-                          v-if="
-                            p.skillsUsed.includes('Kivy') ||
-                            p.skillsUsed.includes('kivy')
-                          "
-                        >
-                          <img
-                            class="codeIcon"
-                            src="../assets/icons/kivy.png"
-                          />
-                          Kivy
-                        </span>
-                        <span
-                          class="badge mysqlBadge mr-1"
-                          v-if="
-                            p.skillsUsed.includes('MySQL') ||
-                            p.skillsUsed.includes('mysql')
-                          "
-                        >
-                          <img
-                            class="codeIcon"
-                            src="../assets/icons/mysql.png"
-                          />
-                          MySQL
-                        </span>
-                        <span
-                          class="badge nodeBadge mr-1"
-                          v-if="
-                            p.skillsUsed.includes('Node') ||
-                            p.skillsUsed.includes('node')
-                          "
-                        >
-                          <img
-                            class="codeIcon"
-                            src="../assets/icons/nodejs.png"
-                          />
-                          Node
-                        </span>
-                        <span
-                          class="badge vueBadge mr-1"
-                          v-if="
-                            p.skillsUsed.includes('Vue') ||
-                            p.skillsUsed.includes('vue')
-                          "
-                        >
-                          <img class="codeIcon" src="../assets/icons/vue.png" />
-                          Vue
-                        </span>
-                        <span
-                          class="badge mongoBadge mr-1"
-                          v-if="
-                            p.skillsUsed.includes('Mongo') ||
-                            p.skillsUsed.includes('mongo')
-                          "
-                        >
-                          <img
-                            class="codeIcon"
-                            src="../assets/icons/mongodb.png"
-                          />
-                          Mongo
-                        </span>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
 
-            <ul class="list-group" hidden>
-              <li
-                class="list-group-item d-flex justify-content-center list-group-skill p-2"
-                v-for="s in p.skillsUsed"
-                :key="s"
-              >
-                {{ s }}
-              </li>
-            </ul>
+            <hr class="hrStyle1" />
+            <div class="d-flex justify-content-center">
+              <div id="icons">
+                <span
+                  class="badge pythonBadge m-1"
+                  v-if="
+                    p.skillsUsed.includes('Python') ||
+                    p.skillsUsed.includes('python')
+                  "
+                >
+                  <img class="codeIcon" src="../assets/icons/python.png" />
+                  Python
+                </span>
+                <span
+                  class="badge kivyBadge m-1"
+                  v-if="
+                    p.skillsUsed.includes('Kivy') ||
+                    p.skillsUsed.includes('kivy')
+                  "
+                >
+                  <img class="codeIcon" src="../assets/icons/kivy.png" />
+                  Kivy
+                </span>
+                <span
+                  class="badge mysqlBadge m-1"
+                  v-if="
+                    p.skillsUsed.includes('MySQL') ||
+                    p.skillsUsed.includes('mysql')
+                  "
+                >
+                  <img class="codeIcon" src="../assets/icons/mysql.png" />
+                  MySQL
+                </span>
+                <span
+                  class="badge nodeBadge m-1"
+                  v-if="
+                    p.skillsUsed.includes('Node') ||
+                    p.skillsUsed.includes('node')
+                  "
+                >
+                  <img class="codeIcon" src="../assets/icons/nodejs.png" />
+                  Node
+                </span>
+                <span
+                  class="badge vueBadge m-1"
+                  v-if="
+                    p.skillsUsed.includes('Vue') || p.skillsUsed.includes('vue')
+                  "
+                >
+                  <img class="codeIcon" src="../assets/icons/vue.png" />
+                  Vue
+                </span>
+                <span
+                  class="badge mongoBadge m-1"
+                  v-if="
+                    p.skillsUsed.includes('Mongo') ||
+                    p.skillsUsed.includes('mongo')
+                  "
+                >
+                  <img class="codeIcon" src="../assets/icons/mongodb.png" />
+                  Mongo
+                </span>
+              </div>
+            </div>
           </div>
-          <button
-            type="button"
-            class="btn likesBtn"
-            data-toggle="button"
-            :id="p.id"
-            v-on:click="projectCartLike(this, p)"
-          >
-            <i class="fab fa-gratipay heartBtn"></i>
-            {{ p.likes }}
-          </button>
+          <div class="d-flex justify-content-between">
+            <button
+              class="btn projectLikeBtn"
+              :id="p.id"
+              v-on:click="projectCartLike(this, p)"
+            >
+              <i class="fab fa-gratipay heartBtn"></i>
+              {{ p.likes }}
+            </button>
+          </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col-4">
         <img src="../assets/test.png" style="max-height: 500px" />
       </div>
-
-      <div class="col mb-2 mt-2 contactMeSection">
+      <div class="col-6 contactMeSection">
         <div class="container pt-2">
           <h2>Email me! <i class="fas fa-envelope-open-text"></i></h2>
           <div>
             <div>
-              <form class="contact-form" @submit.prevent="sendEmail">
+              <form class="contact-form needs-validation" novalidate>
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="inputEmail4">Name</label>
@@ -205,7 +205,7 @@
                       class="form-control"
                       name="user_name"
                       id="inputName1"
-                      v-model="emailData.user_name"
+                      v-model="emailData.userName"
                       placeholder="Charles Darwin"
                     />
                   </div>
@@ -216,8 +216,8 @@
                       class="form-control"
                       id="inputEmail4"
                       name="user_email"
-                      v-model="emailData.user_email"
-                      placeholder="CharlieD@gmail.com"
+                      v-model="emailData.userEmail"
+                      placeholder="CharlieDar23@gmail.com"
                     />
                   </div>
                 </div>
@@ -229,7 +229,7 @@
                       id="message1"
                       rows="3"
                       name="message"
-                      v-model="emailData.message"
+                      v-model="emailData.userMessage"
                     ></textarea>
                   </div>
                 </div>
@@ -243,6 +243,8 @@
               </form>
             </div>
           </div>
+          <hr class="hrStyle1" />
+          <p>Or reach out to me directly at:</p>
           <div class="d-flex justify-content-center">
             <div class="emailSpan">
               <p>
@@ -255,26 +257,27 @@
           </div>
         </div>
       </div>
-      <div class="col"></div>
+      <div class="col-2"></div>
     </div>
-    <ftr class="ftr" />
+    <!-- <ftr class="ftr" /> -->
   </div>
 </template>
 
 <script>
 /* eslint-disable no-console */
-// import ApiMethods from "@/services/ApiMethods";
 import emailjs from "emailjs-com";
-import ftr from "./ftr.vue";
+// import ftr from "./ftr.vue";
 import ApiMethods from "../services/ApiMethods";
 export default {
-  name: "app",
+  name: "home",
 
-  components: { ftr },
+  components: {
+    /*ftr*/
+  },
   data() {
     return {
-      emailData: { user_email: "", user_name: "", message: "" },
-      
+      emailData: { userEmail: "", userName: "", userMessage: "" },
+
       pendingLikes: {},
       projects: [
         {
@@ -337,27 +340,21 @@ export default {
 
   mounted() {
     this.router = this.getProjects();
-    // console.log(this.projects);
-
-    // var colors = ["#0093ff", "#00ffe4", "#8300ff", "#0020ff"];
-    // var item = colors[Math.floor(Math.random() * colors.length)];
-    // document.getElementById("main").style.background = item;
-
-    /**
-     * Possible on exit functionality
-     */
-    // window.addEventListener("beforeunload", function(e) {
-    //   // Cancel the event
-    //   console.log("beforeunload",{e});
-    //   e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
-    //   // Chrome requires returnValue to be set
-    //   e.returnValue = "";
-    // });
   },
   methods: {
+    scrollToSection: function () {
+      window.scrollTo({
+        top: 600,
+        left: 100,
+        behavior: "smooth",
+      });
+    },
+
     sendEmail: function (e) {
-      console.log(this.emailData);
-      emailjs
+      var isValid = true;
+      console.log(this.emailData, e, emailjs, isValid);
+
+      /*emailjs
         .sendForm(
           "service_1",
           "template_1",
@@ -370,9 +367,9 @@ export default {
             this.$router.push({
               name: "thankyou",
               params: {
-                user_email: this.emailData.user_email,
-                user_name: this.emailData.user_name,
-                user_message: this.emailData.message,
+                user_email: this.emailData.userEmail,
+                user_name: this.emailData.userName,
+                user_message: this.emailData.userMessage,
               },
             });
           },
@@ -380,6 +377,7 @@ export default {
             console.log("FAILED...", error);
           }
         );
+    */
     },
     getProjects: async function () {
       var p = await ApiMethods.getProjects();
@@ -394,7 +392,7 @@ export default {
       var btn = document.getElementById(proj.id);
       proj.likes++;
       proj.timeout = setTimeout(function () {
-        console.log({ a: document.getElementById(proj.id) });
+        // console.log({ a: document.getElementById(proj.id) });
         ApiMethods.updateProjectLike(proj.id, proj.likes);
         document.getElementById(proj.id).blur();
       }, timeout);
@@ -419,36 +417,42 @@ export default {
 </script>
 
 <style scoped>
-/* Contact Me Sectio // Reach out to me */
-.contactMeSection {
-  border-radius: 0.5rem;
-  background-color: rgb(47, 73, 69);
-  color: white;
-}
-
 #home {
   color: black;
   /* font-family: Arial, Helvetica, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding-top: 2rem;
-
+  padding-bottom: 2rem;
   overflow-y: hidden;
   overflow: hidden;
 }
-.projectCardBody {
-  background: rgba(0, 0, 0, 0.5);
-  margin: 5%;
-}
-.projectCodeIcon {
-  color: white;
-  font-size: 15px;
-}
-.projectCodeIcon .disabled {
-  color: grey;
-  font-size: 11px;
+
+.contactIconsWrapper {
+  display: flex;
+
+  align-items: center;
+  list-style: none;
 }
 
+.contactIconsWrapper a {
+  color: white;
+  font-size: 1rem;
+  text-decoration: none;
+  background: rgb(2, 64, 75);
+  border-radius: 0.2rem;
+  min-width: 60px;
+  min-height: 60px;
+  display: flex;
+  margin: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  /* transition: 1s ease-in; */
+  box-shadow: 5px 5px #000000;
+}
+.contactIconsWrapper a:hover {
+  box-shadow: 8px 8px #000000;
+}
 .emailSpan {
   background-color: #030a66;
   border-radius: 0.5rem;
@@ -456,42 +460,37 @@ export default {
   padding-left: 2%;
   padding-right: 2%;
 }
-
-.likesBtn {
-  width: 25%;
-  background: #00eb1fa2;
-  background: #00eb1fa2;
+.projectLikeBtn {
+  border-radius: 0.2rem;
+  background: #eb5e00a2;
+  color: white;
   /* color: #013f09a2; */
   /* border-top-right-radius: 20px; */
   /* border-bottom-left-radius: 20px; */
   overflow: hidden;
 }
 
-.likesBtn:hover {
-  width: 25%;
-  background: #00eb1fa2;
-  background: #00eb1fa2;
-  color: #004b0a;
+.projectLikeBtn:hover {
+  background: #642901a2;
+  color: white;
   /* border-top-right-radius: 20px; */
   /* border-bottom-left-radius: 20px; */
   overflow: hidden;
 }
 
 /* Likes Button Properties */
-.likesBtn:active {
-  background-color: #3e8e41;
+.projectLikeBtn:active {
+  background-color: #642901a2;
   box-shadow: 0 5px #666;
 }
 
-.likesBtn:focus {
-  background: #013f09a2;
-  /* border: 1px solid #013f09a2; */
+.projectLikeBtn:focus {
+  background:#642901a2;
+
   font-size: 19px;
   color: white;
   outline: none;
   box-shadow: none;
-
-  /* animation-delay: -2s; */
 }
 
 @keyframes likeTransition {
@@ -511,13 +510,77 @@ export default {
 .projectCard:hover {
   box-shadow: 10px 10px 4px #000000;
 }
+.projectCardBody {
+  /* background: rgba(0, 0, 0, 0.5); */
+  margin: 5%;
+}
+.projectCodeIcon {
+  color: white;
+  font-size: 15px;
+}
+.hrStyle1 {
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+}
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 100%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.pythonBadge {
+  background: black;
+  color: white;
+}
+.kivyBadge {
+  background: black;
+  color: white;
+  text-align: center;
+}
+.mysqlBadge {
+  /* background: linear-gradient(#144e61 0%, #e57911 100%); */
+  background: #e57911;
+  color: white;
+}
+.vueBadge {
+  background: #1e6144;
+  color: white;
+}
+.nodeBadge {
+  background: #023b02;
+  color: white;
+}
+.mongoBadge {
+  background: #805d29;
+  color: white;
+}
 
+.codeIcon {
+  width: 15px;
+  height: 15px;
+}
+.projectCardButtonWrapper {
+  justify-content: space-evenly;
+}
 .projectCard {
   color: white;
-  background: rgb(2, 64, 75);
+  background: rgb(0, 24, 27);
   box-shadow: 5px 5px #000000;
   border: none;
-  max-width: 310px;
+  max-width: 33%;
   transition: 0.15s ease-in-out;
   background-size: auto;
   /* border-radius: 17px; */
@@ -536,39 +599,52 @@ export default {
   background: #790a8f;
   margin-bottom: 1px;
 }
-.codeBtn {
-  border-radius: 0.15rem;
+
+.projectCodeBtn {
+  padding: 0.5rem;
+  border-radius: 0.2rem;
   display: inline-block;
-  font-weight: 400;
   color: white;
   text-align: center;
   vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-color: green; /*rgb(15, 155, 96);*/
+
+  background-color: rgb(22, 75, 22); /*rgb(15, 155, 96);*/
   border: 1px solid transparent;
   font-size: 1rem;
 }
-.demoBtn {
-  border-radius: 0.15rem;
+.projectCodeBtn:hover {
+  background-color: rgb(8, 41, 8);
+}
+.projectDemoBtn {
+  padding: 0.5rem;
+  border-radius: 0.2rem;
   display: inline-block;
-  font-weight: 400;
   color: white;
   text-align: center;
   vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+
   background-color: rgb(2, 64, 75);
   border: 1px solid transparent;
   font-size: 1rem;
 }
+.projectDemoBtn:disabled {
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  display: inline-block;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  vertical-align: middle;
+
+  background-color: rgb(102, 170, 182);
+  border: 1px solid transparent;
+  font-size: 1rem;
+}
+.projectDemoBtn:hover {
+  background-color: rgb(2, 44, 51);
+}
 .projectBtn {
   display: inline-block;
-  font-weight: 400;
+
   color: white;
   text-align: center;
   vertical-align: middle;
@@ -585,18 +661,15 @@ export default {
   background-position: right top;
   background: green;
   border: none;
-  border-radius: 2px;
+  border-radius: 0.3rem;
   /* border: 2px solid white; */
   color: white;
-
-  /* 
-   */
   display: inline-block;
   font-weight: 400;
   color: white;
   text-align: center;
   vertical-align: middle;
-  user-select: none;
+
   box-shadow: 5px 5px #000000;
   font-size: 1rem;
   line-height: 1.5;
@@ -606,6 +679,15 @@ export default {
   box-shadow: 10px 10px 4px #000000;
 }
 
+/* Contact Me Section Start // Reach out to me */
+.contactMeSection {
+  margin-top: 3rem;
+  padding: 0.5rem;
+  border-radius: 0.15rem;
+  box-shadow: 5px 5px #000000;
+  background-color: rgb(47, 73, 69);
+  color: white;
+}
 .emailLink,
 .emailSpan {
   color: white;
@@ -624,6 +706,8 @@ export default {
   padding-top: 1rem;
   text-align: center;
 }
+/* Contact Me Section End // Reach out to me */
+
 router-link {
   color: white;
 }
