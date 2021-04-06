@@ -1,0 +1,62 @@
+{
+    "name": "me",
+    "description": "Website to show who I am and what I've done",
+    "version": "0.2.1",
+    "private": false,
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "lint": "vue-cli-service lint",
+        "deploy": "node scripts/gh-pages-deploy.js"
+    },
+    "dependencies": {
+        "@babel/compat-data": "^7.9.0",
+        "axios": "^0.19.2",
+        "body-parser": "^1.19.0",
+        "bootstrap": "^4.4.1",
+        "bootstrap-vue": "^2.6.1",
+        "canvasjs": "^1.8.3",
+        "chart.js": "^2.9.3",
+        "core-js": "^3.4.4",
+        "emailjs-com": "^2.6.4",
+        "joi": "^14.3.1",
+        "moment": "^2.24.0",
+        "p5": "^1.0.0",
+        "urllib": "^2.34.2",
+        "vue": "^2.6.11",
+        "vue-devtools": "^5.1.3",
+        "vue-router": "^3.1.6",
+        "vuetify": "^2.2.17"
+    },
+    "devDependencies": {
+        "execa": "latest",
+        "@vue/cli-plugin-babel": "^4.2.3",
+        "@vue/cli-plugin-eslint": "^4.2.3",
+        "@vue/cli-service": "^4.2.3",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^5.16.0",
+        "eslint-plugin-vue": "^5.0.0",
+        "vue-template-compiler": "^2.6.10"
+    },
+    "peerDependencies": {
+        "@babel/core": "^7.0.0"
+    },
+    "eslintConfig": {
+        "root": true,
+        "env": {
+            "node": true
+        },
+        "extends": [
+            "plugin:vue/essential",
+            "eslint:recommended"
+        ],
+        "rules": {},
+        "parserOptions": {
+            "parser": "babel-eslint"
+        }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions"
+    ]
+}
