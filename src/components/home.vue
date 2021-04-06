@@ -7,21 +7,13 @@
           <div class="row">
             <div class="col">
               <h2 id="title">James Cerniglia</h2>
-<<<<<<< HEAD
-              <h4 id="position">Software & Web Developer</h4>
-=======
               <h4 id="position">Software Engineer</h4>
->>>>>>> gh-pages
               <div class="landingButtons">
                 <div class="d-flex justify-content-center">
                   <a
                     class="btn mr-4 profileBtn text-white"
                     type="button"
-<<<<<<< HEAD
-                    @click="scrollToSection()"
-=======
                     @click="scrollToSection('projects')"
->>>>>>> gh-pages
                     id="projectBtn"
                   >
                     View Projects
@@ -30,11 +22,7 @@
                     class="btn profileBtn"
                     id="resumeBtn"
                     type="button"
-<<<<<<< HEAD
-                    href="https://cf-simple-s3-origin-cloudfrontfors3-515897288344.s3.amazonaws.com/Projects/Resume+v2.pdf"
-=======
                     href="../assets/JamesCerniglia.pdf"
->>>>>>> gh-pages
                     target="_blank"
                     rel="noopener"
                   >
@@ -91,21 +79,12 @@
           :key="p.name"
           :style="{
             backgroundImage:
-<<<<<<< HEAD
-              'linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.9)),url(' +
-              p.imgUrl +
-              ')',
-          }"
-        >
-          <!-- <img class="card-img-top" :src="p.imgUrl" :alt="p.imgUrl" /> -->
-=======
               'linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.7)),url(' +
               getImgUrl(p.imgUrl) +
               ')',
           }"
         >
           <!-- <img class="card-img-top" :src="`${p.imgUrl}`" :alt="p.imgUrl" /> -->
->>>>>>> gh-pages
           <div class="card-body projectCardBody">
             <h5 class="card-title">{{ p.name }}</h5>
             <p class="card-text">{{ p.description }}</p>
@@ -304,18 +283,10 @@ export default {
         {
           _id: "5f0e4ef4a1b18535a0bbc253",
           id: "os.gg",
-<<<<<<< HEAD
-          name: "Old School.GG",
-          developers: ["James Cerniglia"],
-          skillsUsed: ["Node", "Vue", "Mongo"],
-          imgUrl:
-            "https://cf-simple-s3-origin-cloudfrontfors3-515897288344.s3.amazonaws.com/Projects/osgg2.png",
-=======
           name: "OS Helper",
           developers: ["James Cerniglia"],
           skillsUsed: ["Node", "Vue", "Mongo"],
           imgUrl: "osgg2.png",
->>>>>>> gh-pages
           codeUrl: "https://github.com/cerniglj1/os.gg",
           liveUrl: "https://osgg.netlify.app/",
           likes: 174,
@@ -329,18 +300,10 @@ export default {
         {
           _id: "5f0e4f192be6b223582558d2",
           id: "cornerstone",
-<<<<<<< HEAD
-          name: "Cornerstone Work Tracker",
-          developers: ["James Cerniglia", "Stefan", "Amber"],
-          skillsUsed: ["Python", "Kivy", "MySQL"],
-          imgUrl:
-            "https://cf-simple-s3-origin-cloudfrontfors3-515897288344.s3.amazonaws.com/Projects/cornerstone.png",
-=======
           name: "Cornerstone Management Software",
           developers: ["James Cerniglia", "Stefan", "Amber"],
           skillsUsed: ["Python", "Kivy", "MySQL"],
           imgUrl: "cornerstone.png",
->>>>>>> gh-pages
           liveBool: false,
           likes: 35,
           codeUrl: "https://github.com/Stefunga/CSINC",
@@ -356,11 +319,7 @@ export default {
           id: "osrsquesttool",
           name: "Osrs Quest Tool",
           developers: ["James Cerniglia"],
-<<<<<<< HEAD
-          skillsUsed: ["Javascript", "Node", ""],
-=======
           skillsUsed: ["Javascript", "Node"],
->>>>>>> gh-pages
           clicked: false,
           liveBool: true,
           description:
@@ -369,12 +328,7 @@ export default {
           codeUrl: "https://github.com/cerniglj1/OSRSQuestTool",
           liveUrl: "https://www.npmjs.com/package/osrs-quest-tool",
           longDescription: "",
-<<<<<<< HEAD
-          imgUrl:
-            "https://cf-simple-s3-origin-cloudfrontfors3-515897288344.s3.amazonaws.com/Projects/hydra2.png",
-=======
           imgUrl: "hydra2.png",
->>>>>>> gh-pages
           sourceBool: true,
         },
       ],
@@ -382,17 +336,6 @@ export default {
   },
 
   mounted() {
-<<<<<<< HEAD
-    this.router = this.getProjects();
-  },
-  methods: {
-    scrollToSection: function () {
-      window.scrollTo({
-        top: 600,
-        left: 100,
-        behavior: "smooth",
-      });
-=======
     this.getProjects();
   },
   methods: {
@@ -404,7 +347,6 @@ export default {
           behavior: "smooth",
         });
       }
->>>>>>> gh-pages
     },
 
     sendEmail: function (e) {
@@ -440,15 +382,10 @@ export default {
       var p = await ApiMethods.getProjects();
       this.projects = p.data.result;
     },
-<<<<<<< HEAD
-    getImg: function (x) {
-      return x.toString();
-=======
     getImgUrl: function (x) {
       var buildStr = "../assets/projects/" + x.toString();
       console.log(buildStr);
       return buildStr;
->>>>>>> gh-pages
     },
     projectCartLike: function (b, proj) {
       var timeout = 2000;
@@ -549,11 +486,7 @@ export default {
 }
 
 .projectLikeBtn:focus {
-<<<<<<< HEAD
-  background:#642901a2;
-=======
   background: #642901a2;
->>>>>>> gh-pages
 
   font-size: 19px;
   color: white;
@@ -578,10 +511,7 @@ export default {
 .projectCard:hover {
   box-shadow: 10px 10px 4px #000000;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> gh-pages
 .projectCardBody {
   /* background: rgba(0, 0, 0, 0.5); */
   margin: 5%;
