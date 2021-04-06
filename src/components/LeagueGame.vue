@@ -14,6 +14,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col m-1" id="blueSide">
+<<<<<<< HEAD
               <div class="row m-1" v-for="player in matchData.blueTeam" :key="player.participantId">
                 <button type="button" class="btn playerbtn">
                   <div class="row">
@@ -25,12 +26,37 @@
                     </div>
                     <div class="col">
                       <p>{{player.stats.kills}}/{{player.stats.deaths}}/{{player.stats.assists}}</p>
+=======
+              <div
+                class="row m-1"
+                v-for="player in matchData.blueTeam"
+                :key="player.participantId"
+              >
+                <button type="button" class="btn playerbtn">
+                  <div class="row">
+                    <div class="col">
+                      <img
+                        class="championIcon"
+                        :src="getChampionPicture(player.championId)"
+                      />
+                    </div>
+                    <div class="col">
+                      <p>{{ player.profile.summonerName }}</p>
+                    </div>
+                    <div class="col">
+                      <p>
+                        {{ player.stats.kills }}/{{ player.stats.deaths }}/{{
+                          player.stats.assists
+                        }}
+                      </p>
+>>>>>>> gh-pages
                     </div>
                   </div>
                 </button>
               </div>
             </div>
             <div class="col m-1" id="redSide">
+<<<<<<< HEAD
               <div class="row m-1" v-for="player in matchData.redTeam" :key="player.participantId">
                 <button type="button" class="btn playerbtn">
                   <div class="row">
@@ -42,6 +68,30 @@
                     </div>
                     <div class="col">
                       <img class="championIcon" :src="getChampionPicture(player.championId)" />
+=======
+              <div
+                class="row m-1"
+                v-for="player in matchData.redTeam"
+                :key="player.participantId"
+              >
+                <button type="button" class="btn playerbtn">
+                  <div class="row">
+                    <div class="col">
+                      <p>
+                        {{ player.stats.kills }}/{{ player.stats.deaths }}/{{
+                          player.stats.assists
+                        }}
+                      </p>
+                    </div>
+                    <div class="col">
+                      <p>{{ player.profile.summonerName }}</p>
+                    </div>
+                    <div class="col">
+                      <img
+                        class="championIcon"
+                        :src="getChampionPicture(player.championId)"
+                      />
+>>>>>>> gh-pages
                     </div>
                   </div>
                 </button>
@@ -50,16 +100,28 @@
           </div>
         </div>
 
+<<<<<<< HEAD
         <p class="card-text">{{getTimeSince(matchData.gameCreation)}}</p>
+=======
+        <p class="card-text">{{ getTimeSince(matchData.gameCreation) }}</p>
+>>>>>>> gh-pages
       </div>
     </div>
 
     <canvas id="myChart" width="200" height="200"></canvas>
+<<<<<<< HEAD
     <p v-if="currentPlayerData !=null">{{currentPlayerData}}</p>
 
     <p>{{gameId}}</p>
     <p>{{matchData}}</p>
     <div v-if="gameId.length <4">
+=======
+    <p v-if="currentPlayerData != null">{{ currentPlayerData }}</p>
+
+    <p>{{ gameId }}</p>
+    <p>{{ matchData }}</p>
+    <div v-if="gameId.length < 4">
+>>>>>>> gh-pages
       <h4>BAD GAME ID</h4>
     </div>
   </div>
@@ -73,7 +135,11 @@ export default {
   data() {
     return {
       matchData: null,
+<<<<<<< HEAD
       currentPlayerData: null
+=======
+      currentPlayerData: null,
+>>>>>>> gh-pages
     };
   },
   props: ["gameId"],
@@ -83,14 +149,22 @@ export default {
 
     if (this.gameId != "") {
       document.title = "Match: " + this.gameId;
+<<<<<<< HEAD
       ApiMethods.getMatchDetails(this.gameId).then(res => {
+=======
+      ApiMethods.getMatchDetails(this.gameId).then((res) => {
+>>>>>>> gh-pages
         this.matchData = res;
         this.currentPlayerData = this.matchData.blueTeam[0];
       });
     }
   },
   methods: {
+<<<<<<< HEAD
     getChampionPicture: function(id) {
+=======
+    getChampionPicture: function (id) {
+>>>>>>> gh-pages
       var champ = "";
       // eslint-disable-next-line no-console
 
@@ -537,7 +611,11 @@ export default {
         "_0.jpg"
       );
     },
+<<<<<<< HEAD
     getChampionIcon: function(id) {
+=======
+    getChampionIcon: function (id) {
+>>>>>>> gh-pages
       var champ = "";
       // eslint-disable-next-line no-console
       // console.log(id);
@@ -963,7 +1041,11 @@ export default {
         "_0.jpg"
       );
     },
+<<<<<<< HEAD
     getTimeSince: function(epochTimeOfMatch) {
+=======
+    getTimeSince: function (epochTimeOfMatch) {
+>>>>>>> gh-pages
       epochTimeOfMatch = epochTimeOfMatch / 1000;
       var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
       d.setUTCSeconds(epochTimeOfMatch);
@@ -976,7 +1058,11 @@ export default {
       // return now;
       return d;
     },
+<<<<<<< HEAD
     getCurrentPlayerData: function(obj) {
+=======
+    getCurrentPlayerData: function (obj) {
+>>>>>>> gh-pages
       var damageLabels = [""];
       var damageNumbers = [1];
 
@@ -995,7 +1081,11 @@ export default {
                 "rgba(255, 206, 86, 0.2)",
                 "rgba(75, 192, 192, 0.2)",
                 "rgba(153, 102, 255, 0.2)",
+<<<<<<< HEAD
                 "rgba(255, 159, 64, 0.2)"
+=======
+                "rgba(255, 159, 64, 0.2)",
+>>>>>>> gh-pages
               ],
               borderColor: [
                 "rgba(255, 99, 132, 1)",
@@ -1003,6 +1093,7 @@ export default {
                 "rgba(255, 206, 86, 1)",
                 "rgba(75, 192, 192, 1)",
                 "rgba(153, 102, 255, 1)",
+<<<<<<< HEAD
                 "rgba(255, 159, 64, 1)"
               ],
               borderWidth: 1
@@ -1010,13 +1101,27 @@ export default {
           ]
         },
         options: {}
+=======
+                "rgba(255, 159, 64, 1)",
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {},
+>>>>>>> gh-pages
       });
       if (myChart != null) {
         console.log(1);
       }
       return obj;
+<<<<<<< HEAD
     }
   }
+=======
+    },
+  },
+>>>>>>> gh-pages
 };
 </script>
 

@@ -2,7 +2,7 @@
     "name": "jamesmcerniglia",
     "description": "Website to show who I am and what I've done",
     "version": "0.2.0",
-    "private": true,
+    "private": false,
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
@@ -20,7 +20,6 @@
         "emailjs-com": "^2.6.4",
         "joi": "^14.3.1",
         "moment": "^2.24.0",
-        "osrs-quest-tool": "^0.2.0",
         "p5": "^1.0.0",
         "urllib": "^2.34.2",
         "vue": "^2.6.11",
@@ -29,6 +28,7 @@
         "vuetify": "^2.2.17"
     },
     "devDependencies": {
+        "execa": "latest",
         "@vue/cli-plugin-babel": "^4.2.3",
         "@vue/cli-plugin-eslint": "^4.2.3",
         "@vue/cli-service": "^4.2.3",

@@ -10,7 +10,11 @@
           </div>
           <div class="col-8">
             <p class="bio">
+<<<<<<< HEAD
               Computer Science student, web developer, blah blah blah.
+=======
+              Computer Science student, web developer, :).
+>>>>>>> gh-pages
               Thanks for visiting my website.
             </p>
           </div>
