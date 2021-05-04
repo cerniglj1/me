@@ -2,15 +2,9 @@
 node_modules
 express/static/Cerniglia/
 express/Osrs/
-<<<<<<< HEAD
 
-=======
-./dist/*
-/dist/
-dist/
-/dist/*
-dist/*
->>>>>>> gh-pages
+build/
+
 # local env files
 .env.local
 .env.*.local

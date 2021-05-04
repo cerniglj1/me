@@ -10,17 +10,16 @@
           </div>
           <div class="col-8">
             <p class="bio">
-<<<<<<< HEAD
-              Computer Science student, web developer, blah blah blah.
-=======
-              Computer Science student, web developer, :).
->>>>>>> gh-pages
-              Thanks for visiting my website.
+              I am a software engineer currently living in Merrick, NY. I have
+              experience building web apps using Angular, Vue, Express, Python
+              and JavaScript. I am passionate to build things that people will
+              use. I am passionate about creating projects and writing code that
+              I can be proud of. I am always searching for ways to learn and
+              improve my code.
             </p>
           </div>
         </div>
       </div>
-     
     </div>
   </div>
 </template>

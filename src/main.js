@@ -7,6 +7,7 @@ import home from './components/home.vue';
 import Snake from './components/Snake.vue';
 // import projects from './components/projects.vue';
 import thankyou from './components/thankyou.vue';
+import test from './components/test.vue';
 // Vue.use(BootstrapVue)
 
 Vue.use(VueRouter)
@@ -20,70 +21,79 @@ Vue.config.productionTip = false
 // `Vue.extend()`, or just a component options object.
 // We'll talk about nested routes later.
 const routes = [{
-    path: '/',
-    name: "home",
-    component: home,
-    meta: {
-        title: 'home'
-    }
-},
-{
-    path: '/Home',
-    name: "Home2",
-    component: home,
-    meta: {
-        title: 'Home'
-    }
-},
-
-// {
-//     path: '/AboutMe',
-//     name: "AboutMe",
-//     component: about,
-//     meta: {
-//         title: 'About Me'
-//     }
-// },
-
-{
-    path: '/Snake',
-    name: "Snake",
-    component: Snake,
-    meta: {
-        title: 'Snake'
-    }
-},
-// {
-//     path: '/Projects',
-//     name: "Projects",
-//     component: projects,
-//     meta: {
-//         title: 'Projects'
-//     }
-// },
-
-{
-    path: '/thankyou',
-    name: "thankyou",
-    component: thankyou,
-    params: {
-        user_name: '',
-        user_email: '',
-        user_message: ''
+        path: '/',
+        name: "home",
+        component: home,
+        meta: {
+            title: 'James Cerniglia | Software Engineer'
+        }
     },
-    meta: {
-        title: 'Thank You'
-    }
-},
+    {
+        path: '/Home',
+        name: "Home2",
+        component: home,
+        meta: {
+            title: 'James Cerniglia | Software Engineer'
+        }
+    },
 
-{
-    path: '/*',
-    name: "Error404",
-    component: missing,
-    meta: {
-        title: 'Error 404'
+    // {
+    //     path: '/AboutMe',
+    //     name: "AboutMe",
+    //     component: about,
+    //     meta: {
+    //         title: 'About Me'
+    //     }
+    // },
+
+    {
+        path: '/Snake',
+        name: "Snake",
+        component: Snake,
+        meta: {
+            title: 'Snake'
+        }
+    },
+
+    {
+        path: '/test',
+        name: "test",
+        component: test,
+        meta: {
+            title: 'Test'
+        }
+    },
+    // {
+    //     path: '/Projects',
+    //     name: "Projects",
+    //     component: projects,
+    //     meta: {
+    //         title: 'Projects'
+    //     }
+    // },
+
+    {
+        path: '/thankyou',
+        name: "thankyou",
+        component: thankyou,
+        params: {
+            user_name: '',
+            user_email: '',
+            user_message: ''
+        },
+        meta: {
+            title: 'Thank You'
+        }
+    },
+
+    {
+        path: '/*',
+        name: "Error404",
+        component: missing,
+        meta: {
+            title: 'Error 404'
+        }
     }
-}
 ]
 
 // 3. Create the router instance and pass the `routes` option
@@ -96,12 +106,12 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    document.title = to.meta.title
-    next()
-})
-// 4. Create and mount the root instance.
-// Make sure to inject the router with the router option to make the
-// whole app router-aware.
+        document.title = to.meta.title
+        next()
+    })
+    // 4. Create and mount the root instance.
+    // Make sure to inject the router with the router option to make the
+    // whole app router-aware.
 new Vue({
     router: router,
     render: h => h(App),

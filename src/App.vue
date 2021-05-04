@@ -24,16 +24,13 @@ export default {
 
 #app {
   font-family: "Roboto", sans-serif;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(223, 255, 251);
-
 }
 .ftr {
   display: flex;
   justify-content: flex-start;
- 
 }
 html,
 body {

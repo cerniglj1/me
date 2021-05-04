@@ -1,7 +1,6 @@
 runtime: nodejs10
 handlers:
   # Serve all static files with urls ending with a file extension
-<<<<<<< HEAD
 - url: /(.*\..+)$ 
   static_files: dist/\1
   upload: dist/(.*\..+)$
@@ -9,12 +8,3 @@ handlers:
 - url: /.*
   static_files: dist/index.html
   upload: dist/index.html
-=======
-  - url: /(.*\..+)$
-    static_files: dist/\1
-    upload: dist/(.*\..+)$
-    # catch all handler to index.html
-  - url: /.*
-    static_files: dist/index.html
-    upload: dist/index.html
->>>>>>> gh-pages

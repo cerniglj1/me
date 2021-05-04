@@ -1,6 +1,6 @@
 <template>
   <div id="navb">
-    <nav class="navbar navbar-expand-lg navbar-center stick-navbar">
+    <nav class="navbar navbar-expand-lg stick-navbar">
       <button
         class="navbar-toggler"
         type="button"
@@ -14,7 +14,7 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav navbar-center">
+        <ul class="navbar-nav">
           <router-link
             id="RL"
             class-active="active"
@@ -23,10 +23,12 @@
             exact
           >
             <li>
-              <a class="nav-link"> <i class="fas fa-home"></i> Home </a>
+              <a class="nav-link">
+                <i class="fas fa-home"></i> James Cerniglia
+              </a>
             </li>
           </router-link>
-          <router-link
+          <!-- <router-link
             id="RL"
             class-active="active"
             class="nav-link disabled"
@@ -51,7 +53,7 @@
                 <i class="far fa-address-card"></i> About Me
               </a>
             </li>
-          </router-link>
+          </router-link> -->
 
           <!-- <li class="nav-item dropdown">
             <a
@@ -71,9 +73,6 @@
             </div>
           </li>-->
         </ul>
-      </div>
-      <div class="text-white">
-        <i class="fas fa-wrench"></i> Work in Progress
       </div>
     </nav>
     <div class id="navBottom"></div>
@@ -95,10 +94,6 @@ export default {
   color: white;
   font-size: 2rem;
 }
-.navbar .navbar-collapse {
-  text-align: center;
-}
-
 .nav-link {
   font-size: 16px;
   color: white;

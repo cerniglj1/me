@@ -3,10 +3,14 @@
   <div id="home">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-6">
+        <div class="col-4">
+          <img src="../assets/test.png" style="max-height: 500px" />
+          <!-- <img src="../assets/t1.jpg" style="max-height: 500px" /> -->
+        </div>
+        <div class="col-8">
           <div class="row">
             <div class="col">
-              <h2 id="title">James Cerniglia</h2>
+              <h2 id="title">Hi, my name is James Cerniglia</h2>
               <h4 id="position">Software Engineer</h4>
               <div class="landingButtons">
                 <div class="d-flex justify-content-center">
@@ -22,7 +26,7 @@
                     class="btn profileBtn"
                     id="resumeBtn"
                     type="button"
-                    href="../assets/JamesCerniglia.pdf"
+                    href="../JamesCernigliaResume.pdf"
                     target="_blank"
                     rel="noopener"
                   >
@@ -61,10 +65,6 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-6">
-          <img src="../assets/test.png" style="max-height: 500px" />
-          <!-- <img src="../assets/t1.jpg" style="max-height: 500px" /> -->
         </div>
       </div>
     </div>
@@ -268,6 +268,7 @@
 import emailjs from "emailjs-com";
 // import ftr from "./ftr.vue";
 import ApiMethods from "../services/ApiMethods";
+
 export default {
   name: "home",
 
@@ -277,7 +278,12 @@ export default {
   data() {
     return {
       emailData: { userEmail: "", userName: "", userMessage: "" },
-
+      camera: null,
+      scene: null,
+      renderer: null,
+      geometry: null,
+      material: null,
+      mesh: null,
       pendingLikes: {},
       projects: [
         {
@@ -337,8 +343,10 @@ export default {
 
   mounted() {
     this.getProjects();
+
   },
   methods: {
+    
     scrollToSection: function (section) {
       if (section == "projects") {
         window.scrollTo({
