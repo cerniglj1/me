@@ -2,10 +2,7 @@
   <div id="thankyou">
     <div class="container pt-2">
       <div class="d-flex justify-content-center" v-if="user_name">
-        <h3>
-          Thank you for reaching out, {{ user_name }}!
-          
-        </h3>
+        <h3>Thank you for reaching out, {{ user_name }}!</h3>
       </div>
       <div class="d-flex justify-content-center" v-if="user_name">
         <h3>I will get back to you as soon as possible.</h3>

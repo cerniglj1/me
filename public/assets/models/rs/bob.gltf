@@ -1,0 +1,740 @@
+{
+  "accessors": [
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 2778,
+      "max": [0.40508988499641418, 0.088117435574531555, 1.8312563896179199],
+      "min": [-0.40508988499641418, -0.12791444361209869, 0.016490638256072998],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 33336,
+      "componentType": 5126,
+      "count": 2778,
+      "max": [0.99792253971099854, 0.99920469522476196, 0.95434021949768066],
+      "min": [-0.99792253971099854, -0.99961936473846436, -0.99542665481567383],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 4170,
+      "max": [2777],
+      "min": [0],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 66672,
+      "componentType": 5126,
+      "count": 212,
+      "max": [0.046017412096261978, -0.086319327354431152, 1.7175512313842773],
+      "min": [-0.046017412096261978, -0.10588191449642181, 1.7033790349960327],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 69216,
+      "componentType": 5126,
+      "count": 212,
+      "max": [0.81808918714523315, 0.97915124893188477, 0.99550837278366089],
+      "min": [-0.81808865070343018, -0.97915124893188477, -0.9968293309211731],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 16680,
+      "componentType": 5125,
+      "count": 312,
+      "max": [211],
+      "min": [0],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 71760,
+      "componentType": 5126,
+      "count": 64,
+      "max": [0.053643669933080673, -0.074014827609062195, 1.7363158464431763],
+      "min": [-0.053643669933080673, -0.10521477460861206, 1.723873496055603],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 72528,
+      "componentType": 5126,
+      "count": 64,
+      "max": [0.78297489881515503, -0.61352980136871338, 0.20818658173084259],
+      "min": [-0.78298485279083252, -0.96159559488296509, -0.22883976995944977],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 17928,
+      "componentType": 5125,
+      "count": 96,
+      "max": [63],
+      "min": [0],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 73296,
+      "componentType": 5126,
+      "count": 800,
+      "max": [0.30375769734382629, 0.13104292750358582, 1.5633103847503662],
+      "min": [-0.30375769734382629, -0.12049740552902222, 1.0065569877624512],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 82896,
+      "componentType": 5126,
+      "count": 800,
+      "max": [0.96262651681900024, 0.98543047904968262, 0.93597471714019775],
+      "min": [-0.96262651681900024, -0.99899411201477051, -0.45488715171813965],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 18312,
+      "componentType": 5125,
+      "count": 1200,
+      "max": [799],
+      "min": [0],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 92496,
+      "componentType": 5126,
+      "count": 88,
+      "max": [0.15366755425930023, 0.11474764347076416, 1.0279585123062134],
+      "min": [-0.15366755425930023, -0.10912410169839859, 0.99262785911560059],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 93552,
+      "componentType": 5126,
+      "count": 88,
+      "max": [0.96292686462402344, 0.94648504257202148, 0.36680042743682861],
+      "min": [-0.96292662620544434, -0.99899554252624512, 0.01004460733383894],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 23112,
+      "componentType": 5125,
+      "count": 132,
+      "max": [87],
+      "min": [0],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 94608,
+      "componentType": 5126,
+      "count": 360,
+      "max": [0.3735390305519104, 0.076410740613937378, 1.3114988803863525],
+      "min": [-0.3735390305519104, -0.059864573180675507, 0.98724305629730225],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 98928,
+      "componentType": 5126,
+      "count": 360,
+      "max": [0.99679911136627197, 0.95664012432098389, 0.45322948694229126],
+      "min": [-0.99679911136627197, -0.95901817083358765, -0.44923299551010132],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 23640,
+      "componentType": 5125,
+      "count": 540,
+      "max": [359],
+      "min": [0],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 103248,
+      "componentType": 5126,
+      "count": 90,
+      "max": [0.37624889612197876, -0.00084152678027749062, 1.0138088464736938],
+      "min": [-0.37624889612197876, -0.081248275935649872, 0.94026452302932739],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 104328,
+      "componentType": 5126,
+      "count": 90,
+      "max": [0.99306142330169678, 0.92785155773162842, 0.33286303281784058],
+      "min": [-0.993061363697052, -0.92390060424804688, -0.93243664503097534],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 25800,
+      "componentType": 5125,
+      "count": 150,
+      "max": [89],
+      "min": [0],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 105408,
+      "componentType": 5126,
+      "count": 368,
+      "max": [0.20417538285255432, 0.088768891990184784, 0.12910066545009613],
+      "min": [
+        -0.20417538285255432,
+        -0.12134736776351929,
+        0.0076574459671974182
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 109824,
+      "componentType": 5126,
+      "count": 368,
+      "max": [0.9976535439491272, 0.98414301872253418, 0.99933719635009766],
+      "min": [-0.99765360355377197, -0.99568808078765869, -0.99850946664810181],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 26400,
+      "componentType": 5125,
+      "count": 564,
+      "max": [367],
+      "min": [0],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 114240,
+      "componentType": 5126,
+      "count": 1048,
+      "max": [0.19463138282299042, 0.1189739853143692, 1.0253674983978271],
+      "min": [-0.19463138282299042, -0.099791735410690308, 0.11534092575311661],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 126816,
+      "componentType": 5126,
+      "count": 1048,
+      "max": [0.98159456253051758, 0.96350431442260742, 0.94175642728805542],
+      "min": [-0.98159462213516235, -0.99777543544769287, -0.69976657629013062],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 28656,
+      "componentType": 5125,
+      "count": 1584,
+      "max": [1047],
+      "min": [0],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 139392,
+      "componentType": 5126,
+      "count": 396,
+      "max": [0.052178915590047836, -0.069092333316802979, 1.6668939590454102],
+      "min": [-0.052179038524627686, -0.11307302862405777, 1.5827347040176392],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 144144,
+      "componentType": 5126,
+      "count": 396,
+      "max": [0.85507702827453613, 0.99909931421279907, 0.98263442516326904],
+      "min": [-0.85507732629776001, -0.9692797064781189, -0.9859282374382019],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 34992,
+      "componentType": 5125,
+      "count": 588,
+      "max": [395],
+      "min": [0],
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "tikodev (https://sketchfab.com/tikoavp)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/bob-from-runescape-90e034206d524c4cbbf8a56003a0ec2c",
+      "title": "Bob from Runescape"
+    },
+    "generator": "Sketchfab-10.28.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 37344,
+      "byteOffset": 0,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 148896,
+      "byteOffset": 37344,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 186240,
+      "uri": "scene.bin"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "emissiveFactor": [0, 0, 0],
+      "name": "Skin",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [0.94039099999999998, 0.630857, 0.448681, 1],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.84716233404400954
+      }
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [0, 0, 0],
+      "name": "Eyes",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [0.0420262, 0.0420262, 0.0420262, 1],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.99060265599639985
+      }
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [0, 0, 0],
+      "name": "Eyebrows",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.069976700000000003,
+          0.033992399999999999,
+          0.022223300000000001,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.99087842284526351
+      }
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [0, 0, 0],
+      "name": "Bob_Shirt",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.62665700000000002,
+          0.52898599999999996,
+          0.17825199999999999,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.88273436561924701
+      }
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [0, 0, 0],
+      "name": "Hair",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.087137300000000001,
+          0.057592900000000002,
+          0.0304754,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.98615512664126825
+      }
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [0, 0, 0],
+      "name": "Silver",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.48689199999999999,
+          0.48689199999999999,
+          0.48689199999999999,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.89112763902991721
+      }
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [0, 0, 0],
+      "name": "Shoe",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.12371,
+          0.042705699999999999,
+          0.021594599999999999,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.98694069380992122
+      }
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [0, 0, 0],
+      "name": "Bob_pants",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.032715300000000003,
+          0.19598599999999999,
+          0.020904300000000001,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.96676448302654205
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Body_Skin_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0
+          },
+          "indices": 2,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Body_Eyes_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 4,
+            "POSITION": 3
+          },
+          "indices": 5,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Body_Eyebrows_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 7,
+            "POSITION": 6
+          },
+          "indices": 8,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Short Sleeve Tshirt.001_Bob Shirt_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 10,
+            "POSITION": 9
+          },
+          "indices": 11,
+          "material": 3,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Short Sleeve Tshirt.001_Hair_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 13,
+            "POSITION": 12
+          },
+          "indices": 14,
+          "material": 4,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Short Sleeve Tshirt.001_Skin_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 16,
+            "POSITION": 15
+          },
+          "indices": 17,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Short Sleeve Tshirt.001_Silver_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 19,
+            "POSITION": 18
+          },
+          "indices": 20,
+          "material": 5,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Shoes.001_Shoe_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 22,
+            "POSITION": 21
+          },
+          "indices": 23,
+          "material": 6,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Trousers.001_Bob pants_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 25,
+            "POSITION": 24
+          },
+          "indices": 26,
+          "material": 7,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Beard.002_Hair_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 28,
+            "POSITION": 27
+          },
+          "indices": 29,
+          "material": 4,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [1],
+      "name": "RootNode (gltf orientation matrix)",
+      "rotation": [-0.70710678118654746, -0, -0, 0.70710678118654757]
+    },
+    {
+      "children": [2],
+      "name": "RootNode (model correction matrix)"
+    },
+    {
+      "children": [3],
+      "matrix": [1, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1],
+      "name": "3d894d1e0ab14d6394cfd3b96cc0c6b3.fbx"
+    },
+    {
+      "children": [4, 8, 13, 15, 17],
+      "name": "RootNode"
+    },
+    {
+      "children": [5, 6, 7],
+      "matrix": [
+        100,
+        0,
+        0,
+        0,
+        0,
+        -1.6292067939183141e-5,
+        -99.999999999998678,
+        0,
+        0,
+        99.999999999998678,
+        -1.6292067939183141e-5,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "Body"
+    },
+    {
+      "mesh": 0,
+      "name": "Body_Skin_0"
+    },
+    {
+      "mesh": 1,
+      "name": "Body_Eyes_0"
+    },
+    {
+      "mesh": 2,
+      "name": "Body_Eyebrows_0"
+    },
+    {
+      "children": [9, 10, 11, 12],
+      "matrix": [
+        100,
+        0,
+        0,
+        0,
+        0,
+        -1.6292067939183141e-5,
+        -99.999999999998678,
+        0,
+        0,
+        99.999999999998678,
+        -1.6292067939183141e-5,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "Short Sleeve Tshirt.001"
+    },
+    {
+      "mesh": 3,
+      "name": "Short Sleeve Tshirt.001_Bob Shirt_0"
+    },
+    {
+      "mesh": 4,
+      "name": "Short Sleeve Tshirt.001_Hair_0"
+    },
+    {
+      "mesh": 5,
+      "name": "Short Sleeve Tshirt.001_Skin_0"
+    },
+    {
+      "mesh": 6,
+      "name": "Short Sleeve Tshirt.001_Silver_0"
+    },
+    {
+      "children": [14],
+      "matrix": [
+        100,
+        0,
+        0,
+        0,
+        0,
+        -1.6292067939183141e-5,
+        -99.999999999998678,
+        0,
+        0,
+        99.999999999998678,
+        -1.6292067939183141e-5,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "Shoes.001"
+    },
+    {
+      "mesh": 7,
+      "name": "Shoes.001_Shoe_0"
+    },
+    {
+      "children": [16],
+      "matrix": [
+        100,
+        0,
+        0,
+        0,
+        0,
+        -1.6292067939183141e-5,
+        -99.999999999998678,
+        0,
+        0,
+        99.999999999998678,
+        -1.6292067939183141e-5,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "Trousers.001"
+    },
+    {
+      "mesh": 8,
+      "name": "Trousers.001_Bob pants_0"
+    },
+    {
+      "children": [18],
+      "matrix": [
+        100,
+        0,
+        0,
+        0,
+        0,
+        -1.6292067939183141e-5,
+        -99.999999999998678,
+        0,
+        0,
+        99.999999999998678,
+        -1.6292067939183141e-5,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "Beard.002"
+    },
+    {
+      "mesh": 9,
+      "name": "Beard.002_Hair_0"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "OSG_Scene",
+      "nodes": [0]
+    }
+  ]
+}

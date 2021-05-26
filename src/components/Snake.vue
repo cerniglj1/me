@@ -10,7 +10,9 @@
         <div class="col-sm-4">
           <form>
             <div class="form-group row">
-              <label for="search" class="col-sm-4 col-form-label">Search Function</label>
+              <label for="search" class="col-sm-4 col-form-label"
+                >Search Function</label
+              >
               <div class="col-sm-8">
                 <select id="search" class="form-control form-control-sm">
                   <option class="dropdown-item">A*</option>
@@ -27,8 +29,12 @@
                   v-if="gameOver"
                   class="btn btn-start"
                   v-on:click="Initialize"
-                >Reset</button>
-                <button type="button" class="btn btn-start" v-on:click="Start">Start</button>
+                >
+                  Reset
+                </button>
+                <button type="button" class="btn btn-start" v-on:click="Start">
+                  Start
+                </button>
               </div>
             </div>
             <!-- <div class="form-group row">
@@ -51,15 +57,15 @@
               <p>
                 <span id="gameover"></span>
               </p>
-              <p>size:{{size}}</p>
-              <p>rows:{{rows}}</p>
-              <p>Start x: {{start_x}}</p>
-              <p>Start y: {{start_y}}</p>
-              <p>item_x: {{item_x}}</p>
-              <p>item_y: {{item_y}}</p>
+              <p>size:{{ size }}</p>
+              <p>rows:{{ rows }}</p>
+              <p>Start x: {{ start_x }}</p>
+              <p>Start y: {{ start_y }}</p>
+              <p>item_x: {{ item_x }}</p>
+              <p>item_y: {{ item_y }}</p>
               <!-- <p>Grid: {{Grid}}</p> -->
-              <p>block_width: {{block_width}}</p>
-              <p>block_height: {{block_height}}</p>
+              <p>block_width: {{ block_width }}</p>
+              <p>block_height: {{ block_height }}</p>
               <p>Credits to:</p>
               <p>
                 <a href="https://github.com/sam-zierler">Sam Zierler</a> and
@@ -68,7 +74,8 @@
               <p>
                 <a
                   href="https://github.com/sacert/Snake-Star/blob/master/javascript/snake.js"
-                >Sacert</a>
+                  >Sacert</a
+                >
               </p>
             </div>
           </div>
@@ -94,7 +101,7 @@ class CustomNode {
     this.parent = null;
     this.gScore = -1; // score of getting from start to this node
     this.fScore = -1; // score of gScore plus hueristic value
-    this.heuristicCalc = function(x_final, y_final) {
+    this.heuristicCalc = function (x_final, y_final) {
       return Math.floor(
         Math.abs(x_final - this.x) + Math.abs(y_final - this.y)
       ); //gets the absolute value of final x and final y and subtracts the current x and y from it to see the optimal path
@@ -130,11 +137,11 @@ export default {
       start_y: 0,
       currentPath: 0,
       item_x: 0,
-      item_y: 0
+      item_y: 0,
     };
   },
   methods: {
-    createGrid: function(size) {
+    createGrid: function (size) {
       // create array
       var grid = new Array(size);
       for (var i = 0; i < size; i++) {
@@ -279,7 +286,7 @@ export default {
       setInterval(this.control, 50);
       setInterval(this.DrawBoard, 50);
     },
-    change_search: function() {
+    change_search: function () {
       var message = new Object();
       message.do = "set_search";
       message.search = document.getElementById("search").value;
@@ -631,11 +638,11 @@ export default {
           }
         }
       }
-    }
+    },
   },
   mounted() {
     this.Initialize();
-  }
+  },
 };
 </script>
 <style scoped>

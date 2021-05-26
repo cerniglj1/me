@@ -11,11 +11,10 @@
           <div class="col-8">
             <p class="bio">
               I am a software engineer currently living in Merrick, NY. I have
-              experience building web apps using Angular, Vue, Express, Python
-              and JavaScript. I am passionate to build things that people will
-              use. I am passionate about creating projects and writing code that
-              I can be proud of. I am always searching for ways to learn and
-              improve my code.
+              experience building web apps using Angular, VueJS and Java Spring
+              Boot. I am passionate to build things that people will use. I find
+              joy creating solutions that I can be proud of. I am always
+              searching for ways to learn and improve my code.
             </p>
           </div>
         </div>
@@ -28,24 +27,12 @@
 export default {
   name: "about",
   data() {
-    return {
-      summonerData: null,
-      osrsUsernameInput: null,
-      notpoop: null,
-      jimbojango: null,
-      info: null,
-      dani: null,
-    };
+    return {};
   },
   mounted() {},
   created: function () {},
   methods: {
-    osrsSearch: function (name) {
-      // eslint-disable-next-line no-console
-      console.log(name);
-      this.$router.push({ path: `/osrs/users/${name}` });
-      return name;
-    },
+    
   },
 };
 </script>

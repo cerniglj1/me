@@ -1,0 +1,11 @@
+Model Information:
+* title:	Bob from Runescape
+* source:	https://sketchfab.com/3d-models/bob-from-runescape-90e034206d524c4cbbf8a56003a0ec2c
+* author:	tikodev (https://sketchfab.com/tikoavp)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Bob from Runescape" (https://sketchfab.com/3d-models/bob-from-runescape-90e034206d524c4cbbf8a56003a0ec2c) by tikodev (https://sketchfab.com/tikoavp) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
