@@ -11,16 +11,16 @@
         <h3><i class="far fa-dizzy"></i> You got here sneakily..</h3>
       </div>
     </div>
-    <ftr class="ftr" />
+    <FooterVue class="ftr" />
   </div>
 </template>
 
 <script>
 /* eslint-disable no-console */
-import ftr from "./ftr.vue";
+import FooterVue from "./FooterVue.vue";
 export default {
   name: "thankyou",
-  components: { ftr },
+  components: { FooterVue },
   data() {
     return { msg: "thankyou", user_name: "", user_email: "", user_message: "" };
   },

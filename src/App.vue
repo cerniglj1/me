@@ -1,41 +1,46 @@
 <template>
   <div id="app">
-    <navb />
+    <NavBarVue />
     <router-view />
-    <!-- <ftr class="ftr" /> -->
+    <!-- <FooterVue class="ftr" /> -->
   </div>
 </template>
 
 <script>
-import navb from "./components/navb.vue";
-// import ftr from "./components/ftr.vue";
+import NavBarVue from "./components/NavBarVue.vue";
+// import FooterVue from "./components/FooterVue.vue";
 
 export default {
   name: "app",
   components: {
-    navb,
-    // ftr
+    NavBarVue,
+    // FooterVue,
   },
 };
 </script>
 
 <style >
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 
 #app {
+  --or1: #f58958;
+  --or2: #e95f21;
+  --or3: #aa2d0f;
+  --or4: #612a13;
+  --grey1: #aec3bc;
+  --grey2: #80949d;
+  --grey3: #506270;
+  --grey4: #2e3641;
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(223, 255, 251);
+  background-color: var(--grey2);
 }
-.ftr {
-  display: flex;
-  justify-content: flex-start;
-}
+
 html,
 body {
   height: 100%;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  width: 100%;
 }
 #Keys {
   background: linear-gradient(#0093ff 0%, #00ffe4 1%, #8300ff 2%, #0020ff 3%);

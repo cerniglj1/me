@@ -19,13 +19,33 @@
             id="RL"
             class-active="active"
             class="nav-link"
-            to="/home"
+            to="/"
             exact
           >
             <li>
-              <a class="nav-link">
-                <i class="fas fa-home"></i> James Cerniglia
-              </a>
+              <a class="nav-link"> <i class="fas fa-home"></i> Home </a>
+            </li>
+          </router-link>
+          <router-link
+            id="RL"
+            class-active="active"
+            class="nav-link"
+            to="/about"
+            exact
+          >
+            <li>
+              <a class="nav-link"> <i class="fas fa-newspaper"></i> About </a>
+            </li>
+          </router-link>
+          <router-link
+            id="RL"
+            class-active="active"
+            class="nav-link"
+            to="/contact"
+            exact
+          >
+            <li>
+              <a class="nav-link"> <i class="far fa-envelope"></i> Contact </a>
             </li>
           </router-link>
           <!-- <router-link
@@ -81,7 +101,7 @@
 
 <script>
 export default {
-  name: "navb",
+  name: "NavBarVue",
   fun_facts: [
     "Deadlifted 405 lbs May 2019",
     "Bench Pressed 225 lbs for 2 reps January 2020",
@@ -102,7 +122,8 @@ export default {
   color: white;
 }
 .navbar {
-  background: rgb(2, 64, 75);
+  /* background: rgb(2, 64, 75); */
+  background-color: var(--grey3);
 }
 .nav-item,
 .nav-link {
@@ -117,7 +138,8 @@ export default {
 }
 #RL:hover {
   /* box-shadow: 0 5px 15px rgba(121, 253, 202, 0.7); */
-  background: #0041a1;
+  background-color: var(--grey4);
+  /* background: #0041a1; */
 }
 /* #navBottom {
   border-bottom: 1rem dotted white;
@@ -126,7 +148,8 @@ export default {
   max-width: 150px;
 } */
 .router-link-active {
-  background: rgb(2, 45, 53);
+  background-color: var( --or3);
+  /* background: rgb(2, 45, 53); */
 }
 
 .dropdown-menu {

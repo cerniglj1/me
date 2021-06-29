@@ -5,7 +5,11 @@
         <div class="row">
           <div class="col-4">
             <div class="brd">
-              <img class="profile-picture" src="../assets/me.png" width="200" />
+              <img
+                src="../assets/canyons/me.jpg"
+                class="pic-of-me"
+                style="max-height: 500px"
+              />
             </div>
           </div>
           <div class="col-8">
@@ -20,20 +24,23 @@
         </div>
       </div>
     </div>
+    <FooterVue class="ftr" />
   </div>
 </template>
 
 <script>
+import FooterVue from "./FooterVue";
 export default {
   name: "about",
+  components: {
+    FooterVue,
+  },
   data() {
     return {};
   },
   mounted() {},
   created: function () {},
-  methods: {
-    
-  },
+  methods: {},
 };
 </script>
 <style scoped>
@@ -59,21 +66,18 @@ export default {
     margin-top: 11%;
   }
 }
-.brd {
-  background: black;
+.pic-of-me {
+  border-radius: 50%;
+  max-width: 97%;
+  box-shadow: 0px 0px 15px var(--or1);
 }
-.rs {
-  height: 350px;
-  filter: saturate(2);
-  background-size: cover;
-  animation-name: slideFromRight;
-
-  animation-duration: 2s;
+.bio {
+  color: white;
 }
-
 .me {
   margin-top: 11%;
-  background: #8300ff;
+  margin-bottom: 25%;
+  background: var(--grey4);
   animation-name: slideFromTop;
   animation-duration: 2s;
 }
